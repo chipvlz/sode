@@ -13,7 +13,7 @@ module.exports = {
     },
     msgedit: {
       type: 'string',
-      defaultsTo: 'không cần sửa'
+      defaultsTo: '_'
     },
     owner: {
       model: 'user'
@@ -23,4 +23,3 @@ module.exports = {
     }
   }
 };
-

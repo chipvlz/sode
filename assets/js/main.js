@@ -148,6 +148,12 @@ $(function() {
     location.reload();
   });
 
+  //Datatables
+  $(document).ready(function() {
+    $('#manage-bet').DataTable();
+    $('#manage-player').DataTable();
+  } );
+
 });
 
 

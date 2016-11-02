@@ -19,6 +19,7 @@
 var cssFilesToInject = [
   'styles/**/*.css',
   'bootstrap/css/bootstrap-editable.css',
+  'datatables/media/css/jquery.dataTables.min.css',
   'font-awesome/css/font-awesome.min.css'
 
 ];
@@ -39,7 +40,7 @@ var jsFilesToInject = [
   'js/bootstrap.min.js',
   'js/main.js',
   'js/bootstrap.editable.min.js',
-  '/ckeditor/ckeditor.js',
+  'datatables/media/js/jquery.dataTables.min.js',
   'js/**/*.js'
   // 'ckeditor/config.js'
 ];
