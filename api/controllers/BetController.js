@@ -22,9 +22,9 @@ module.exports = {
         content: req.body.content
       };
       Player.findOne({phone:data.fromNumber}).exec((err,foundPlayer) => {
-        if(err) return res.negotiate(err);
+        if (err) return res.negotiate(err);
         if (!foundPlayer) {
-          console.log('người chơi ko tồn tại');
+          console.log('người chơi này chưa được đăng ký');
           return false
         } else {
           Bet.create({
@@ -36,7 +36,7 @@ module.exports = {
               return res.negotiate(err)
             }
             console.log(result);
-            sails.sockets.blast('add/bet',{msg:result})
+            sails.sockets.broadcast(req.body.to_number,'add/bet',{msg:result})
           });
         }
       });
