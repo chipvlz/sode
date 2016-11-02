@@ -13,6 +13,7 @@ module.exports = {
       res.status(403).end();
       return;
     }
+    res.status(200).end();
     if (req.body.event == 'incoming_message') {
       console.log('api',req.body);
       let data = {
