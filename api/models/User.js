@@ -9,10 +9,9 @@ var md5 = require('md5');
 module.exports = {
 
   attributes: {
-    email: {
+    phone: {
       type: 'string',
-      unique: true,
-      required: true
+      unique: true
     },
     password: {
       type: 'string',
@@ -30,10 +29,6 @@ module.exports = {
     birthday: {
       type: 'string'
     },
-    avatar: {
-      type: 'string',
-      defaultsTo: 'no-avatar.png'
-    },
     point: {
       type: 'integer',
       defaultsTo:10
@@ -42,19 +37,25 @@ module.exports = {
       type: 'longtext',
       defaultsTo: 'viết nội dung giới thiệu về bản thân của bạn'
     },
-    posts: {
-      collection: 'post',
+    expired: {
+      type: 'string'
+    },
+    bets: {
+      collection: 'bet',
+      via: 'owner'
+    },
+    players: {
+      collection: 'player',
       via: 'owner'
     }
 
   },
   // Check Login
-  login: (email, password) => {
+  login: (phone, password) => {
     return new Promise((resolve, reject) => {
       password = md5(password);
-      sails.log('Thông tin đăng nhập {email, password}', {email, password});
-      User.findOne({email, password}).exec(function (err, res) {
-        sails.log('user data', res);
+      sails.log('Thông tin đăng nhập {phone, password}', {phone, password});
+      User.findOne({phone, password}).exec(function (err, res) {
         if (err)
           reject(err);
         if (typeof res == 'undefined'){

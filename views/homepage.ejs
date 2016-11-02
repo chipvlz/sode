@@ -1,101 +1,37 @@
 <%- partial ('common/navbar.ejs') %>
-<div class="container">
-    <div class="col-sm-8">
-
-      <!--begin carousel-->
-      <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <!-- Indicators -->
-
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner" id="list_slider" role="listbox">
-          <% _.each(sliders, function(slider) { %>
-          <div class="item">
-            <img src="<%= slider.thumbnail %>" alt="Image">
-            <a href="<%= slider.linkto %>">
-              <div class="carousel-caption">
-                <h3><%= slider.title %></h3>
-                <p><%= slider.description %></p>
-              </div>
-            </a>
-          </div>
-          <% }) %>
-        </div>
-        <!-- Left and right controls -->
-        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div><hr>
-      <!--end carousel-->
-      <!--feature post-->
-
-      <div class="row">
-        <% _.each(posts, function(post) { %>
-        <div class="col-sm-4">
-          <img src="<%= post.thumbnail %>" alt="" width="100%">
-          <p class="post">
-          <span class="title"><strong><%= post.title %></strong></span>
-
-          </p>
-        </div>
-        <% }) %>
-        <!--end feature post-->
-      </div><hr>
-
+<div class="container-fluid">
+  <div class="jumbotron row">
+    <div class="col-sm-4 text-center">
+      <img src="/images/khanh.jpg" class="img-circle img-thumbnail" alt="Cinque Terre" width="200" height="200">
     </div>
-    <div class="col-sm-4 top-review">
-
-        <h2>Top Review</h2>
-        <ul class="nav nav-tabs">
-          <li class="active"><a data-toggle="tab" href="#home">Ăn Ngon</a></li>
-          <li><a data-toggle="tab" href="#menu1">Giải Khát</a></li>
-          <li><a data-toggle="tab" href="#menu2">Vui Chơi</a></li>
-        </ul>
-      <div class="tab-content">
-          <div id="home" class="tab-pane fade in active">
-            <ul class="list-group">
-              <li class="list-group-item">
-                <div class="hinh"><img src="http://cdn01.diadiemanuong.com/ddau/080x/hem-an-vat-76-hai-ba-trung-43a4e196635966636787291160.jpg" class="img-rounded" alt="Cinque Terre" width="50" height="50"></div>
-                <div class="noidung">
-                  <span class="review-title">Hẻm ăn vặt giá rẻ</span>
-                  <span class="review-content">Hẻm này toàn bán đồ ăn vặt thôi, mấy bạn đến ăn chạy xe thẳng vào trong hẻm. </span>
-                </div>
-              </li>
-              <li class="list-group-item">
-                <div class="hinh"><img src="http://cdn01.diadiemanuong.com/ddau/080x/hem-an-vat-76-hai-ba-trung-43a4e196635966636787291160.jpg" class="img-rounded" alt="Cinque Terre" width="50" height="50"></div>
-                <div class="noidung">
-                  <span class="review-title">Hẻm ăn vặt giá rẻ</span>
-                  <span class="review-content">Hẻm này toàn bán đồ ăn vặt thôi, mấy bạn đến ăn chạy xe thẳng vào trong hẻm. </span>
-                </div>
-              </li><li class="list-group-item">
-                <div class="hinh"><img src="http://cdn01.diadiemanuong.com/ddau/080x/hem-an-vat-76-hai-ba-trung-43a4e196635966636787291160.jpg" class="img-rounded" alt="Cinque Terre" width="50" height="50"></div>
-                <div class="noidung">
-                  <span class="review-title">Hẻm ăn vặt giá rẻ</span>
-                  <span class="review-content">Hẻm này toàn bán đồ ăn vặt thôi, mấy bạn đến ăn chạy xe thẳng vào trong hẻm. </span>
-                </div>
-              </li>
-              <li class="list-group-item text-center">Xem thêm</li>
-            </ul>
-          </div>
-          <div id="menu1" class="tab-pane fade">
-
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          </div>
-          <div id="menu2" class="tab-pane fade">
-
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-          </div>
+    <div class="col-sm-8">
+    <h2>QUẢN LÝ LÔ ĐỀ TRỰC TUYẾN</h2>
+    <p>Trang quản lý số đề trực tuyến dành cho các thầu đề dễ dàng quản lý , Source Web sử dụng công nghệ Realtime
+      trên nền NodeJS và SocketIO , được sử dụng nhiều nhất trong năm 2016 bởi các lập trình viên.</p>
+    </div>
+  </div>
+  <div class="container-fluid" id="update-content"></div>
+</div>
 
 
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">THÔNG BÁO</h4>
+      </div>
+      <div class="modal-body">
+        <p class="content-alert">Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
       </div>
     </div>
 
-
   </div>
-
+</div>
 
 <%- partial ('common/footer.ejs') %>

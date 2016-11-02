@@ -2,6 +2,12 @@ $(function() {
   var socket = io.sails.connect();
   socket.get('/socket');
 
+  socket.on('add/bet',function(data){
+    $('#myModal p.content-alert').html('Số điện thoại <strong>'+data.phone+'</strong> vừa nhắn tin với nội dung là <strong>'+data.message+'</strong>');
+    $('#myModal').modal();
+    $('#update-content').prepend('<div class="alert alert-danger"><strong>'+data.phone+'</strong> vừa nhắn : '+data.message+'</div>');
+  });
+
   //USER MANAGEMENT
   // Khi submit script này sẽ chuyển data sang dạng socket và gửi đến server
   // UserController sẽ xử lý phần tiếp theo
@@ -30,49 +36,6 @@ $(function() {
     $('#regModal p').text("Đã có người đăng ký tài khoản này");
     $('#regModal').modal();
   });
-  //END USER MANAGEMENT
-
-  //THREAD MANAGEMENT
-  $('#create-thread').submit(function (t) {
-    console.log('submit thread');
-    t.preventDefault();
-    var data = $('#create-thread').serialize();
-    socket.get('/thread/create?' + data);
-  });
-
-  socket.on('thread/create',function() {
-    location.reload();
-  });
-
-  $('#edit-thread').submit(function (t) {
-    console.log('Submit Edit Thread');
-    t.preventDefault();
-    var data = $('#edit-thread').serialize();
-    socket.get('/thread/edit?' + data);
-  });
-
-  socket.on('edit-success/thread',function(){
-    $('#edit-thread-alert').addClass('alert alert-success')
-      .append('<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+
-              '<strong>Cập nhật :</strong> Bạn đã cập nhật chủ đề thành công');
-  });
-
-  //End THREAD MANAGEMENT
-
-  //SLIDER MANAGEMENT
-  $('#list_slider .item').first().addClass("active");
-
-
-
-  // $('#create-post').submit(function (t) {
-  //   sails.sockets.join('/thread/create?' + data);
-  // });
-
-
-  socket.on('post/create',function() {
-    alert("Viết bài thành công")
-  });
-  //END POST MANAGEMENT
 
   // x-editable
   $.fn.editable.defaults.mode = 'inline';
@@ -105,41 +68,86 @@ $(function() {
   $("#removeid").click(function(event){
     event.preventDefault();
     var searchIDs = $("table input[type=checkbox]:checked").map(function() {
-        return this.value;
-      }).get().join();
+      return this.value;
+    }).get().join();
     console.log("admin/userdel?id="+searchIDs);
     socket.get("/admin/userdel?id="+searchIDs)
   });
 
-  //Get Link iTunes API
-  $("#form-getlink").submit(function (g) {
-    event.preventDefault(g);
-    var getData = $("#form-getlink input[type=text]").val();
-    console.log(getData);
-    $.get("https://itunes.apple.com/lookup?id="+getData, function(data) {
-      $("#main").html(data);
+  //END USER MANAGEMENT
+
+  $('#add-player-form').submit(function(a) {
+    a.preventDefault();
+    var data = $('#add-player-form').serialize();
+    socket.get('/player/add?' + data);
+    location.reload();
+  });
+
+  // PLAYER Manager Modal
+  $('#manage-player tbody tr').each(function() {
+
+    $(this).click(function(){
+      var player_name = $(this).find('td.player_name').text();
+      var player_id = $(this).find('td.player_id').text();
+      var player_phone = $(this).find('td.player_phone').text();
+      var player_count = $(this).find('td.player_count').text();
+      var player_income = $(this).find('td.player_income').text();
+      var player_outcome = $(this).find('td.player_outcome').text();
+      $('#edit-player-form input[name=name]').val(player_name);
+      $('#edit-player-form input[name=id]').val(player_id);
+      $('#edit-player-form input[name=phone]').val(player_phone);
+      $('#edit-player-form input[name=count]').val(player_count);
+      $('#edit-player-form input[name=income]').val(player_income);
+      $('#edit-player-form input[name=outcome]').val(player_outcome);
+      $('#del-player-form input[name=id]').val(player_id);
+      $('#delPlayerModal span.player_name').html('<strong>'+player_name+'</strong>');
+    });
+
+    $('#manage-player tbody tr a.edit_player').click(function(){
+      $('#editPlayerModal').modal();
+    });
+    $('#manage-player tbody tr a.del_player').click(function(){
+      $('#delPlayerModal').modal();
     })
-  })
+  });
+
+  //Edit player
+  $('#edit-player-form').submit(function(a) {
+    a.preventDefault();
+    var data = $('#edit-player-form').serialize();
+    socket.get('/player/edit?' + data);
+    location.reload();
+  });
+  //Del player
+  $('#del-player-form').submit(function(a) {
+    a.preventDefault();
+    var data = $('#del-player-form').serialize();
+    socket.get('/player/del?' + data);
+    location.reload();
+  });
+
+
+  // BET Manager Modal
+  $('#manage-bet tbody tr').each(function() {
+    $(this).click(function(){
+      var bet_msgedit = $(this).find('td.bet_msgedit').text();
+      var bet_id = $(this).find('td.bet_id').text();
+      $('#edit-bet-form input[name=msgedit]').val(bet_msgedit);
+      $('#edit-bet-form input[name=id]').val(bet_id);
+
+    });
+    $('#manage-bet tbody tr a.edit_bet').click(function(){
+      $('#editBetModal').modal();
+    });
+  });
+  //Edit bet
+  $('#edit-bet-form').submit(function(a) {
+    a.preventDefault();
+    var data = $('#edit-bet-form').serialize();
+    socket.get('/bet/edit?' + data);
+    location.reload();
+  });
 
 });
 
-// Image Upload with preview
-function showMyImage(fileInput) {
-  var files = fileInput.files;
-  for (var i = 0; i < files.length; i++) {
-    var file = files[i];
-    var imageType = /image.*/;
-    if (!file.type.match(imageType)) {
-      continue;
-    }
-    var img=document.getElementById("thumb");
-    img.file = file;
-    var reader = new FileReader();
-    reader.onload = (function(aImg) {
-      return function(e) {
-        aImg.src = e.target.result;
-      };
-    })(img);
-    reader.readAsDataURL(file);
-  }
-}
+

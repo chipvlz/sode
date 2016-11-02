@@ -1,0 +1,151 @@
+<%- partial ('../common/admin_nav.ejs') %>
+<div class="container" id="page-player-manager">
+  <h2>Danh Sách Người Chơi
+    <span class="pull-right">
+      <a class="btn btn-success btn-sm" data-toggle="modal" data-target="#addPlayerModal">
+        <i class="fa fa-plus fa-lg"></i> Thêm Người Chơi</a></span></h2>
+  <table class="table table-hover" id="manage-player">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Tên</th>
+      <th>Số Điện Thoại</th>
+      <th>Tin Nhắn</th>
+      <th>Thua</th>
+      <th>Thắng</th>
+      <th>Xử lý</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <% _.each(foundPlayers,function(player) { %>
+    <tr>
+      <td class="player_id"><%= player.id %></td>
+      <td class="player_name"><%= player.name %></td>
+      <td class="player_phone"><%= player.phone %></td>
+      <td class="player_count"><%= player.count %></td>
+      <td class="player_income"><%= player.income %></td>
+      <td class="player_outcome"><%= player.outcome %></td>
+      <td class="player_submit">
+        <a class="btn btn-primary edit_player"><i class="fa fa-pencil-square-o"></i> Sửa</a>
+        <a class="btn btn-danger del_player"><i class="fa fa-remove fa-sm"></i> Xóa</a>
+      </td>
+    </tr>
+    <% }) %>
+    </tbody>
+  </table>
+</div>
+
+<!--// Modal Add Player-->
+<div class="modal fade" id="addPlayerModal" role="dialog">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><i class="fa fa-plus"></i> ADD PLAYER</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" id="add-player-form">
+          <div class="form-group">
+            <label class="control-label col-sm-3" for="name">Tên</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" name="name" id="name" placeholder="Nhập tên">
+              <input type="text" class="sr-only" name="id" id="id" value="">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-3" for="phone">Điện Thoại</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" name="phone" id="phone" placeholder="Nhập số điện thoại">
+              <input type="text" class="sr-only" name="owner" id="owner" value="<%= req.session.user.phone %>">
+              <!--<input type="text" class="sr-only" name="count" value="0">-->
+              <!--<input type="text" class="sr-only" name="income" value="0">-->
+              <!--<input type="text" class="sr-only" name="outcome" value="0">-->
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i> Thêm</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--// Modal Del Category-->
+<div class="modal fade" id="delPlayerModal" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><i class="fa fa-remove fa-sm"></i> DELETE PLAYER</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you ready to delete player with name : <span class="player_name"></span> ?</p>
+        <form class="form-horizontal" id="del-player-form">
+          <input type="text" class="" name="id" value="">
+          <div class="form-group">
+            <div class="col-sm-12 text-right">
+              <button type="submit" class="btn btn-danger"><i class="fa fa-remove fa-sm"></i> Xóa</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--// Modal Edit Category-->
+<div class="modal fade" id="editPlayerModal" role="dialog">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><i class="fa fa-pencil-square-o"></i> EDIT PLAYER</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" id="edit-player-form">
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="name">Tên</label>
+            <div class="col-sm-10">
+              <input class="sr-only" name="id" value="">
+              <input type="text" class="form-control" name="name" id="name" placeholder="Enter name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="phone">Điện Thoại</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="phone" id="phone" placeholder="Enter description">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="count">Tin Nhắn</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="count" id="count" placeholder="Enter column">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="income">Lời</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="income" id="income" placeholder="Enter column">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="outcome">Lỗ</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="outcome" id="outcome" placeholder="Enter column">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i> Sửa</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

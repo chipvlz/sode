@@ -1,0 +1,84 @@
+<%- partial ('../common/admin_nav.ejs') %>
+<div class="container" id="page-bet-manager">
+  <h2>Danh Sách Tin Nhắn</h2>
+  <table class="table table-hover" id="manage-bet">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Tên</th>
+      <th>Số ĐT</th>
+      <th>Tin Gốc</th>
+      <th>Tin Chỉnh Sửa</th>
+      <th>Xử lý</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <% _.each(foundBets,function(bet) { %>
+    <tr>
+      <td class="bet_id"><%= bet.id %></td>
+      <td class="bet_name"><%= bet.player.name %></td>
+      <td class="bet_phone"><%= bet.player.phone %></td>
+      <td class="bet_message"><%= bet.message %></td>
+      <td class="bet_msgedit"><%= bet.msgedit %></td>
+      <td class="bet_submit">
+        <a class="btn btn-primary edit_bet"><i class="fa fa-pencil-square-o"></i> Sửa</a>
+        <!--<a class="btn btn-danger del_bet"><i class="fa fa-remove fa-sm"></i> Xóa</a>-->
+      </td>
+    </tr>
+    <% }) %>
+    </tbody>
+  </table>
+</div>
+
+
+<!--&lt;!&ndash;// Modal Del Category&ndash;&gt;-->
+<!--<div class="modal fade" id="delPlayerModal" role="dialog">-->
+  <!--<div class="modal-dialog modal-sm">-->
+    <!--<div class="modal-content">-->
+      <!--<div class="modal-header">-->
+        <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+        <!--<h4 class="modal-title"><i class="fa fa-remove fa-sm"></i> DELETE PLAYER</h4>-->
+      <!--</div>-->
+      <!--<div class="modal-body">-->
+        <!--<p>Are you ready to delete player with name : <span class="player_name"></span> ?</p>-->
+        <!--<form class="form-horizontal" id="del-player-form">-->
+          <!--<input type="text" class="" name="id" value="">-->
+          <!--<div class="form-group">-->
+            <!--<div class="col-sm-12 text-right">-->
+              <!--<button type="submit" class="btn btn-danger"><i class="fa fa-remove fa-sm"></i> Xóa</button>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</form>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
+<!--// Modal Edit Category-->
+<div class="modal fade" id="editBetModal" role="dialog">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><i class="fa fa-pencil-square-o"></i> SỬA TIN NHẮN</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" id="edit-bet-form">
+          <div class="form-group">
+            <label class="control-label col-sm-3" for="msgedit">Tin Nhắn Mới</label>
+            <div class="col-sm-9">
+              <input class="sr-only" name="id" value="">
+              <input type="text" class="form-control" name="msgedit" id="msgedit" placeholder="Nhập nội dung">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i> Sửa</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
