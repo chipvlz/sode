@@ -3,9 +3,9 @@ $(function() {
   socket.get('/socket');
 
   socket.on('add/bet',function(data){
-    $('#myModal p.content-alert').html('Số điện thoại <strong>'+data.phone+'</strong> vừa nhắn tin với nội dung là <strong>'+data.message+'</strong>');
+    $('#myModal p.content-alert').html('Người chơi có ID: <strong>'+data.player+'</strong> vừa nhắn tin đến  <strong>'+data.owner+'</strong> với nội dung là <strong>'+data.message+'</strong>');
     $('#myModal').modal();
-    $('#update-content').prepend('<div class="alert alert-danger"><strong>'+data.phone+'</strong> vừa nhắn : '+data.message+'</div>');
+    $('#update-content').prepend('<div class="alert alert-danger"><strong>'+data.player+'</strong> vừa nhắn : '+data.message+'</div>');
   });
 
   //USER MANAGEMENT
@@ -150,8 +150,38 @@ $(function() {
 
   //Datatables
   $(document).ready(function() {
-    $('#manage-bet').DataTable();
-    $('#manage-player').DataTable();
+    $('#manage-bet').DataTable({
+      "language": {
+        "lengthMenu": "Hiển thị _MENU_ tin nhắn trong 1 trang",
+        "zeroRecords": "Không tìm thấy - sorry",
+        "info": "Hiển thị trang _PAGE_ trên tổng số _PAGES_ trang",
+        "infoEmpty": "No records available",
+        "infoFiltered": "(filtered from _MAX_ total records)",
+        "search":         "Tìm:",
+        "paginate": {
+          "first":      "Đầu",
+          "last":       "Cuối",
+          "next":       "Tiếp",
+          "previous":   "Trở lại"
+        },
+      }
+    });
+    $('#manage-player').DataTable({
+      "language": {
+        "lengthMenu": "Hiển thị _MENU_ người chơi trong 1 trang",
+        "zeroRecords": "Không tìm thấy - sorry",
+        "info": "Hiển thị trang _PAGE_ trên tổng số _PAGES_ trang",
+        "infoEmpty": "No records available",
+        "infoFiltered": "(filtered from _MAX_ total records)",
+        "search":         "Tìm:",
+        "paginate": {
+          "first":      "Đầu",
+          "last":       "Cuối",
+          "next":       "Tiếp",
+          "previous":   "Trở lại"
+        },
+      }
+    });
   } );
 
 });
