@@ -2,11 +2,7 @@ $(function() {
   var socket = io.sails.connect();
   socket.get('/socket');
 
-  socket.on('add/bet',function(data){
-    $('#myModal p.content-alert').html('Người chơi có ID: <strong>'+data.player+'</strong> vừa nhắn tin đến  <strong>'+data.owner+'</strong> với nội dung là <strong>'+data.message+'</strong>');
-    $('#myModal').modal();
-    $('#update-content').prepend('<div class="alert alert-danger"><strong>'+data.player+'</strong> vừa nhắn : '+data.message+'</div>');
-  });
+
 
   //USER MANAGEMENT
   // Khi submit script này sẽ chuyển data sang dạng socket và gửi đến server
@@ -16,6 +12,7 @@ $(function() {
     e.preventDefault();
     var data = $('#login').serialize();
     socket.get('/user/login?' + data);
+    socket.get('/bet/index?'+data);
   });
   // Khi client nhận thông báo login-success từ server sẽ chuyển user sang trang home
   socket.on('user/login-success', function() {
@@ -127,7 +124,43 @@ $(function() {
   });
 
 
+  socket.on('add/bet', function(data) {
+
+    console.log(data.msg.ownerPhone);
+    var phoneDaily = $('.phone-daily').text();
+    if (data.msg.ownerPhone == phoneDaily) {
+      $("#manage-bet tbody").prepend('<tr class="new-bet"><td class="bet_id">'+data.msg.id+'</td>' +
+        '<td class="bet_name">'+data.msg.playerName+'</td>' +
+        '<td class="bet_phone">'+data.msg.playerPhone+'</td>' +
+        '<td class="bet_message">'+data.msg.message+'</td>' +
+        '<td class="bet_msgedit">'+data.msg.msgedit+'</td>' +
+        '<td class="bet_submit">' +
+        '<a class="btn btn-primary edit_bet"><i class="fa fa-pencil-square-o"></i> Sửa</a></td>' +
+        '</tr>');
+      $('#manage-bet tbody tr.new-bet').hide().delay(100).fadeIn(500);
+      $('#manage-bet tbody tr.new-bet').css({'background':'#333','color':'#fff'});
+    }
+
+
+
+  });
+
+
+
+    // socket.on('add/bet',function(data){
+    //   alert(data);
+    //   // $('table#manage-bet tbody').prepend('<tr><td class="bet_id">'+data.id+'</td>' +
+    //   //   '<td class="bet_name">'+data.playerName+'</td>' +
+    //   //   '<td class="bet_phone">'+data.playerPhone+'</td>' +
+    //   //   '<td class="bet_message">'+data.message+'</td>' +
+    //   //   '<td class="bet_msgedit">'+data.msgedit+'</td>' +
+    //   //   '<td class="bet_submit">' +
+    //   //   '<a class="btn btn-primary edit_bet"><i class="fa fa-pencil-square-o"></i> Sửa</a></td>' +
+    //   //   '</tr>');
+    // });
   // BET Manager Modal
+
+
   $('#manage-bet tbody tr').each(function() {
     $(this).click(function(){
       var bet_msgedit = $(this).find('td.bet_msgedit').text();
@@ -151,6 +184,7 @@ $(function() {
   //Datatables
   $(document).ready(function() {
     $('#manage-bet').DataTable({
+      "order": [[ 1, "desc" ]],
       "language": {
         "lengthMenu": "Hiển thị _MENU_ tin nhắn trong 1 trang",
         "zeroRecords": "Không tìm thấy - sorry",

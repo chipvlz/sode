@@ -59,4 +59,9 @@ table thead , .modal-header {
   color:#fff;
 }
 
-
+input[type="search"], select {
+  border:1px solid #a94442;
+  color:#a94442;
+  height:30px;
+  padding:5px;
+}

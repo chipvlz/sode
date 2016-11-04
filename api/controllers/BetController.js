@@ -15,7 +15,6 @@ module.exports = {
     }
     res.status(200).end();
     if (req.body.event == 'incoming_message') {
-      console.log('api',req.body);
       let data = {
         fromNumber: req.body.from_number,
         toNumber: req.body.to_number,
@@ -35,8 +34,11 @@ module.exports = {
             if (err) {
               return res.negotiate(err)
             }
+            result.playerName = foundPlayer.name;
+            result.playerPhone = foundPlayer.phone;
+            result.ownerPhone = data.toNumber;
             console.log(result);
-            sails.sockets.broadcast(req.body.to_number,'add/bet',{msg:result})
+            sails.sockets.blast('add/bet',{msg:result})
           });
         }
       });
