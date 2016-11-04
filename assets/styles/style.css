@@ -3,7 +3,9 @@ body {
   background:#f1f1f1 !important;
   letter-spacing: 0.5px;
 }
-#page-player-manager, #page-bet-manager,#login-page {
+#page-player-manager, #page-bet-manager, #login-page, #page-view-bet,
+#admin-page
+{
   padding:10px;
   margin-top:20px;
   background: #fff;
@@ -50,11 +52,12 @@ table input[type="checkbox"] {
 }
 
 #login-page {
+  /*box-shadow: 0 0px 15px 1px #989898;*/
   max-width:500px;
   padding:10px;
 }
 
-table thead , .modal-header {
+table thead , .modal-header, .list-group-item-info {
   background:#a94442;
   color:#fff;
 }
@@ -64,4 +67,9 @@ input[type="search"], select {
   color:#a94442;
   height:30px;
   padding:5px;
+}
+
+#page-view-bet span.pull-right {
+  font-size:16px;
+  font-weight:bold;
 }

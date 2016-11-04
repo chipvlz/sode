@@ -1,0 +1,24 @@
+<%- partial ('../common/admin_nav.ejs') %>
+<div class="container" id="page-view-bet">
+  <div class="col-sm-4">
+    <div class="panel panel-danger">
+      <div class="panel-heading">THÔNG TIN NGƯỜI CHƠI <span class="pull-right"><%= player.id %></span></div>
+      <div class="panel-body">TÊN <span class="pull-right"><%= player.name %></span></div>
+      <div class="panel-body">ĐIỆN THỌAI <span class="pull-right"><%= player.phone %></span></div>
+    </div>
+    <div class="panel panel-danger">
+      <div class="panel-heading">NỘI DUNG TIN NHẮN</div>
+      <div class="panel-body"><%= message %></div>
+    </div>
+    <div class="panel panel-success">
+      <div class="panel-heading">TÍNH SỐ ĐỀ</div>
+      <div class="panel-body"></div>
+    </div>
+  </div>
+  <div class="col-sm-8">
+    <div class="panel panel-success">
+      <div class="panel-heading">TÍNH SỐ ĐỀ</div>
+      <div class="panel-body"></div>
+    </div>
+  </div>
+</div>

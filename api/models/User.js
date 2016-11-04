@@ -20,7 +20,7 @@ module.exports = {
     },
     group: {
       type: 'string',
-      defaultsTo: 'Member'
+      defaultsTo: 'Admin'
     },
     name: {
       type: 'string',

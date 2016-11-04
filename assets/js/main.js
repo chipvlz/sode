@@ -167,10 +167,13 @@ $(function() {
       var bet_id = $(this).find('td.bet_id').text();
       $('#edit-bet-form input[name=msgedit]').val(bet_msgedit);
       $('#edit-bet-form input[name=id]').val(bet_id);
-
+      $('#del-bet-form input[name=id]').val(bet_id);
     });
     $('#manage-bet tbody tr a.edit_bet').click(function(){
       $('#editBetModal').modal();
+    });
+    $('#manage-bet tbody tr a.del_bet').click(function(){
+      $('#delBetModal').modal();
     });
   });
   //Edit bet
@@ -179,6 +182,13 @@ $(function() {
     var data = $('#edit-bet-form').serialize();
     socket.get('/bet/edit?' + data);
     location.reload();
+  });
+  //Del Bet
+  $('#del-bet-form').submit(function(a) {
+    a.preventDefault();
+    var data = $('#del-bet-form').serialize();
+    console.log(data);
+    socket.get('/bet/del?' + data);
   });
 
   //Datatables

@@ -1,6 +1,20 @@
 <%- partial ('../common/admin_nav.ejs') %>
-trang admin
+<div class="container" id="admin-page">
 
+<div class="col-sm-4">
+  <ul class="list-group">
+    <li class="list-group-item list-group-item-info text-center">THÔNG TIN ĐẠI LÝ</li>
+    <li class="list-group-item"><i class="fa fa-user"></i> <span class="pull-right" style="font-weight:bold;"><%= foundUser.name %></span></li>
+    <li class="list-group-item"><i class="fa fa-phone"></i> <span class="pull-right"><%= foundUser.phone %></span></li>
+    <li class="list-group-item"><i class="fa fa-calendar"></i> <span class="pull-right"><%= foundUser.expired %></span></li>
+    <li class="list-group-item"><i class="fa fa-group"></i> <span class="pull-right"><%= countPlayers %> người chơi</span></li>
+  </ul>
+</div>
 
+<div class="col-sm-4">
+
+</div>
+
+</div>
 
 <%- partial ('../common/footer.ejs') %>

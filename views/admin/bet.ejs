@@ -24,6 +24,7 @@
       <td class="bet_msgedit"><%= bet.msgedit %></td>
       <td class="bet_submit">
         <a class="btn btn-primary edit_bet"><i class="fa fa-pencil-square-o"></i> Sửa</a>
+        <a href="/bet/view?id=<%= bet.id %>" class="btn btn-success view_bet"><i class="fa fa-eye"></i> Xem</a>
         <!--<a class="btn btn-danger del_bet"><i class="fa fa-remove fa-sm"></i> Xóa</a>-->
       </td>
     </tr>
@@ -33,30 +34,30 @@
 </div>
 
 
-<!--&lt;!&ndash;// Modal Del Category&ndash;&gt;-->
-<!--<div class="modal fade" id="delPlayerModal" role="dialog">-->
-  <!--<div class="modal-dialog modal-sm">-->
-    <!--<div class="modal-content">-->
-      <!--<div class="modal-header">-->
-        <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
-        <!--<h4 class="modal-title"><i class="fa fa-remove fa-sm"></i> DELETE PLAYER</h4>-->
-      <!--</div>-->
-      <!--<div class="modal-body">-->
-        <!--<p>Are you ready to delete player with name : <span class="player_name"></span> ?</p>-->
-        <!--<form class="form-horizontal" id="del-player-form">-->
-          <!--<input type="text" class="" name="id" value="">-->
-          <!--<div class="form-group">-->
-            <!--<div class="col-sm-12 text-right">-->
-              <!--<button type="submit" class="btn btn-danger"><i class="fa fa-remove fa-sm"></i> Xóa</button>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</form>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</div>-->
+<!--// Modal Del Bet-->
+<div class="modal fade" id="delBetModal" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><i class="fa fa-remove fa-sm"></i> XEM TIN NHẮN</h4>
+      </div>
+      <div class="modal-body">
+        <p>Bạn muốn xem thông tin đánh đề của tin nhắn này ?</p>
+        <form class="form-horizontal" id="del-bet-form">
+          <input type="text" class="sr-only" name="id" value="">
+          <div class="form-group">
+            <div class="col-sm-12 text-right">
+              <button type="submit" class="btn btn-success"><i class="fa fa-eye fa-sm"></i> Xóa</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
-<!--// Modal Edit Category-->
+<!--// Modal Edit Bet-->
 <div class="modal fade" id="editBetModal" role="dialog">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
@@ -83,3 +84,4 @@
     </div>
   </div>
 </div>
+

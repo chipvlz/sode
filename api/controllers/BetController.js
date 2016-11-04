@@ -42,20 +42,22 @@ module.exports = {
           });
         }
       });
+      }
+  },
 
-
-
-
-    }
-    // if (!req.isSocket) {
-    //   return res.badRequest('Làm gì zậy pa?')
-    // }
-    // let params = req.allParams();
-
+  view: (req,res) => {
+    let params = req.allParams();
+    Bet.findOne({id:params.id}).populate('player').exec(function(err,foundBet){
+      if (req.session.user.phone == '0'+foundBet.owner) {
+        return res.view('admin/view_bet',foundBet)
+      } else {
+        return res.negotiate('Bạn không có quyền xem bet này')
+      }
+    })
   },
 
   edit: (req,res) => {
-    if (!req.isSocket) return res.badRequest('Làm gì zậy pa?')
+    if (!req.isSocket) return res.badRequest('Làm gì zậy pa?');
     let params = req.allParams();
     Bet.update({id:params.id},{msgedit:params.msgedit}).exec(function(err,editBet) {
       if (err) return res.negotiate(err);
