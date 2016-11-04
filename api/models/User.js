@@ -11,7 +11,9 @@ module.exports = {
   attributes: {
     phone: {
       type: 'string',
-      unique: true
+      unique: true,
+      required: true,
+      primaryKey: true
     },
     password: {
       type: 'string',

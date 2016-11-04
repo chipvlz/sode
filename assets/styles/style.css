@@ -4,7 +4,7 @@ body {
   letter-spacing: 0.5px;
 }
 #page-player-manager, #page-bet-manager, #login-page, #page-view-bet,
-#admin-page
+#admin-page , #root-page , #page-user-manager
 {
   padding:10px;
   margin-top:20px;

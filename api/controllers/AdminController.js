@@ -7,19 +7,37 @@
 
 module.exports = {
 	index: (req,res) => {
-    Player.count({owner:req.session.user.phone})
-      .exec(function(err,countPlayers){
-        if(err) return res.negotiate(err);
+    // Đếm số người chơi của đại lý
+    let findCountPlayers = new Promise((resolve, reject) => {
+      Player.count({owner:req.session.user.phone}).exec(function(err,countPlayers) {
+        if (err) {reject(err)}
+        resolve(countPlayers);
+      })
+    });
+    // Đếm số tin nhắn đến đại lý
+    let findCountBets = new Promise((resolve, reject) => {
+      Bet.count({owner:req.session.user.phone}).exec(function(err,countBets) {
+        if (err) {reject(err)}
+        resolve(countBets);
+      })
+    });
+    // Lấy thông tin của đại lý
+    let findOneUser = new Promise((resolve, reject) => {
         User.findOne({id:req.session.user_id}).exec(function(err,foundUser) {
-          console.log(countPlayers);
-          res.view('admin/index',{foundUser,countPlayers})
-        });
-      });
-
-	 //  Bet.find({owner:req.session.user.phone}).populate('player').exec(function(err,foundBets) {
-	 //    if (err) return res.negotiate(err);
-    //   res.view('admin/index',{foundBets})
-    // })
+          if (err) {reject(err)}
+          resolve(foundUser);
+        })
+    });
+    // Chờ tất cả query ở trên hoàn tất mới tiến hành in ra 1 lượt
+    async function concurrent() {
+      var [countPlayers,countBets,foundUser] = await Promise.all([
+        findCountPlayers,
+        findCountBets,
+        findOneUser
+      ]);
+      return res.view("admin/index", {countPlayers,countBets,foundUser})
+    }
+    concurrent();
   },
 
   player: (req,res) => {

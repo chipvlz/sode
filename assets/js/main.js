@@ -1,8 +1,13 @@
+
+
 $(function() {
   var socket = io.sails.connect();
   socket.get('/socket');
 
 
+  $(document).ready(function() {
+    $("time.timeago").timeago();
+  });
 
   //USER MANAGEMENT
   // Khi submit script này sẽ chuyển data sang dạng socket và gửi đến server
@@ -125,7 +130,6 @@ $(function() {
 
 
   socket.on('add/bet', function(data) {
-
     console.log(data.msg.ownerPhone);
     var phoneDaily = $('.phone-daily').text();
     if (data.msg.ownerPhone == phoneDaily) {

@@ -1,0 +1,35 @@
+<%- partial ('../common/root_nav.ejs') %>
+<div class="container" id="page-user-manager">
+  <h2>Danh Sách Đại Lý
+    <span class="pull-right">
+      <a class="btn btn-success btn-sm" data-toggle="modal" data-target="#addUserModal">
+        <i class="fa fa-plus fa-lg"></i> Thêm Đại Lý</a></span></h2>
+  <table class="table table-hover" id="manage-user">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Tên</th>
+      <th>Số Điện Thoại</th>
+      <th>Ngày Tạo</th>
+      <th>Hạn Dùng</th>
+      <th>Xử lý</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <% _.each(foundUsers,function(user) { %>
+    <tr>
+      <td class="user_id"><%= user.id %></td>
+      <td class="user_name"><%= user.name %></td>
+      <td class="user_phone"><%= user.phone %></td>
+      <td class="user_created"><time class="timeago" datetime="<%= user.createdAt %>"></time></td>
+      <td class="user_expired"><%= user.expired %></td>
+      <td class="user_submit">
+        <a href="/root/user/<%= user.phone %>" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i> Sửa</a>
+        <a class="btn btn-danger del_user"><i class="fa fa-remove fa-sm"></i> Xóa</a>
+      </td>
+    </tr>
+    <% }) %>
+    </tbody>
+  </table>
+</div>

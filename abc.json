@@ -1,0 +1,190 @@
+{
+  "data": {
+    "bet": [
+      {
+        "message": "Done",
+        "player": 84940,
+        "owner": "0989333900",
+        "msgedit": "_",
+        "createdAt": "2016-11-04T16:41:59.488Z",
+        "updatedAt": "2016-11-04T16:41:59.488Z",
+        "id": 56
+      }
+    ],
+    "player": [
+      {
+        "name": "Khánh Trần",
+        "id": 84940,
+        "phone": "+84937551278",
+        "owner": "0989333900",
+        "count": 0,
+        "income": 0,
+        "outcome": 0,
+        "createdAt": "2016-11-04T16:40:44.520Z",
+        "updatedAt": "2016-11-04T16:40:44.520Z"
+      }
+    ],
+    "user": [
+      {
+        "phone": "0989333900",
+        "password": "41b77ee00cfeed693504005e1881c2f0",
+        "name": "Khánh Trần",
+        "birthday": "28/04/1983",
+        "group": "Admin",
+        "point": 10,
+        "expired": "31/12/2016",
+        "about": "viết nội dung giới thiệu về bản thân của bạn",
+        "createdAt": "2016-11-01T21:04:56.351Z",
+        "updatedAt": "2016-11-01T21:04:56.351Z",
+        "id": 28
+      },
+      {
+        "phone": "0909090909",
+        "password": "41b77ee00cfeed693504005e1881c2f0",
+        "name": "Khánh 2",
+        "birthday": "28/04/1983",
+        "group": "Root",
+        "point": 10,
+        "expired": "31/12/2016",
+        "about": "viết nội dung giới thiệu về bản thân của bạn",
+        "createdAt": "2016-11-02T00:18:58.864Z",
+        "updatedAt": "2016-11-02T00:18:58.864Z",
+        "id": 29
+      },
+      {
+        "phone": "0909000000",
+        "password": "41b77ee00cfeed693504005e1881c2f0",
+        "name": "Khánh 3",
+        "birthday": "28/04/1983",
+        "group": "Admin",
+        "point": 10,
+        "expired": "31/12/2016",
+        "about": "viết nội dung giới thiệu về bản thân của bạn",
+        "createdAt": "2016-11-02T00:18:58.864Z",
+        "updatedAt": "2016-11-02T00:18:58.864Z",
+        "id": 30
+      }
+    ]
+  },
+  "schema": {
+    "bet": {
+      "message": {
+        "type": "string"
+      },
+      "msgedit": {
+        "type": "string",
+        "defaultsTo": "_"
+      },
+      "owner": {
+        "type": "string",
+        "model": "user",
+        "foreignKey": true,
+        "alias": "owner"
+      },
+      "player": {
+        "type": "integer",
+        "model": "player",
+        "foreignKey": true,
+        "alias": "player"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "player": {
+      "name": {
+        "type": "string"
+      },
+      "phone": {
+        "type": "string"
+      },
+      "count": {
+        "type": "integer",
+        "defaultsTo": 0
+      },
+      "income": {
+        "type": "integer",
+        "defaultsTo": 0
+      },
+      "outcome": {
+        "type": "integer",
+        "defaultsTo": 0
+      },
+      "owner": {
+        "type": "string",
+        "model": "user",
+        "foreignKey": true,
+        "alias": "owner"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "user": {
+      "phone": {
+        "type": "string",
+        "unique": true,
+        "primaryKey": true
+      },
+      "password": {
+        "type": "string"
+      },
+      "group": {
+        "type": "string",
+        "defaultsTo": "Admin"
+      },
+      "name": {
+        "type": "string"
+      },
+      "birthday": {
+        "type": "string"
+      },
+      "point": {
+        "type": "integer",
+        "defaultsTo": 10
+      },
+      "about": {
+        "type": "longtext",
+        "defaultsTo": "viết nội dung giới thiệu về bản thân của bạn"
+      },
+      "expired": {
+        "type": "string"
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    }
+  },
+  "counters": {
+    "user": {
+      "id": 30
+    },
+    "bet": {
+      "id": 56
+    },
+    "player": {
+      "id": 84940
+    }
+  }
+}

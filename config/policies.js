@@ -38,6 +38,9 @@ module.exports.policies = {
   },
   'AdminController': {
     '*': 'isAdminAuth'
+  },
+  'RootController': {
+    '*': 'isRootAuth'
   }
 
 

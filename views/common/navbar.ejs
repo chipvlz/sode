@@ -20,12 +20,14 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-list"></span> <%= req.session.user.phone %> <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="/admin"><span class="glyphicon glyphicon-tasks"></span> Trang Quản Lý</a></li>
+            <% if(req.session.user.group == 'Root'){ %>
+            <li><a href="/root"><span class="glyphicon glyphicon-tasks"></span> Trang Quản Lý</a></li>
+            <% } else if (req.session.user.group == 'Admin') { %>
+            <li><a href="/admin"><span class="glyphicon glyphicon-tasks"></span> Trang Đại Lý</a></li>
+            <% } %>
             <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Đăng Xuất</a></li>
           </ul>
         </li>
-
-
       </ul>
       <% } %>
     </div>

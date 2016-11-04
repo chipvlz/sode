@@ -34,25 +34,9 @@ module.exports.routes = {
 
   '/': 'HomepageController.index',
   '/trangchu': 'HomepageController.index',
-  '/bet': 'BetController.index',
-
   '/register': 'LoginController.register',
   '/logout': 'UserController.logout',
-
-  '/admin': 'AdminController.index', //trang chủ admin
-
-  '/admin/user': 'UserController.allusers',
-  '/admin/user/:id': 'AdminController.userid',
-  '/admin/user/del/:id': 'AdminController.userdel',
-  '/view/user/:id':'UserController.userid',
-
-  '/upload': {
-    view: 'upload/index'
-  },
-
-  '/get': {
-    view: 'common/result'
-  }
+  '/root/user/:i':'RootController.user',
 
   /***************************************************************************
    *                                                                          *
