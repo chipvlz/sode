@@ -4,6 +4,7 @@
  * @description :: Server-side logic for managing bets
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
+// telerivet.com/p/5e34e37b
 var WEBHOOK_SECRET = "3PX7T47T6RZ2QR6CL6KL6UU9KLGZPFQQ";
 
 module.exports = {
@@ -27,7 +28,7 @@ module.exports = {
       Player.findOne({phone:data.fromNumber}).exec((err,foundPlayer) => {
         if (err) return res.negotiate(err);
         if (!foundPlayer) {
-          console.log(data.fromNumber+' vừa nhắn '+data.content);
+          console.log(data.fromNumber+' vừa nhắn: '+data.content);
           console.log('số điện thoại '+data.fromNumber+' chưa được đăng ký, nên sẽ không lưu lại dữ liệu');
           return false
         } else {
