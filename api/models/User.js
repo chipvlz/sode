@@ -40,7 +40,8 @@ module.exports = {
       defaultsTo: 'viết nội dung giới thiệu về bản thân của bạn'
     },
     expired: {
-      type: 'string'
+      type: 'string',
+      defaultsTo:0
     },
     bets: {
       collection: 'bet',
@@ -63,6 +64,7 @@ module.exports = {
         if (typeof res == 'undefined'){
           reject("đăng nhập thất bại");
         }
+        sails.log('đăng nhập thành công');
         resolve(res);
       })
     })

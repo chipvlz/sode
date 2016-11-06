@@ -23,7 +23,7 @@ module.exports = {
     });
     // Lấy thông tin của đại lý
     let findOneUser = new Promise((resolve, reject) => {
-        User.findOne({id:req.session.user_id}).exec(function(err,foundUser) {
+        User.findOne({phone:req.session.user.phone}).exec(function(err,foundUser) {
           if (err) {reject(err)}
           resolve(foundUser);
         })
