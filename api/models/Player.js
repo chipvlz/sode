@@ -14,6 +14,9 @@ module.exports = {
     phone: {
       type: 'string'
     },
+    bonus: {
+      type: 'float'
+    },
     count: {
       type: 'integer',
       defaultsTo: 0

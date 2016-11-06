@@ -35,6 +35,7 @@ module.exports = {
         // Nếu số điện thoại này đã đăng ký rồi thì mới lưu vào database
           Bet.create({
             message:data.content,
+            msgedit:data.content,
             player:foundPlayer.id,
             owner:data.toNumber
           }).exec(function(err,result) {

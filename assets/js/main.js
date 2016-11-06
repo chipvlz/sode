@@ -195,6 +195,11 @@ $(function() {
     socket.get('/bet/del?' + data);
   });
 
+  //Edit MSGEDIT
+  $('#page-view-bet a.edit_msg').click(function(){
+    $('#editMsgModal').modal();
+  });
+
   //Datatables
   $(document).ready(function() {
     $('#manage-bet').DataTable({

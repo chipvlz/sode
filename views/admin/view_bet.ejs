@@ -1,24 +1,86 @@
 <%- partial ('../common/admin_nav.ejs') %>
 <div class="container" id="page-view-bet">
   <div class="col-sm-4">
-    <div class="panel panel-danger">
-      <div class="panel-heading">THÔNG TIN NGƯỜI CHƠI <span class="pull-right"><%= player.id %></span></div>
-      <div class="panel-body">TÊN <span class="pull-right"><%= player.name %></span></div>
-      <div class="panel-body">ĐIỆN THỌAI <span class="pull-right"><%= player.phone %></span></div>
-    </div>
-    <div class="panel panel-danger">
-      <div class="panel-heading">NỘI DUNG TIN NHẮN</div>
-      <div class="panel-body"><%= message %></div>
-    </div>
-    <div class="panel panel-success">
-      <div class="panel-heading">TÍNH SỐ ĐỀ</div>
-      <div class="panel-body"></div>
-    </div>
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info text-center">THÔNG TIN NGƯỜI CHƠI<span class="pull-right"><%= player.id %></span></li>
+      <li class="list-group-item"><i class="fa fa-user"></i> <span class="pull-right" style="font-weight:bold;"><%= player.name %></span></li>
+      <li class="list-group-item"><i class="fa fa-phone"></i> <span class="pull-right"><%= player.phone %></span></li>
+      <li class="list-group-item"><i class="fa fa-usd"></i> <span class="bonus-player pull-right"><%= player.bonus %></span></li>
+      <li class="list-group-item list-group-item-warning text-center">TIN NHẮN GỐC<span class="pull-right"><i class="fa fa-envelope"></i></span></li>
+      <li class="list-group-item"><%= message %></li>
+    </ul>
+
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info text-center">SỬA TIN NHẮN
+        <span class="pull-right"><i class="fa fa-pencil"></i></span></li>
+      <li class="msg-bet-content list-group-item"><%= msgedit %></li>
+      <li class="list-group-item">
+        <a class="btn btn-warning edit_msg"><i class="fa fa-pencil-square-o"></i> Sửa</a>
+        <a class="btn btn-success cal_msg"><i class="fa fa-pencil-square-o"></i> Tính</a>
+      </li>
+    </ul>
+
+    <ul class="phantich1 list-group">
+      <li class="list-group-item list-group-item-warning text-center">PHÂN TÍCH 1</li>
+    </ul>
+    <ul class="phantich2 list-group">
+      <li class="list-group-item list-group-item-warning text-center">PHÂN TÍCH 2</li>
+    </ul>
   </div>
   <div class="col-sm-8">
-    <div class="panel panel-success">
-      <div class="panel-heading">TÍNH SỐ ĐỀ</div>
-      <div class="panel-body"></div>
+
+      <div class="well well-sm" id="truonghopcoban">TRƯỜNG HỢP CƠ BẢN <span class="pull-right count-msg"></span></div>
+
+        <table class="table table-bordered table-hover" id="msg-bet">
+          <thead>
+          <tr>
+            <th>Loại Số</th>
+            <th>Đài</th>
+            <th>Số</th>
+            <th>Loại Đề</th>
+            <th>Tiền</th>
+            <th>Vốn</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+        </table><hr>
+
+
+    </div>
+
+
+
+
+
+
+</div>
+
+<!--// Modal Edit MSG-->
+<div class="modal fade" id="editMsgModal" role="dialog">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><i class="fa fa-pencil-square-o"></i> SỬA TIN NHẮN</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" id="edit-bet-form">
+          <div class="form-group">
+            <label class="control-label col-sm-3" for="msgedit">Tin Nhắn Mới</label>
+            <div class="col-sm-9">
+              <input class="sr-only" name="id" value="<%= id %>">
+              <input type="text" class="form-control" name="msgedit" id="msgedit" value="<%= msgedit %>">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i> Sửa</button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>
