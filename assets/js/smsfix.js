@@ -11,23 +11,22 @@ $(function() {
       else if (vietDate[0] == 'Sat') { var adate = 'Thứ Bảy'}
       else { var adate = 'Chủ Nhật'}
 
-  if (vietDate[1] == 'Jan') { var amonth = 'Tháng Một'}
-  else if (vietDate[1] == 'Feb') { var amonth = 'Tháng 2'}
-  else if (vietDate[1] == 'Mar') { var amonth = 'Tháng 3'}
-  else if (vietDate[1] == 'Apr') { var amonth = 'Tháng 4'}
-  else if (vietDate[1] == 'May') { var amonth = 'Tháng 5'}
-  else if (vietDate[1] == 'Jun') { var amonth = 'Tháng 6'}
-  else if (vietDate[1] == 'Jul') { var amonth = 'Tháng 7'}
-  else if (vietDate[1] == 'Aug') { var amonth = 'Tháng 8'}
-  else if (vietDate[1] == 'Sep') { var amonth = 'Tháng 9'}
-  else if (vietDate[1] == 'Oct') { var amonth = 'Tháng 10'}
-  else if (vietDate[1] == 'Nov') { var amonth = 'Tháng 11'}
-  else { var amonth = 'Tháng 12'}
+      if (vietDate[1] == 'Jan') { var amonth = 'Tháng Một'}
+      else if (vietDate[1] == 'Feb') { var amonth = 'Tháng 2'}
+      else if (vietDate[1] == 'Mar') { var amonth = 'Tháng 3'}
+      else if (vietDate[1] == 'Apr') { var amonth = 'Tháng 4'}
+      else if (vietDate[1] == 'May') { var amonth = 'Tháng 5'}
+      else if (vietDate[1] == 'Jun') { var amonth = 'Tháng 6'}
+      else if (vietDate[1] == 'Jul') { var amonth = 'Tháng 7'}
+      else if (vietDate[1] == 'Aug') { var amonth = 'Tháng 8'}
+      else if (vietDate[1] == 'Sep') { var amonth = 'Tháng 9'}
+      else if (vietDate[1] == 'Oct') { var amonth = 'Tháng 10'}
+      else if (vietDate[1] == 'Nov') { var amonth = 'Tháng 11'}
+      else { var amonth = 'Tháng 12'}
 
   var newDate = adate +' , ' + vietDate[2] +' '+ amonth + ' '+ vietDate[3];
   $('span.bet-hour').text(vietDate[4]);
   $('span.bet-date').text(newDate);
-
 
   var bonus = parseFloat($('span.bonus-player').text()); // lấy giá trị tiền cò để tính toán
   var msgBetContent = $('.msg-bet-content').text(), // lấy nội dung tin nhắn gốc
