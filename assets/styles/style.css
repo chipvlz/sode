@@ -73,3 +73,6 @@ input[type="search"], select {
   font-size:16px;
   font-weight:bold;
 }
+.ngay-nhan-tin {
+  display:none;
+}
