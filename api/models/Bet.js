@@ -12,8 +12,7 @@ module.exports = {
       type: 'string'
     },
     msgedit: {
-      type: 'string',
-      defaultsTo: '_'
+      type: 'string'
     },
     owner: {
       model: 'user'

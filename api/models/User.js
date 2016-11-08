@@ -28,17 +28,6 @@ module.exports = {
       type: 'string',
       required: true
     },
-    birthday: {
-      type: 'string'
-    },
-    point: {
-      type: 'integer',
-      defaultsTo:10
-    },
-    about: {
-      type: 'longtext',
-      defaultsTo: 'viết nội dung giới thiệu về bản thân của bạn'
-    },
     expired: {
       type: 'string',
       defaultsTo:0

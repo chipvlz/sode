@@ -38,6 +38,7 @@ var jsFilesToInject = [
   // will be injected here in no particular order.
 
   'js/bootstrap.min.js',
+  'js/moment.min.js',
   'js/main.js',
   'js/bootstrap.editable.min.js',
   'datatables/media/js/jquery.dataTables.min.js',

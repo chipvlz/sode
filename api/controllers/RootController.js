@@ -48,6 +48,22 @@ module.exports = {
         if (err) return res.negotiate(err);
         return res.view('root/user',foundUser)
       })
+  },
+  giahan: (req,res) => {
+    if (!req.isSocket) {return res.badRequest();}
+    let params = req.allParams();
+    User.update({phone:params.phone},{expired:params.expired})
+      .exec(function(err) {
+        if (err) return res.negotiate(err);
+      })
+  },
+
+  adduser: (req,res) => {
+    if (!req.isSocket) {return res.badRequest();}
+    let params = req.allParams();
+    User.create(params).exec(function(err) {
+      if (err) return res.negotiate(err);
+    })
   }
 };
 

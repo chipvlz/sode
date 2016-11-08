@@ -1,14 +1,20 @@
-
-
 $(function() {
   var socket = io.sails.connect();
   socket.get('/socket');
 
+  // format ngày tháng
+  $(document).ready(function(){
+    var aDate = $("abbr.timeago").attr('title'),
+        newaDate = moment(aDate).format('YYYY-MM-DD hh:mm:ss');
+    $("abbr.timeago").prop('title', newaDate);
+    $("abbr.timeago").timeago();
 
-  $(document).ready(function() {
-    $("time.timeago").timeago();
+    $('#manage-user tbody tr').each(function() {
+      var bDate = $(this).find("td.user_created").text(),
+        newbDate = moment(bDate).format('DD/MM/YYYY');
+      $(this).find("td.user_created").text(newbDate);
+    })
   });
-
   //USER MANAGEMENT
   // Khi submit script này sẽ chuyển data sang dạng socket và gửi đến server
   // UserController sẽ xử lý phần tiếp theo
@@ -23,60 +29,6 @@ $(function() {
   socket.on('user/login-success', function() {
     window.location = '/trangchu';
   });
-
-  $('#register').submit(function (r) {
-    console.log('gọi hàm submit');
-    r.preventDefault();
-    var data = $('#register').serialize();
-    socket.get('/user/register?' + data);
-  });
-  socket.on('user/registered', function() {
-    $('#regModal p').text("Đăng ký thành công, hãy đăng nhập");
-    $('#regModal').modal();
-  });
-  socket.on('user/exists', function() {
-    $('#regModal p').text("Đã có người đăng ký tài khoản này");
-    $('#regModal').modal();
-  });
-
-  // x-editable
-  $.fn.editable.defaults.mode = 'inline';
-  user_id = $(".user-info [static-userdata=id]").text();
-  $('.user-info [userdata]').each(function(i,element){
-    var keyToUpdate = $(element).attr('userdata');
-    var title = ($(element).attr('title')) ? $(element).attr('title') : 'Vui lòng nhập để sửa thông tin';
-
-    $(element).editable({
-      type: 'text',
-      url: '/user/' + user_id,
-      pk: '',
-      params: function(params) {
-        var updateText = params['value'];
-        delete params['pk'];
-        delete params['name'];
-        delete params['value'];
-
-        params[keyToUpdate] = updateText;
-
-        return params;
-      }, title: title, ajaxOptions: {
-        type: 'put'
-      }
-    });
-
-  });
-
-  // Xóa multi ID
-  $("#removeid").click(function(event){
-    event.preventDefault();
-    var searchIDs = $("table input[type=checkbox]:checked").map(function() {
-      return this.value;
-    }).get().join();
-    console.log("admin/userdel?id="+searchIDs);
-    socket.get("/admin/userdel?id="+searchIDs)
-  });
-
-  //END USER MANAGEMENT
 
   $('#add-player-form').submit(function(a) {
     a.preventDefault();
@@ -113,14 +65,30 @@ $(function() {
     })
   });
 
-  //Edit player
+  // Thêm đại lý
+  $('#add-user-form').submit(function(e) {
+    e.preventDefault();
+    var data = $('#add-user-form').serialize();
+    socket.get('/root/adduser?' + data);
+    location.reload();
+  });
+
+  // Nhập dữ liệu gia hạn cho đại lý
+  $('#expired-user-form').submit(function(e) {
+    e.preventDefault();
+    var data = $('#expired-user-form').serialize();
+    socket.get('/root/giahan?' + data);
+    location.reload();
+  });
+
+  // Sửa đại lý
   $('#edit-player-form').submit(function(a) {
     a.preventDefault();
     var data = $('#edit-player-form').serialize();
     socket.get('/player/edit?' + data);
     location.reload();
   });
-  //Del player
+  // Xóa đại lý
   $('#del-player-form').submit(function(a) {
     a.preventDefault();
     var data = $('#del-player-form').serialize();
@@ -139,29 +107,12 @@ $(function() {
         '<td class="bet_message">'+data.msg.message+'</td>' +
         '<td class="bet_msgedit">'+data.msg.msgedit+'</td>' +
         '<td class="bet_submit">' +
-        '<a class="btn btn-primary edit_bet"><i class="fa fa-pencil-square-o"></i> Sửa</a></td>' +
+        '<a class="btn btn-warning edit_bet"><i class="fa fa-envelope"></i> Tin mới đến</a></td>' +
         '</tr>');
       $('#manage-bet tbody tr.new-bet').hide().delay(100).fadeIn(500);
       $('#manage-bet tbody tr.new-bet').css({'background':'#333','color':'#fff'});
     }
-
-
-
   });
-
-
-
-    // socket.on('add/bet',function(data){
-    //   alert(data);
-    //   // $('table#manage-bet tbody').prepend('<tr><td class="bet_id">'+data.id+'</td>' +
-    //   //   '<td class="bet_name">'+data.playerName+'</td>' +
-    //   //   '<td class="bet_phone">'+data.playerPhone+'</td>' +
-    //   //   '<td class="bet_message">'+data.message+'</td>' +
-    //   //   '<td class="bet_msgedit">'+data.msgedit+'</td>' +
-    //   //   '<td class="bet_submit">' +
-    //   //   '<a class="btn btn-primary edit_bet"><i class="fa fa-pencil-square-o"></i> Sửa</a></td>' +
-    //   //   '</tr>');
-    // });
   // BET Manager Modal
 
 

@@ -22,7 +22,7 @@ module.exports = {
       let data = {
         fromNumber: req.body.from_number,
         toNumber: req.body.to_number,
-        content: req.body.content
+        content: req.body.content,
       };
       // Tìm xem với số điện thoại gửi đến có được đăng ký để chơi chưa
       Player.findOne({phone:data.fromNumber}).exec((err,foundPlayer) => {
