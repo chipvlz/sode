@@ -96,6 +96,42 @@ $(function() {
     location.reload();
   });
 
+  // Lấy dữ liệu kết quả xổ số
+  $('a.cal_msg').click(function(){
+    var ngaybet = $('span.bet-date').text().split(', '); // ngaybet[1]
+    socket.get('/lot/search?date='+ngaybet[1]);
+  });
+
+  socket.on('got/lot',function(data){
+    console.log(data.msg[3]);
+    $('#ket-qua-xo-so').append('<div class="panel-heading">' +
+      '<h5 data-toggle="collapse" href="#kqxs-dai-'+data.msg[0].more+'">'+data.msg[0].name+'</h5></div>' +
+      '<div id="kqxs-dai-'+data.msg[0].more+'" class="panel-collapse collapse">' +
+      '<div class="panel-body">nội dung đài mb</div></div>' +
+
+      '<div class="panel-heading">' +
+      '<h5 data-toggle="collapse" href="#kqxs-dai-'+data.msg[1].more+'">'+data.msg[1].name+'</h5></div>' +
+      '<div id="kqxs-dai-'+data.msg[1].more+'" class="panel-collapse collapse">' +
+      '<div class="panel-body">nội dung đài mb</div></div>' +
+
+      '<div class="panel-heading">' +
+      '<h5 data-toggle="collapse" href="#kqxs-dai-'+data.msg[2].more+'">'+data.msg[2].name+'</h5></div>' +
+      '<div id="kqxs-dai-'+data.msg[2].more+'" class="panel-collapse collapse">' +
+      '<div class="panel-body">nội dung đài mb</div></div>' +
+
+      '<div class="panel-heading">' +
+      '<h5 data-toggle="collapse" href="#kqxs-dai-'+data.msg[3].more+'">'+data.msg[3].name+'</h5></div>' +
+      '<div id="kqxs-dai-'+data.msg[3].more+'" class="panel-collapse collapse">' +
+      '<div class="panel-body">nội dung đài mb</div></div>' +
+      '');
+
+    // <div class="panel-heading"><h5 data-toggle="collapse" href="#daimienbac">Đài Miền Bắc</h5></div>
+    // <div id="daimienbac" class="panel-collapse collapse">
+    //   <div class="panel-body">nội dung đài mb</div>
+    // </div>
+
+  });
+  // lấy xong kết quả xổ số in ra
 
   socket.on('add/bet', function(data) {
     console.log(data.msg.ownerPhone);
@@ -114,7 +150,6 @@ $(function() {
     }
   });
   // BET Manager Modal
-
 
   $('#manage-bet tbody tr').each(function() {
     $(this).click(function(){
