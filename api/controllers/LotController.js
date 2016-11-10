@@ -11,14 +11,14 @@ module.exports = {
       var timngay = rss.items[0].link.split('http://kqxs.mobi/ngay/-xsmb-'),
           ngaythang = timngay[1].split('/');
       var mienbac = rss.items[0].description.split('\n'),
-        dacbiet = mienbac[0].split(': '),
-        giainhat = mienbac[1].split(': '),
-        giainhi = mienbac[2].split(': '),
-        giaiba = mienbac[3].split(': '),
-        giaitu = mienbac[4].split(': '),
-        giainam = mienbac[5].split(': '),
-        giaisau = mienbac[6].split(': '),
-        giaibay = mienbac[7].split(': ');
+          dacbiet = mienbac[0].split(': '),
+          giainhat = mienbac[1].split(': '),
+          giainhi = mienbac[2].split(': '),
+          giaiba = mienbac[3].split(': '),
+          giaitu = mienbac[4].split(': '),
+          giainam = mienbac[5].split(': '),
+          giaisau = mienbac[6].split(': '),
+          giaibay = mienbac[7].split(': ');
 
       Lot.create({
         name: 'Miền Bắc',
@@ -43,10 +43,7 @@ module.exports = {
       var timngay = rss.items[0].link.split('http://kqxs.mobi/ngay/-xsmn-'),
         ngaythang = timngay[1].split('/');
       var miennam = rss.items[0].description.split('\n');
-      var daichinh = miennam[0],
-          daiphu = miennam[9],
-          daiphu1 = miennam[18],
-        dacbiet_dc = miennam[1].split(': '),
+      var dacbiet_dc = miennam[1].split(': '),
         giainhat_dc = miennam[2].split(': '),
         giainhi_dc = miennam[3].split(': '),
         giaiba_dc = miennam[4].split(': '),
@@ -77,7 +74,7 @@ module.exports = {
 
       let addDaichinh = new Promise((resolve, reject) => {
         Lot.create({
-          name: 'Miền Nam',
+          name: miennam[0],
           more: 'dc',
           special: dacbiet_dc[1],
           one: giainhat_dc[1],
@@ -88,7 +85,6 @@ module.exports = {
           six: giaisau_dc[1],
           seven: giaibay_dc[1],
           eight: giaitam_dc[1],
-
           ngay: ngaythang[0]
         }).exec(function(err,daichinh) {
           if (err) {reject(err)}
@@ -98,7 +94,7 @@ module.exports = {
 
       let addDaiphu = new Promise((resolve, reject) => {
         Lot.create({
-          name: 'Miền Nam',
+          name: miennam[9],
           more: 'dp',
           special: dacbiet_dp[1],
           one: giainhat_dp[1],
@@ -109,7 +105,6 @@ module.exports = {
           six: giaisau_dp[1],
           seven: giaibay_dp[1],
           eight: giaitam_dp[1],
-
           ngay: ngaythang[0]
         }).exec(function(err,daiphu) {
           if (err) {reject(err)}
@@ -119,7 +114,7 @@ module.exports = {
 
       let addDaiphu1 = new Promise((resolve, reject) => {
         Lot.create({
-          name: 'Miền Nam',
+          name: miennam[18],
           more: 'dp1',
           special: dacbiet_dp1[1],
           one: giainhat_dp1[1],
@@ -130,7 +125,6 @@ module.exports = {
           six: giaisau_dp1[1],
           seven: giaibay_dp1[1],
           eight: giaitam_dp1[1],
-
           ngay: ngaythang[0]
         }).exec(function(err,daiphu1) {
           if (err) {reject(err)}
@@ -145,10 +139,17 @@ module.exports = {
           addDaiphu,
           addDaiphu1
         ]);
-        // res.json(miennam);
         return res.json({daichinh,daiphu,daiphu1})
       }
       concurrent();
+
+    })
+  },
+
+  search: (req,res) => {
+    if (!req.isSocket) return res.badRequest('bậy zồi, ahihi');
+    let params = req.allParams();
+    Lot.find({ngay:params.date}).exec(function(err,gotLot) {
 
     })
   }

@@ -58,6 +58,7 @@ module.exports = {
     let params = req.allParams();
     Bet.findOne({id:params.id}).populate('player').exec(function(err,foundBet){
       if (req.session.user.phone == foundBet.owner) {
+
         return res.view('admin/view_bet',foundBet)
       } else {
         return res.negotiate('Bạn không có quyền xem bet này')

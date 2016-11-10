@@ -1,5 +1,4 @@
 $(function() {
-
   // dịch ngày tháng
   var vietDate = $('.ngay-nhan-tin').text().split(' ');
 
@@ -11,20 +10,19 @@ $(function() {
       else if (vietDate[0] == 'Sat') { var adate = 'Thứ Bảy'}
       else { var adate = 'Chủ Nhật'}
 
-      if (vietDate[1] == 'Jan') { var amonth = 'Tháng Một'}
-      else if (vietDate[1] == 'Feb') { var amonth = 'Tháng 2'}
-      else if (vietDate[1] == 'Mar') { var amonth = 'Tháng 3'}
-      else if (vietDate[1] == 'Apr') { var amonth = 'Tháng 4'}
-      else if (vietDate[1] == 'May') { var amonth = 'Tháng 5'}
-      else if (vietDate[1] == 'Jun') { var amonth = 'Tháng 6'}
-      else if (vietDate[1] == 'Jul') { var amonth = 'Tháng 7'}
-      else if (vietDate[1] == 'Aug') { var amonth = 'Tháng 8'}
-      else if (vietDate[1] == 'Sep') { var amonth = 'Tháng 9'}
-      else if (vietDate[1] == 'Oct') { var amonth = 'Tháng 10'}
-      else if (vietDate[1] == 'Nov') { var amonth = 'Tháng 11'}
-      else { var amonth = 'Tháng 12'}
-
-  var newDate = adate +' , ' + vietDate[2] +' '+ amonth + ' '+ vietDate[3];
+      if (vietDate[1] == 'Jan') { var amonth = '1'}
+      else if (vietDate[1] == 'Feb') { var amonth = '2'}
+      else if (vietDate[1] == 'Mar') { var amonth = '3'}
+      else if (vietDate[1] == 'Apr') { var amonth = '4'}
+      else if (vietDate[1] == 'May') { var amonth = '5'}
+      else if (vietDate[1] == 'Jun') { var amonth = '6'}
+      else if (vietDate[1] == 'Jul') { var amonth = '7'}
+      else if (vietDate[1] == 'Aug') { var amonth = '8'}
+      else if (vietDate[1] == 'Sep') { var amonth = '9'}
+      else if (vietDate[1] == 'Oct') { var amonth = '10'}
+      else if (vietDate[1] == 'Nov') { var amonth = '11'}
+      else { var amonth = '12'}
+  var newDate = adate +' , ' + vietDate[2] +'-'+ amonth + '-'+ vietDate[3];
   $('span.bet-hour').text(vietDate[4]);
   $('span.bet-date').text(newDate);
 
@@ -52,7 +50,6 @@ $(function() {
     } else if (betDetail[0] == 'mb' || betDetail[0] == 'hn') {
       var daiBet = 'Đài miền bắc'
     }
-
     // trường hợp đặc biệt
     if (betDetail[2] == 'da' || betDetail[2] == 'đa' || betDetail[2] == 'đá' || betDetail[2] == 'dx' || betDetail[2] == 'dv' || betDetail[2] == 'đx' || betDetail[2] == 'đv') {
       var numberBet = betDetail[1]; // vì là đá số nên nó luôn nằm ở vị trí này
@@ -85,17 +82,12 @@ $(function() {
           '<td class="von-bet">'+parseInt(totalPay)+'</td>' +
           '</tr>');
       }
-
     }
-
     // trường hợp cơ bản
     else {
       var detailTien = betDetail.length - 1,
         detailTheLoai = betDetail.length - 2,
-
         xTo = betDetail.length - 3;
-
-
 
       if (betDetail[detailTheLoai] == 'dau' || betDetail[detailTheLoai] == 'đầu') {
         var theloaiBet = 'đầu';
@@ -116,12 +108,6 @@ $(function() {
         var theloaiBet = 'bao đảo';
       } else if (betDetail[detailTheLoai] == 'đl' || betDetail[detailTheLoai] == 'dl' || betDetail[detailTheLoai] == 'daolo') {
         var theloaiBet = 'đảo lô';
-      } else if (betDetail[detailTheLoai] == 'da' || betDetail[detailTheLoai] == 'đa' || betDetail[detailTheLoai] == 'đá') {
-        // if (betDetail.length == 4) {
-        //   var theloaiBet = 'đá 2 số';
-        // } else if (betDetail.length == 5) {
-        //   var theloaiBet = 'đá 3 số';
-        // }
       }
       // document.write(betDetail+'</br>');
       $('ul.phantich1').append('<li class="list-group-item">' + betDetail + '' +
@@ -162,7 +148,6 @@ $(function() {
             var totalPay = parseInt(betDetail[detailTien]) * 16 * bonus * 1000;
           }
         }
-
         $('#msg-bet tbody').append('<tr><td class="loai-bet">' + loaiSo + '</td>' +
           '<td class="dai-bet">' + daiBet + '</td>' +
           '<td class="so-bet">' + betDetail[x] + '</td>' +
@@ -170,9 +155,16 @@ $(function() {
           '<td class="tien-bet">' + betDetail[detailTien] + '</td>' +
           '<td class="von-bet">' + parseInt(totalPay) + 'đ</td>' +
           '</tr>');
-
-        // $('#msg-bet .msgbet'+i+' td.so-bet').append('<span>'+betDetail[x]+',</span>')
       }
     }
   }
+  $('a.cal_msg').click(function(){
+      var ngaybet = $('span.bet-date').text().split(', '); // ngaybet[1]
+      socket.get('/lot/search?date='+ngaybet[1]);
+    });
+
+  socket.on('got/lot',function(){
+    alert('ok')
+  })
+
 });

@@ -1,0 +1,89 @@
+<%- partial ('../common/root_nav.ejs') %>
+<div class="container-fluid" id="kqxs-page">
+  <% _.each(foundMb,function(mienbac) { %>
+  <h3>Kết quả xổ số ngày <%= mienbac.ngay %></h3>
+  <div class="col-sm-3">
+
+<table class="table table-bordered" id="sxmb-table">
+  <tbody>
+  <tr class="tr-first">
+    <td>Giải</td>
+    <td>Xổ Số <%= mienbac.name %></td>
+  </tr>
+  <tr><td class="td-trai">ĐB</td><td><%= mienbac.special %></td></tr>
+  <tr><td class="td-trai">1</td><td><%= mienbac.one %></td></tr>
+  <tr><td class="td-trai">2</td><td><%= mienbac.two %></td></tr>
+  <tr><td class="td-trai">3</td><td><%= mienbac.three %></td></tr>
+  <tr><td class="td-trai">4</td><td><%= mienbac.four %></td></tr>
+  <tr><td class="td-trai">5</td><td><%= mienbac.five %></td></tr>
+  <tr><td class="td-trai">6</td><td><%= mienbac.six %></td></tr>
+  <tr><td class="td-trai">7</td><td><%= mienbac.seven %></td></tr>
+  </tbody>
+</table>
+<% }) %>
+  </div>
+  <div class="col-sm-3">
+<% _.each(foundMndc,function(miennamdc) { %>
+<table class="table table-bordered" id="sxmndc-table">
+  <tbody>
+  <tr class="tr-first">
+    <td>Giải</td>
+    <td>Xổ Số <%= miennamdc.name %></td>
+  </tr>
+  <tr><td class="td-trai">ĐB</td><td><%= miennamdc.special %></td></tr>
+  <tr><td class="td-trai">1</td><td><%= miennamdc.one %></td></tr>
+  <tr><td class="td-trai">2</td><td><%= miennamdc.two %></td></tr>
+  <tr><td class="td-trai">3</td><td><%= miennamdc.three %></td></tr>
+  <tr><td class="td-trai">4</td><td><%= miennamdc.four %></td></tr>
+  <tr><td class="td-trai">5</td><td><%= miennamdc.five %></td></tr>
+  <tr><td class="td-trai">6</td><td><%= miennamdc.six %></td></tr>
+  <tr><td class="td-trai">7</td><td><%= miennamdc.seven %></td></tr>
+  <tr><td class="td-trai">8</td><td><%= miennamdc.eight %></td></tr>
+  </tbody>
+</table>
+<% }) %>
+</div>
+  <div class="col-sm-3">
+<% _.each(foundMndp,function(miennamdp) { %>
+<table class="table table-bordered" id="sxmndp-table">
+  <tbody>
+  <tr class="tr-first">
+    <td>Giải</td>
+    <td>Xổ Số <%= miennamdp.name %></td>
+  </tr>
+  <tr><td class="td-trai">ĐB</td><td><%= miennamdp.special %></td></tr>
+  <tr><td class="td-trai">1</td><td><%= miennamdp.one %></td></tr>
+  <tr><td class="td-trai">2</td><td><%= miennamdp.two %></td></tr>
+  <tr><td class="td-trai">3</td><td><%= miennamdp.three %></td></tr>
+  <tr><td class="td-trai">4</td><td><%= miennamdp.four %></td></tr>
+  <tr><td class="td-trai">5</td><td><%= miennamdp.five %></td></tr>
+  <tr><td class="td-trai">6</td><td><%= miennamdp.six %></td></tr>
+  <tr><td class="td-trai">7</td><td><%= miennamdp.seven %></td></tr>
+  <tr><td class="td-trai">8</td><td><%= miennamdp.eight %></td></tr>
+  </tbody>
+</table>
+<% }) %>
+</div>
+  <div class="col-sm-3">
+<% _.each(foundMndp1,function(miennamdp1) { %>
+<table class="table table-bordered" id="sxmndp1-table">
+  <tbody>
+  <tr class="tr-first">
+    <td>Giải</td>
+    <td>Xổ Số <%= miennamdp1.name %></td>
+  </tr>
+  <tr><td class="td-trai">ĐB</td><td><%= miennamdp1.special %></td></tr>
+  <tr><td class="td-trai">1</td><td><%= miennamdp1.one %></td></tr>
+  <tr><td class="td-trai">2</td><td><%= miennamdp1.two %></td></tr>
+  <tr><td class="td-trai">3</td><td><%= miennamdp1.three %></td></tr>
+  <tr><td class="td-trai">4</td><td><%= miennamdp1.four %></td></tr>
+  <tr><td class="td-trai">5</td><td><%= miennamdp1.five %></td></tr>
+  <tr><td class="td-trai">6</td><td><%= miennamdp1.six %></td></tr>
+  <tr><td class="td-trai">7</td><td><%= miennamdp1.seven %></td></tr>
+  <tr><td class="td-trai">8</td><td><%= miennamdp1.eight %></td></tr>
+  </tbody>
+</table>
+<% }) %>
+
+</div>
+</div>

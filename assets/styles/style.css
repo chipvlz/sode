@@ -4,7 +4,7 @@ body {
   letter-spacing: 0.5px;
 }
 #page-player-manager, #page-bet-manager, #login-page, #page-view-bet,
-#admin-page , #root-page , #page-user-manager
+#admin-page , #root-page , #page-user-manager, #kqxs-page
 {
   padding:10px;
   margin-top:20px;
@@ -57,7 +57,7 @@ table input[type="checkbox"] {
   padding:10px;
 }
 
-table thead , .modal-header, .list-group-item-info {
+table thead , .modal-header, .list-group-item-info, .tr-first {
   background:#a94442;
   color:#fff;
 }

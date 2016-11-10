@@ -13,33 +13,7 @@ module.exports = {
   },
 
   user: (req,res) => {
-    // // Đếm tổng số đại lý
-    // let findCountUsers = new Promise((resolve, reject) => {
-    //   User.count({group:'Admin'}).exec(function(err,countUsers) {
-    //     if (err) {reject(err)}
-    //     resolve(countUsers);
-    //   })
-    // });
-    // // Lấy dữ liệu tất cả đại lý
-    // let findUsers = new Promise((resolve, reject) => {
-    //   User.find({group:'Admin'})
-    //     .populate('players')
-    //     .populate('bets')
-    //     .exec(function(err,foundUsers) {
-    //       if (err) {reject(err)}
-    //       resolve(foundUsers);
-    //     })
-    // });
-    // // Chờ tất cả query ở trên hoàn tất mới tiến hành in ra 1 lượt
-    // async function concurrent() {
-    //   var [countUsers,foundUsers] = await Promise.all([
-    //     findCountUsers,
-    //     findUsers
-    //   ]);
-    //   console.log(foundUsers);
-    //   return res.view("root/user", {countUsers,foundUsers})
-    // }
-    // concurrent();
+
     let params = req.allParams();
     User.findOne({phone:params.i})
     .populate('players')
@@ -64,6 +38,52 @@ module.exports = {
     User.create(params).exec(function(err) {
       if (err) return res.negotiate(err);
     })
+  },
+
+  kqxs: (req,res) => {
+    let mienBac = new Promise((resolve,reject) => {
+      Lot.find({more:'mb'})
+        .sort('id DESC')
+        .limit(1)
+        .exec(function(err,foundMb) {
+        if (err) {reject(err)}
+        resolve(foundMb);
+      })
+    });
+    let mienNamdc = new Promise((resolve,reject) => {
+      Lot.find({more:'dc'})
+        .sort('id DESC')
+        .limit(1)
+        .exec(function(err,foundMndc) {
+        if (err) {reject(err)}
+        resolve(foundMndc);
+      })
+    });
+    let mienNamdp = new Promise((resolve,reject) => {
+      Lot.find({more:'dp'})
+        .sort('id DESC')
+        .limit(1)
+        .exec(function(err,foundMndp) {
+          if (err) {reject(err)}
+          resolve(foundMndp);
+        })
+    });
+    let mienNamdp1 = new Promise((resolve,reject) => {
+      Lot.find({more:'dp1'})
+        .sort('id DESC')
+        .limit(1)
+        .exec(function(err,foundMndp1) {
+          if (err) {reject(err)}
+          resolve(foundMndp1);
+        })
+    });
+
+    async function concurrent() {
+      var [foundMb,foundMndc,foundMndp,foundMndp1] = await Promise.all([mienBac,mienNamdc,mienNamdp,mienNamdp1]);
+      return res.view('root/kqxs',{foundMb,foundMndc,foundMndp,foundMndp1});
+    }
+    concurrent();
   }
+
 };
 
