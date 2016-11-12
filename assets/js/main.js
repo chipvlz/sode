@@ -96,38 +96,6 @@ $(function() {
     location.reload();
   });
 
-  // Lấy dữ liệu kết quả xổ số
-  $('a.get_kqxs').click(function(){
-    $(this).addClass('sr-only');
-    $('a.tinh_tien').removeClass('sr-only');
-    var ngaybet = $('span.bet-date').text().split(', '); // ngaybet[1]
-    socket.get('/lot/search?date='+ngaybet[1]);
-  });
-
-  socket.on('got/lot',function(data){
-
-    for (i=0;i<=3;i++) {
-    $('#ket-qua-xo-so').append('<div class="panel-heading">' +
-      '<h5 data-toggle="collapse" href="#kqxs-dai-'+data.msg[i].more+'">'+data.msg[i].name+'<span class="pull-right ten-dai-kqxs">'+data.msg[i].more+'</span></h5></div>' +
-      '<div id="kqxs-dai-'+data.msg[i].more+'" class="panel-collapse collapse">' +
-      '<div class="panel-body"><table class="table table-bordered" id="sxmndc-table">' +
-      '<tbody><tr class="tr-first"><td>Giải</td><td>Xổ Số '+data.msg[i].name+'</td></tr>' +
-      '<tr><td class="td-trai">ĐB</td><td>'+data.msg[i].special+'</td></tr>' +
-      '<tr><td class="td-trai">1</td><td>'+data.msg[i].one+'</td></tr>' +
-      '<tr><td class="td-trai">2</td><td>'+data.msg[i].two+'</td></tr>' +
-      '<tr><td class="td-trai">3</td><td>'+data.msg[i].three+'</td></tr>' +
-      '<tr><td class="td-trai">4</td><td>'+data.msg[i].four+'</td></tr>' +
-      '<tr><td class="td-trai">5</td><td>'+data.msg[i].five+'</td></tr>' +
-      '<tr><td class="td-trai">6</td><td>'+data.msg[i].six+'</td></tr>' +
-      '<tr><td class="td-trai">7</td><td>'+data.msg[i].seven+'</td></tr>' +
-      '<tr><td class="td-trai">8</td><td>'+data.msg[i].eight+'</td></tr></div></div></tbody></table>' +
-      '');
-    }
-
-
-  });
-  // lấy xong kết quả xổ số in ra
-
   socket.on('add/bet', function(data) {
     console.log(data.msg.ownerPhone);
     var phoneDaily = $('.phone-daily').text();

@@ -1,8 +1,6 @@
 $(function() {
   // dịch ngày tháng
-
-
-    var vietDate = $('.ngay-nhan-tin').text().split(' ');
+  var vietDate = $('.ngay-nhan-tin').text().split(' ');
   if (vietDate.length != 1) {
     // Chỉ lấy 1 số , ko lấy số 0
     var getDate = vietDate[2].split('');
@@ -52,13 +50,13 @@ $(function() {
 
     // Nhận biết tên đài - dùng cho cả 2 trường hợp
     if (betDetail[0] == 'dc') {
-      var daiBet = 'Đài chính'
+      var daiBet = 'đài chính'
     } else if (betDetail[0] == 'dp') {
-      var daiBet = 'Đài phụ'
+      var daiBet = 'đài phụ'
     } else if (betDetail[0] == 'dp1') {
-      var daiBet = 'Đài phụ 1'
+      var daiBet = 'đài phụ 1'
     } else if (betDetail[0] == 'mb' || betDetail[0] == 'hn') {
-      var daiBet = 'Đài miền bắc'
+      var daiBet = 'đài miền bắc'
     }
     // trường hợp đặc biệt
     if (betDetail[2] == 'da' || betDetail[2] == 'đa' || betDetail[2] == 'đá' || betDetail[2] == 'dx' || betDetail[2] == 'dv' || betDetail[2] == 'đx' || betDetail[2] == 'đv') {
@@ -158,7 +156,7 @@ $(function() {
             var totalPay = parseInt(betDetail[detailTien]) * 16 * bonus * 1000;
           }
         }
-        $('#msg-bet tbody').append('<tr><td class="loai-bet">' + loaiSo + '</td>' +
+        $('#coban-table tbody').append('<tr><td class="loai-bet">' + loaiSo + '</td>' +
           '<td class="dai-bet">' + daiBet + '</td>' +
           '<td class="so-bet">' + betDetail[x] + '</td>' +
           '<td class="theloai-bet">' + theloaiBet + '</td>' +
