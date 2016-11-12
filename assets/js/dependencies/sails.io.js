@@ -868,9 +868,9 @@ message:4,upgrade:5,noop:6},s=i(r),t={type:"error",data:"parser error"},u=a("blo
             // '    |>    ' + '\n' +
             // '  \\___/  '+️
             // '\n'+
-             '  |>    Now connected to Sails.' + '\n' +
-            '\\___/   For help, see: http://bit.ly/1DmTvgK' + '\n' +
-             '        (using sails.io.js '+io.sails.sdk.platform+' SDK @v'+io.sails.sdk.version+')'+ '\n' +
+             '  |>    Đã kết nối thành công.' + '\n' +
+            '\\___/   Liên hệ Admin nếu gặp lỗi' + '\n' +
+             '        (đang dùng sails.io.js '+io.sails.sdk.platform+' SDK @v'+io.sails.sdk.version+')'+ '\n' +
             '\n'+
             '\n'+
             // '\n'+
@@ -884,7 +884,7 @@ message:4,upgrade:5,noop:6},s=i(r),t={type:"error",data:"parser error"},u=a("blo
         self.on('disconnect', function() {
           self.connectionLostTimestamp = (new Date()).getTime();
           consolog('====================================');
-          consolog('Socket was disconnected from Sails.');
+          consolog('Socket đã mất kết nối đến Sails.');
           consolog('Usually, this is due to one of the following reasons:' + '\n' +
             ' -> the server ' + (self.url ? self.url + ' ' : '') + 'was taken down' + '\n' +
             ' -> your browser lost internet connectivity');
@@ -894,7 +894,7 @@ message:4,upgrade:5,noop:6},s=i(r),t={type:"error",data:"parser error"},u=a("blo
         self.on('reconnecting', function(numAttempts) {
           consolog(
             '\n'+
-            '        Socket is trying to reconnect to Sails...\n'+
+            '        Socket đang cố gắng kết nối lại Sails...\n'+
             '_-|>_-  (attempt #' + numAttempts + ')'+'\n'+
             '\n'
           );

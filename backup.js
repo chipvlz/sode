@@ -340,6 +340,14 @@ $(function() {
 
   });
 
+  $('table tbody tr').each(function() {
+    var vonArray = [];
+    var tongvon = $(this).find('von-bet').text();
+    console.log(tongvon);
+    vonArray.push(tongvon);
+  });
+
+  $('table tfoot td.tong-von').text()
 
 
 });

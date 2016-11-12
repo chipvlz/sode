@@ -197,8 +197,9 @@ $(function() {
 
     // Kết thúc lấy thông số kết quả xổ số để kiểm tra
 
-    // Kích hoạt chức năng tìm kiếm số để tính tiền
+    // Kích hoạt chức năng tìm kiếm số để tính tiền -TRƯỜNG HỢP CƠ BẢN
     $('a.tinh-tien-coban').click(function(){
+      $(this).addClass('sr-only');
       // xử lý riêng biệt từng table
       $('table#coban-table tbody tr').each(function(){
         var loaiSo = $(this).find('.loai-bet').text(),
@@ -226,16 +227,18 @@ $(function() {
               for (f=0;f<=1;f++) {
                 if(timSo == dauduoiHaisoDC[f]) timDauduoihaisodc.push(dauduoiHaisoDC[f]);
               }
-              if (timDauduoihaisodc.length != 0) console.log('số '+timSo+' xuất hiện '+timDauduoihaisodc.length+' lần');
-              else console.log('ko tìm thấy số '+timSo+' trong bao lô')
+              if (timDauduoihaisodc.length != 0)
+                $('.show-result').append('<div class="alert alert-success"><strong>số '+timSo+'</strong> xuất hiện '+timDauduoihaisodc.length+' lần</div>');
+              else $('.show-result').append('<div class="alert alert-danger"><strong>rất tiếc</strong> không tìm thấy số '+timSo+' trong đầu và đuôi</div>');
             }
             else if (loaiDe == 'bao lô') {
               var timBaolohaisodc = [];
               for (f=0;f<=kqxsHaisoDC.length;f++) {
                 if(timSo == kqxsHaisoDC[f]) timBaolohaisodc.push(kqxsHaisoDC[f]);
               }
-              if (timBaolohaisodc.length != 0) console.log('số '+timSo+' xuất hiện '+timBaolohaisodc.length+' lần');
-              else console.log('ko tìm thấy số '+timSo+' trong bao lô')
+              if (timBaolohaisodc.length != 0)
+                $('.show-result').append('<div class="alert alert-success"><strong>số '+timSo+'</strong> xuất hiện '+timBaolohaisodc.length+' lần trong lô</div>');
+              else $('.show-result').append('<div class="alert alert-danger"><strong>rất tiếc</strong> không tìm thấy <strong>số '+timSo+'</strong> trong lô</div>');
             }
             //////// END - Sắp xếp theo thể loại đề ////////
           }
@@ -337,6 +340,45 @@ $(function() {
         //////// END - Loại 2 số ////////
 
       })
+    });
+
+    // Kích hoạt chức năng tìm kiếm số để tính tiền -TRƯỜNG HỢP ĐÁ 2 SỐ
+    $('a.tinh-tien-dahaiso').click(function(){
+      $(this).addClass('sr-only');
+      var tenDai = $(this).find('.dai-bet').text(),
+          timSo = $(this).find('.so-bet').text(),
+          loaiDe = $(this).find('.theloai-bet').text(),
+          soDa = $(this).find('.soda1-bet').text(),
+          soTien = parseInt($(this).find('.tien-bet').text()) * 1000;
+      // BEGIN tính toán - tìm số thứ nhất
+      if (tenDai == 'đài chính') {
+        if (loaiDe == 'đá') {
+
+        } else { }
+      }
+
+      else if (tenDai == 'đài phụ') {
+        if (loaiDe == 'đá') {
+
+        } else { }
+      }
+
+      else if (tenDai == 'đài phụ 1') {
+        if (loaiDe == 'đá') {
+
+        } else { }
+      }
+
+      else if (tenDai == 'đài miền bắc') {
+        if (loaiDe == 'đá') {
+
+        } else { }
+      }
+
+    });
+
+    $('a.tinh-tien-dabaso').click(function(){
+
     })
 
   });

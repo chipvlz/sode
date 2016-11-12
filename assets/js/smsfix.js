@@ -167,5 +167,13 @@ $(function() {
     }
   }
 
-
+  $('.table').each(function() {
+    var vonArray = [];
+    $(this).find('td.von-bet').each(function() {
+      var tongvon = parseInt($(this).text());
+      vonArray.push(tongvon);
+    });
+    var sumVon = vonArray.reduce((a,b) => a+b,0);
+    $(this).find('td.tong-von').text(sumVon+'đ');
+  });
 });
