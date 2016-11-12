@@ -151,7 +151,6 @@ module.exports = {
     let params = req.allParams();
     console.log(params);
     Lot.find({ngay:params.date}).exec(function(err,gotLot) {
-      console.log(gotLot);
       sails.sockets.blast('got/lot',{msg:gotLot});
     })
   }
