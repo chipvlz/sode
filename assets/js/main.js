@@ -106,11 +106,14 @@ $(function() {
         '<td class="bet_message">'+data.msg.message+'</td>' +
         '<td class="bet_msgedit">'+data.msg.msgedit+'</td>' +
         '<td class="bet_submit">' +
-        '<a class="btn btn-warning edit_bet"><i class="fa fa-envelope"></i> Tin mới đến</a></td>' +
+        '<a class="btn btn-warning new_bet"><i class="fa fa-envelope"></i> Tin mới</a></td>' +
         '</tr>');
       $('#manage-bet tbody tr.new-bet').hide().delay(100).fadeIn(500);
       $('#manage-bet tbody tr.new-bet').css({'background':'#333','color':'#fff'});
     }
+    setTimeout(function() {
+      window.location.reload(true)
+    },3000)
   });
   // BET Manager Modal
 
@@ -118,9 +121,11 @@ $(function() {
     $(this).click(function(){
       var bet_msgedit = $(this).find('td.bet_msgedit').text();
       var bet_id = $(this).find('td.bet_id').text();
+      var oldmsg = $(this).find('td.bet_message').text();
       $('#edit-bet-form input[name=msgedit]').val(bet_msgedit);
       $('#edit-bet-form input[name=id]').val(bet_id);
       $('#del-bet-form input[name=id]').val(bet_id);
+      $('#edit-bet-form input[id=oldmsg]').val(oldmsg);
     });
     $('#manage-bet tbody tr a.edit_bet').click(function(){
       $('#editBetModal').modal();
@@ -152,7 +157,7 @@ $(function() {
   //Datatables
   $(document).ready(function() {
     $('#manage-bet').DataTable({
-      "order": [[ 1, "desc" ]],
+      "order": [[ 0, "desc" ]],
       "language": {
         "lengthMenu": "Hiển thị _MENU_ tin nhắn trong 1 trang",
         "zeroRecords": "Không tìm thấy - sorry",
