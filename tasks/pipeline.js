@@ -40,10 +40,12 @@ var jsFilesToInject = [
   'js/bootstrap.min.js',
   'js/moment.min.js',
   'js/main.js',
-  'js/bootstrap.editable.min.js',
   'datatables/media/js/jquery.dataTables.min.js',
   'js/jquery.timeago.js',
-  'js/**/*.js'
+  'js/bootstrap-editable.min.js',
+  'js/smsfix.js',
+  'js/tinhtoankqxs.js'
+
   // 'ckeditor/config.js'
 ];
 

@@ -4,7 +4,7 @@
  * @description :: Server-side logic for managing admins
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
-
+var moment = require('moment');
 module.exports = {
 	index: (req,res) => {
     // Đếm số người chơi của đại lý
@@ -54,6 +54,20 @@ module.exports = {
       .exec(function(err,foundBets){
       if(err) return res.negotiate(err);
       res.view('admin/bet',{foundBets})
+    })
+  },
+
+  cal: (req,res) => {
+    let getToday = (new Date()).toString();
+    var todayDate = moment(getToday).format('D-MM-YYYY');
+    Lot.find({ngay:'9-11-2016'}).exec(function(err,gotLot) {
+      Bet.find({owner: req.session.user.phone})
+        .populate('player')
+        .exec(function (err, foundBets) {
+          if (err) return res.negotiate(err);
+          console.log(gotLot);
+          res.view('admin/cal', {foundBets, todayDate, gotLot})
+        })
     })
   }
 };

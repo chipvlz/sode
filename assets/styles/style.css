@@ -4,7 +4,7 @@ body {
   letter-spacing: 0.5px;
 }
 #page-player-manager, #page-bet-manager, #login-page, #page-view-bet,
-#admin-page , #root-page , #page-user-manager, #kqxs-page
+#admin-page , #root-page , #page-user-manager, #kqxs-page, #page-bet-cal
 {
   padding:10px;
   margin-top:20px;
@@ -57,7 +57,7 @@ table input[type="checkbox"] {
   padding:10px;
 }
 
-table thead , .modal-header, .list-group-item-info, .tr-first {
+table thead , .modal-header, .tr-first {
   background:#a94442;
   color:#fff;
 }
@@ -85,4 +85,19 @@ td.tong-von {
 
 .bet_submit {
   min-width:152px;
+}
+
+tr.tr-info {
+  background:#31708f;
+  color:#fff;
+}
+td.td-player, td.td-phone, td.td-bonus {
+  width:120px;
+}
+
+#page-bet-cal table td {
+  text-align: center;;
+}
+#tr-phan-tich {
+  background:#fdf59a;
 }

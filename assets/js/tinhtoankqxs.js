@@ -2,6 +2,14 @@ $(function() {
   var socket = io.sails.connect();
   socket.get('/socket');
 
+  var getLink = window.location.href.substr().split("/");
+  var currentLink = getLink[3]+'/'+getLink[4];
+  if (currentLink == 'admin/cal') {
+  $(document).ready(function() {
+    console.log('ok')
+  });
+  }
+
   // gửi request lấy dữ liệu kết quả xổ số từ client đến server
   $('a.get_kqxs').click(function () {
     $(this).addClass('sr-only');

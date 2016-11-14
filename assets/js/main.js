@@ -2,6 +2,9 @@ $(function() {
   var socket = io.sails.connect();
   socket.get('/socket');
 
+  function testS() {
+    alert('ok')
+  }
   // format ngày tháng
   $(document).ready(function(){
     var aDate = $("abbr.timeago").attr('title'),
@@ -13,7 +16,12 @@ $(function() {
       var bDate = $(this).find("td.user_created").text(),
         newbDate = moment(bDate).format('DD/MM/YYYY');
       $(this).find("td.user_created").text(newbDate);
-    })
+    });
+
+    // var cDate = $('.ngay-hom-nay').text(),
+    // ngayHomNay = moment(cDate).format('D-MM-YYYY');
+    //   $('.ngay-hom-nay').text(ngayHomNay);
+
   });
   //USER MANAGEMENT
   // Khi submit script này sẽ chuyển data sang dạng socket và gửi đến server
@@ -125,7 +133,7 @@ $(function() {
       $('#edit-bet-form input[name=msgedit]').val(bet_msgedit);
       $('#edit-bet-form input[name=id]').val(bet_id);
       $('#del-bet-form input[name=id]').val(bet_id);
-      $('#edit-bet-form input[id=oldmsg]').val(oldmsg);
+      $('#edit-bet-form input#oldmsg').val(oldmsg);
     });
     $('#manage-bet tbody tr a.edit_bet').click(function(){
       $('#editBetModal').modal();

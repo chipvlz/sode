@@ -1,0 +1,65 @@
+<%- partial ('../common/admin_nav.ejs') %>
+<div class="container-fluid" id="page-bet-cal">
+  <div class="col-sm-3">
+    <% _.each(gotLot,function(kqxs) { %>
+    <table class="table table-bordered" id="sx<%= kqxs.more %>-table">
+      <tbody><tr class="tr-first"><td>Giải</td><td>Xổ Số <%= kqxs.name %></td></tr>
+      <tr><td>ĐB</td><td class="td-db"><%= kqxs.special %></td></tr>
+      <tr><td>1</td><td class="td-1"><%= kqxs.one %></td></tr>
+      <tr><td>2</td><td class="td-2"><%= kqxs.two %></td></tr>
+      <tr><td>3</td><td class="td-3"><%= kqxs.three %></td></tr>
+      <tr><td>4</td><td class="td-4"><%= kqxs.four %></td></tr>
+      <tr><td>5</td><td class="td-5"><%= kqxs.five %></td></tr>
+      <tr><td>6</td><td class="td-6"><%= kqxs.six %></td></tr>
+      <tr><td>7</td><td class="td-7"><%= kqxs.seven %></td></tr>
+      <tr><td>8</td><td class="td-8"><%= kqxs.eight %></td></tr>
+      </tbody>
+    </table>
+    <% }) %>
+  </div>
+  <div class="col-sm-9" id="phan-tich-tung-table">
+  <% _.each(foundBets,function(bet) { %>
+  <table class="table table-bordered">
+    <tbody class="show-phantich">
+    <tr class="tr-info">
+      <td class="td-player">Người chơi</td>
+      <td class="td-phone">Điện thoại</td>
+      <td class="td-bonus">Cò</td>
+      <td colspan="4" class="td-message">Tin nhắn</td>
+    </tr>
+    <tr>
+      <td><%= bet.player.name %></td>
+      <td><%= bet.player.phone %></td>
+      <td class="tien-co"><%= bet.player.bonus %></td>
+      <td colspan="4" class="noi-dung-tin-nhan"><%= bet.msgedit %></td>
+    </tr>
+    <tr>
+      <td>Tính tiền</td>
+      <td colspan="2" class="tinh-tien-thang"></td>
+      <td colspan="4">
+        <input class="sr-only" name="tim-id" value="xem-chi-tiet-<%= bet.id %>">
+        <a data-toggle="collapse" data-target=".xem-chi-tiet-<%= bet.id %>" class="xem-chi-tiet btn btn-primary"><i class="fa fa-search"></i> Chi tiết</a>
+      </td>
+    </tr>
+    <tr class="xem-chi-tiet-<%= bet.id %> collapse" id="tr-phan-tich">
+      <td>Thể loại</td>
+      <td>Đài</td>
+      <td>Số</td>
+      <td>Loại Đề</td>
+      <td>Tiền</td>
+      <td>Vốn</td>
+      <td>Thắng</td>
+    </tr>
+    </tbody>
+    <tfoot >
+      <tr class="xem-chi-tiet-<%= bet.id %> collapse">
+        <td colspan="5">Tổng</td>
+        <td class="tong-von"></td>
+        <td class="tong-an"></td>
+      </tr>
+    </tfoot>
+  </table>
+  <% }) %>
+  </div>
+</div>
+
