@@ -105,7 +105,7 @@ $(function() {
     }
   }
 
-  var kqxsBasohaidai = kqxsBasoDC.concat(kqxsBasoDP);
+  var kqxsBasoDD = kqxsBasoDC.concat(kqxsBasoDP);
 
   var kqxsBasoDP1 = [];
   var laysodb = $('#sxdp1-table td.td-db').text().split('');
@@ -119,8 +119,6 @@ $(function() {
       var duoiBasoDP1 = kqxsBasoDP1[kqxsBasoDP1.length-1];
     }
   }
-
-
 
   var kqxsBonsoMB = [];
   var laysodb = $('#sxmb-table td.td-db').text().split('');
@@ -175,6 +173,7 @@ $(function() {
   }
   // Kết thúc lấy thông số kết quả xổ số để kiểm tra
 
+  // Tính toán riêng cho mỗi Table trong trang
   $('#phan-tich-tung-table table').each(function(){
     var bonus = $(this).find('.tien-co').text(),
       timID = $(this).find('input[name=tim-id]').val();
@@ -310,6 +309,7 @@ $(function() {
     }
   });
 
+  // Mỗi <tr> là 1 bet riêng biệt
   $('tr#tr-danh-de').each(function() {
     var findTheloai = $(this).find('td.phan-tich-the-loai').text(),
         findDai = $(this).find('td.phan-tich-dai').text(),
@@ -318,6 +318,7 @@ $(function() {
         findTien = $(this).find('td.phan-tich-tien').text(),
         findVon = $(this).find('td.phan-tich-von').text(),
         findKetqua = $(this).find('td.phan-tich-thang');
+    // Khai báo xong những cái dùng chung
 
     if (findLoaide == '2 số') {
 
@@ -548,29 +549,18 @@ $(function() {
 
       else if (timsoDa0.length==0) findKetqua.text('ko trúng')
       }
-
       else if (findTheloai == 'đá xiên') {
         var timsoDa0 = [];
         for (f=0;f<=kqxsHaisoDD.length;f++) { if (findSo==kqxsHaisoDD[f]) timsoDa0.push(kqxsHaisoDD[f]) }
-        if (timsoDa0.length==0) {console.log('ko trúng')}
+        if (timsoDa0.length==0) {findKetqua.text('ko trúng');}
         else if (findLoaide == 'đá 2' && timsoDa0.length!=0) {
           var timsoDa1 = [],
             soDa1 = $(this).find('td.phan-tich-soda').text();
           for (f=0;f<=kqxsHaisoDD.length;f++) { if (soDa1==kqxsHaisoDD[f]) timsoDa1.push(kqxsHaisoDD[f]) }
           var findMin = Math.min(timsoDa0.length,timsoDa1.length);
-          findKetqua.text('trúng '+findMin+' cặp');
+          if (findMin == 0) findKetqua.text('ko trúng');
+          else findKetqua.text('trúng '+findMin+' cặp');
         }
-        // else if (findLoaide == 'đá 3' && timsoDa0.length!=0) {
-        //   console.log('đá 3 số');
-        //   var timsoDa1 = [],
-        //     timsoDa2 = [],
-        //     soDa1 = $(this).find('td.phan-tich-soda1').text(),
-        //     soDa2 = $(this).find('td.phan-tich-soda2').text();
-        //   for (f=0;f<=kqxsHaisoDD.length;f++) { if (soDa1==kqxsHaisoDD[f]) timsoDa1.push(kqxsHaisoDD[f]) }
-        //   for (f=0;f<=kqxsHaisoDD.length;f++) { if (soDa2==kqxsHaisoDD[f]) timsoDa2.push(kqxsHaisoDD[f]) }
-        //   var findMin = Math.min(timsoDa0.length,timsoDa1.length,timsoDa2.length);
-        //   findKetqua.text('trúng '+findMin+' cặp');
-        // }
       }
     }
     else if (findLoaide == 'đá 3') {
@@ -600,53 +590,11 @@ $(function() {
           for (f=0;f<=kqxsHaisoDD.length;f++) { if (soDa1==kqxsHaisoDD[f]) timsoDa1.push(kqxsHaisoDD[f]) }
           for (f=0;f<=kqxsHaisoDD.length;f++) { if (soDa2==kqxsHaisoDD[f]) timsoDa2.push(kqxsHaisoDD[f]) }
           var findMin = Math.min(timsoDa0.length,timsoDa1.length,timsoDa2.length);
-          findKetqua.text('trúng '+findMin+' cặp');
+          if (findMin == 0) findKetqua.text('ko trúng');
+          else findKetqua.text('trúng '+findMin+' cặp');
         }
       }
-
     }
-    // else if (findLoaide == 'đá 3') {
-    //   if (findTheloai == 'đá') {
-    //     var timsoDa0 = [];
-    //     for (f=0;f<=kqxsHaisoDC.length;f++) { if (findSo==kqxsHaisoDC[f]) timsoDa0.push(kqxsHaisoDC[f]) }
-    //     if (findLoaide == 'đá 3' && timsoDa0.length!=0) {
-    //       var timsoDa1 = [],
-    //           timsoDa2 = [],
-    //           soDa1 = $(this).find('td.phan-tich-soda1').text(),
-    //           soDa2 = $(this).find('td.phan-tich-soda2').text();
-    //       for (f=0;f<=kqxsHaisoDC.length;f++) { if (soDa1==kqxsHaisoDC[f]) timsoDa1.push(kqxsHaisoDC[f]) }
-    //       for (f=0;f<=kqxsHaisoDC.length;f++) { if (soDa2==kqxsHaisoDC[f]) timsoDa2.push(kqxsHaisoDC[f]) }
-    //       var findMin = Math.min(timsoDa0.length,timsoDa1.length,timsoDa2.length);
-    //       findKetqua.text('trúng '+findMin+' cặp');
-    //     }
-    //     else if (timsoDa0.length==0) findKetqua.text('ko trúng')
-    //   }
-    //
-    //   else if (findTheloai == 'đá xiên') {
-    //     var timsoDa0 = [];
-    //     for (f=0;f<=kqxsHaisoDD.length;f++) { if (findSo==kqxsHaisoDD[f]) timsoDa0.push(kqxsHaisoDD[f]) }
-    //     if (timsoDa0.length==0) {console.log('ko trúng')}
-    //     else if (findLoaide == 'đá 2' && timsoDa0.length!=0) {
-    //       var timsoDa1 = [],
-    //         soDa1 = $(this).find('td.phan-tich-soda').text();
-    //       for (f=0;f<=kqxsHaisoDD.length;f++) { if (soDa1==kqxsHaisoDD[f]) timsoDa1.push(kqxsHaisoDD[f]) }
-    //       var findMin = Math.min(timsoDa0.length,timsoDa1.length);
-    //       findKetqua.text('trúng '+findMin+' cặp');
-    //     }
-    //     else if (findLoaide == 'đá 3' && timsoDa0.length!=0) {
-    //       console.log('đá 3 số');
-    //       var timsoDa1 = [],
-    //         timsoDa2 = [],
-    //         soDa1 = $(this).find('td.phan-tich-soda1').text(),
-    //         soDa2 = $(this).find('td.phan-tich-soda2').text();
-    //       for (f=0;f<=kqxsHaisoDD.length;f++) { if (soDa1==kqxsHaisoDD[f]) timsoDa1.push(kqxsHaisoDD[f]) }
-    //       for (f=0;f<=kqxsHaisoDD.length;f++) { if (soDa2==kqxsHaisoDD[f]) timsoDa2.push(kqxsHaisoDD[f]) }
-    //       var findMin = Math.min(timsoDa0.length,timsoDa1.length,timsoDa2.length);
-    //       findKetqua.text('trúng '+findMin+' cặp');
-    //     }
-    //   }
-    // }
-
 
   });
 
