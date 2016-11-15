@@ -536,48 +536,177 @@ $(function() {
     }
     else if (findLoaide == 'đá 2') {
       if (findTheloai == 'đá') {
-      var timsoDa0 = [];
-      for (f=0;f<=kqxsHaisoDC.length;f++) { if (findSo==kqxsHaisoDC[f]) timsoDa0.push(kqxsHaisoDC[f]) }
-      if (timsoDa0.length!=0) {
-        var timsoDa1 = [],
-            soDa1 = $(this).find('td.phan-tich-soda').text();
-        for (f=0;f<=kqxsHaisoDC.length;f++) { if (soDa1==kqxsHaisoDC[f]) timsoDa1.push(kqxsHaisoDC[f]) }
-        var findMin = Math.min(timsoDa0.length,timsoDa1.length);
-        findKetqua.text('trúng '+findMin+' cặp');
-      }
+        if (findDai == 'đài chính') {
+          var timsoDa0 = [];
+          for (f = 0; f <= kqxsHaisoDC.length; f++) {
+            if (findSo == kqxsHaisoDC[f]) timsoDa0.push(kqxsHaisoDC[f])
+          }
+          if (timsoDa0.length != 0) {
+            var timsoDa1 = [], soDa1 = $(this).find('td.phan-tich-soda').text();
+            for (f = 0; f <= kqxsHaisoDC.length; f++) {
+              if (soDa1 == kqxsHaisoDC[f]) timsoDa1.push(kqxsHaisoDC[f])
+            }
+            var findMin = Math.min(timsoDa0.length, timsoDa1.length);
+            findKetqua.text('trúng ' + findMin + ' cặp');
+          }
 
-      else if (timsoDa0.length==0) findKetqua.text('ko trúng')
+          else if (timsoDa0.length == 0) findKetqua.text('ko trúng')
+        }
+        else if (findDai == 'đài phụ') {
+          var timsoDa0 = [];
+          for (f = 0; f <= kqxsHaisoDP.length; f++) {
+            if (findSo == kqxsHaisoDP[f]) timsoDa0.push(kqxsHaisoDP[f])
+          }
+          if (timsoDa0.length != 0) {
+            var timsoDa1 = [], soDa1 = $(this).find('td.phan-tich-soda').text();
+            for (f = 0; f <= kqxsHaisoDP.length; f++) {
+              if (soDa1 == kqxsHaisoDP[f]) timsoDa1.push(kqxsHaisoDP[f])
+            }
+            var findMin = Math.min(timsoDa0.length, timsoDa1.length);
+            findKetqua.text('trúng ' + findMin + ' cặp');
+          }
+
+          else if (timsoDa0.length == 0) findKetqua.text('ko trúng')
+        }
+        else if (findDai == 'đài phụ 1') {
+          var timsoDa0 = [];
+          for (f = 0; f <= kqxsHaisoDP1.length; f++) {
+            if (findSo == kqxsHaisoDP1[f]) timsoDa0.push(kqxsHaisoDP1[f])
+          }
+          if (timsoDa0.length != 0) {
+            var timsoDa1 = [], soDa1 = $(this).find('td.phan-tich-soda').text();
+            for (f = 0; f <= kqxsHaisoDP1.length; f++) {
+              if (soDa1 == kqxsHaisoDP1[f]) timsoDa1.push(kqxsHaisoDP1[f])
+            }
+            var findMin = Math.min(timsoDa0.length, timsoDa1.length);
+            findKetqua.text('trúng ' + findMin + ' cặp');
+          }
+
+          else if (timsoDa0.length == 0) findKetqua.text('ko trúng')
+        }
+        else if (findDai == 'đài miền bắc') {
+          var timsoDa0 = [];
+          for (f = 0; f <= kqxsHaisoMB.length; f++) {
+            if (findSo == kqxsHaisoMB[f]) timsoDa0.push(kqxsHaisoMB[f])
+          }
+          if (timsoDa0.length != 0) {
+            var timsoDa1 = [], soDa1 = $(this).find('td.phan-tich-soda').text();
+            for (f = 0; f <= kqxsHaisoMB.length; f++) {
+              if (soDa1 == kqxsHaisoMB[f]) timsoDa1.push(kqxsHaisoMB[f])
+            }
+            var findMin = Math.min(timsoDa0.length, timsoDa1.length);
+            findKetqua.text('trúng ' + findMin + ' cặp');
+          }
+
+          else if (timsoDa0.length == 0) findKetqua.text('ko trúng')
+        }
       }
       else if (findTheloai == 'đá xiên') {
-        var timsoDa0 = [];
-        for (f=0;f<=kqxsHaisoDD.length;f++) { if (findSo==kqxsHaisoDD[f]) timsoDa0.push(kqxsHaisoDD[f]) }
-        if (timsoDa0.length==0) {findKetqua.text('ko trúng');}
-        else if (findLoaide == 'đá 2' && timsoDa0.length!=0) {
-          var timsoDa1 = [],
-            soDa1 = $(this).find('td.phan-tich-soda').text();
-          for (f=0;f<=kqxsHaisoDD.length;f++) { if (soDa1==kqxsHaisoDD[f]) timsoDa1.push(kqxsHaisoDD[f]) }
-          var findMin = Math.min(timsoDa0.length,timsoDa1.length);
-          if (findMin == 0) findKetqua.text('ko trúng');
-          else findKetqua.text('trúng '+findMin+' cặp');
-        }
+        if(findDai == 'đài chính') {
+          var timsoDa0 = [];
+          for (f = 0; f <= kqxsHaisoDD.length; f++) {
+            if (findSo == kqxsHaisoDD[f]) timsoDa0.push(kqxsHaisoDD[f])
+          }
+          if (timsoDa0.length == 0) {
+            findKetqua.text('ko trúng');
+          } else if (findLoaide == 'đá 2' && timsoDa0.length != 0) {
+            var timsoDa1 = [], soDa1 = $(this).find('td.phan-tich-soda').text();
+            for (f = 0; f <= kqxsHaisoDD.length; f++) {
+              if (soDa1 == kqxsHaisoDD[f]) timsoDa1.push(kqxsHaisoDD[f])
+            }
+            var findMin = Math.min(timsoDa0.length, timsoDa1.length);
+            if (findMin == 0) findKetqua.text('ko trúng'); else findKetqua.text('trúng ' +
+                                                                                findMin +
+                                                                                ' cặp');
+          }
+        } else { findKetqua.text('sai cú pháp'); }
       }
     }
     else if (findLoaide == 'đá 3') {
       if (findTheloai == 'đá') {
-        var timsoDa0 = [];
-        for (f=0;f<=kqxsHaisoDC.length;f++) { if (findSo==kqxsHaisoDC[f]) timsoDa0.push(kqxsHaisoDC[f]) }
-        if (timsoDa0.length!=0) {
-          var timsoDa1 = [];
-          var timsoDa2 = [],
-              soDa1 = $(this).find('td.phan-tich-soda1').text(),
-              soDa2 = $(this).find('td.phan-tich-soda2').text();
-          for (f=0;f<=kqxsHaisoDC.length;f++) { if (soDa1==kqxsHaisoDC[f]) timsoDa1.push(kqxsHaisoDC[f]) }
-          for (f=0;f<=kqxsHaisoDC.length;f++) { if (soDa2==kqxsHaisoDC[f]) timsoDa2.push(kqxsHaisoDC[f]) }
-          var findMin = Math.min(timsoDa0.length,timsoDa1.length,timsoDa2.length);
-          findKetqua.text('trúng '+findMin+' cặp');
+        if(findDai == 'đài chính') {
+          var timsoDa0 = [];
+          for (f = 0; f <= kqxsHaisoDC.length; f++) {
+            if (findSo == kqxsHaisoDC[f]) timsoDa0.push(kqxsHaisoDC[f])
+          }
+          if (timsoDa0.length != 0) {
+            var timsoDa1 = [];
+            var timsoDa2 = [], soDa1 = $(this).find('td.phan-tich-soda1').text(), soDa2 = $(this)
+              .find('td.phan-tich-soda2')
+              .text();
+            for (f = 0; f <= kqxsHaisoDC.length; f++) {
+              if (soDa1 == kqxsHaisoDC[f]) timsoDa1.push(kqxsHaisoDC[f])
+            }
+            for (f = 0; f <= kqxsHaisoDC.length; f++) {
+              if (soDa2 == kqxsHaisoDC[f]) timsoDa2.push(kqxsHaisoDC[f])
+            }
+            var findMin = Math.min(timsoDa0.length, timsoDa1.length, timsoDa2.length);
+            findKetqua.text('trúng ' + findMin + ' cặp');
+          }
+        }
+        else if(findDai == 'đài phụ') {
+          var timsoDa0 = [];
+          for (f = 0; f <= kqxsHaisoDP.length; f++) {
+            if (findSo == kqxsHaisoDP[f]) timsoDa0.push(kqxsHaisoDP[f])
+          }
+          if (timsoDa0.length != 0) {
+            var timsoDa1 = [];
+            var timsoDa2 = [], soDa1 = $(this).find('td.phan-tich-soda1').text(), soDa2 = $(this)
+              .find('td.phan-tich-soda2')
+              .text();
+            for (f = 0; f <= kqxsHaisoDP.length; f++) {
+              if (soDa1 == kqxsHaisoDP[f]) timsoDa1.push(kqxsHaisoDP[f])
+            }
+            for (f = 0; f <= kqxsHaisoDP.length; f++) {
+              if (soDa2 == kqxsHaisoDP[f]) timsoDa2.push(kqxsHaisoDP[f])
+            }
+            var findMin = Math.min(timsoDa0.length, timsoDa1.length, timsoDa2.length);
+            findKetqua.text('trúng ' + findMin + ' cặp');
+          }
+        }
+        else if(findDai == 'đài phụ 1') {
+          var timsoDa0 = [];
+          for (f = 0; f <= kqxsHaisoDP1.length; f++) {
+            if (findSo == kqxsHaisoDP1[f]) timsoDa0.push(kqxsHaisoDP1[f])
+          }
+          if (timsoDa0.length != 0) {
+            var timsoDa1 = [];
+            var timsoDa2 = [], soDa1 = $(this).find('td.phan-tich-soda1').text(), soDa2 = $(this)
+              .find('td.phan-tich-soda2')
+              .text();
+            for (f = 0; f <= kqxsHaisoDP1.length; f++) {
+              if (soDa1 == kqxsHaisoDP1[f]) timsoDa1.push(kqxsHaisoDP1[f])
+            }
+            for (f = 0; f <= kqxsHaisoDP1.length; f++) {
+              if (soDa2 == kqxsHaisoDP1[f]) timsoDa2.push(kqxsHaisoDP1[f])
+            }
+            var findMin = Math.min(timsoDa0.length, timsoDa1.length, timsoDa2.length);
+            findKetqua.text('trúng ' + findMin + ' cặp');
+          }
+        }
+        else if(findDai == 'đài miền bắc') {
+          var timsoDa0 = [];
+          for (f = 0; f <= kqxsHaisoMB.length; f++) {
+            if (findSo == kqxsHaisoMB[f]) timsoDa0.push(kqxsHaisoMB[f])
+          }
+          if (timsoDa0.length != 0) {
+            var timsoDa1 = [];
+            var timsoDa2 = [], soDa1 = $(this).find('td.phan-tich-soda1').text(), soDa2 = $(this)
+              .find('td.phan-tich-soda2')
+              .text();
+            for (f = 0; f <= kqxsHaisoMB.length; f++) {
+              if (soDa1 == kqxsHaisoMB[f]) timsoDa1.push(kqxsHaisoMB[f])
+            }
+            for (f = 0; f <= kqxsHaisoMB.length; f++) {
+              if (soDa2 == kqxsHaisoDP[f]) timsoDa2.push(kqxsHaisoDP[f])
+            }
+            var findMin = Math.min(timsoDa0.length, timsoDa1.length, timsoDa2.length);
+            findKetqua.text('trúng ' + findMin + ' cặp');
+          }
         }
       }
       else if (findTheloai == 'đá xiên') {
+        if (findDai == 'đài chính'){
         var timsoDa0 = [];
         for (f=0;f<=kqxsHaisoDD.length;f++) { if (findSo==kqxsHaisoDD[f]) timsoDa0.push(kqxsHaisoDD[f]) }
         if (timsoDa0.length!=0) {
@@ -592,6 +721,7 @@ $(function() {
           if (findMin == 0) findKetqua.text('ko trúng');
           else findKetqua.text('trúng '+findMin+' cặp');
         }
+        } else { findKetqua.text('sai cú pháp'); }
       }
     }
 
