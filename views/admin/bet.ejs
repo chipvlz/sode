@@ -1,6 +1,8 @@
 <%- partial ('../common/admin_nav.ejs') %>
 <div class="container" id="page-bet-manager">
-  <h4><span class="phone-daily pull-right label label-warning"><%= req.session.user.phone %></span></h4>
+  <h4><span class="phone-daily pull-right label label-warning"><%= req.session.user.phone %></span>
+    <span class="bet-hom-nay pull-right label label-warning"><%= todayDate %></span>
+  </h4>
   <h2>Danh Sách Tin Nhắn</h2>
   <table class="table table-hover" id="manage-bet">
     <thead>
@@ -31,6 +33,7 @@
     <% }) %>
     </tbody>
   </table>
+  <a href="/admin/cal" class="btn btn-success"><i class="fa fa-calculator"></i> Tính hết</a>
 </div>
 
 

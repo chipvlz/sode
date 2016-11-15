@@ -25,18 +25,18 @@
       <td class="td-player">Người chơi</td>
       <td class="td-phone">Điện thoại</td>
       <td class="td-bonus">Cò</td>
-      <td colspan="4" class="td-message">Tin nhắn</td>
+      <td colspan="6" class="td-message">Tin nhắn</td>
     </tr>
     <tr>
       <td><%= bet.player.name %></td>
       <td><%= bet.player.phone %></td>
       <td class="tien-co"><%= bet.player.bonus %></td>
-      <td colspan="4" class="noi-dung-tin-nhan"><%= bet.msgedit %></td>
+      <td colspan="6" class="noi-dung-tin-nhan"><%= bet.msgedit %></td>
     </tr>
     <tr>
       <td>Tính tiền</td>
       <td colspan="2" class="tinh-tien-thang"></td>
-      <td colspan="4">
+      <td colspan="6">
         <input class="sr-only" name="tim-id" value="xem-chi-tiet-<%= bet.id %>">
         <a data-toggle="collapse" data-target=".xem-chi-tiet-<%= bet.id %>" class="xem-chi-tiet btn btn-primary"><i class="fa fa-search"></i> Chi tiết</a>
       </td>
@@ -45,7 +45,7 @@
       <td>Thể loại</td>
       <td>Đài</td>
       <td>Số</td>
-      <td>Loại Đề</td>
+      <td colspan="3">Loại Đề</td>
       <td>Tiền</td>
       <td>Vốn</td>
       <td>Thắng</td>
@@ -53,7 +53,7 @@
     </tbody>
     <tfoot >
       <tr class="xem-chi-tiet-<%= bet.id %> collapse">
-        <td colspan="5">Tổng</td>
+        <td colspan="7">Tổng</td>
         <td class="tong-von"></td>
         <td class="tong-an"></td>
       </tr>

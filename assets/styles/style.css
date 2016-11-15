@@ -101,3 +101,7 @@ td.td-player, td.td-phone, td.td-bonus {
 #tr-phan-tich {
   background:#fdf59a;
 }
+
+td.phan-tich-soda1,td.phan-tich-soda2 {
+  width:90px;
+}

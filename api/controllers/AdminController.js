@@ -1,9 +1,10 @@
 /**
- * AdminController
- *
- * @description :: Server-side logic for managing admins
- * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
+ * Vietlott
+ * @Author      :: Kingasawa
+ * @description :: wash my money
+ * @help        :: See http://vnmagic.net/ for more information
  */
+
 var moment = require('moment');
 module.exports = {
 	index: (req,res) => {
@@ -49,11 +50,13 @@ module.exports = {
   },
 
   bet: (req,res) => {
+    let getToday = (new Date()).toString();
+    var todayDate = moment(getToday).format('D-MM-YYYY');
     Bet.find({owner:req.session.user.phone})
       .populate('player')
       .exec(function(err,foundBets){
       if(err) return res.negotiate(err);
-      res.view('admin/bet',{foundBets})
+      res.view('admin/bet',{foundBets,todayDate})
     })
   },
 
@@ -71,4 +74,3 @@ module.exports = {
     })
   }
 };
-
