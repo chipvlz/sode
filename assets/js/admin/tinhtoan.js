@@ -321,7 +321,6 @@ $(function() {
     // Khai báo xong những cái dùng chung
 
     if (findLoaide == '2 số') {
-
       if (findDai == 'đài chính') {
         if (findTheloai == 'bao lô') {
           var timBaolohaisoDC = [];
@@ -413,7 +412,7 @@ $(function() {
       }
     }
     else if (findLoaide == '3 số') {
-
+      // trường hợp đảo số , đảo xiên
       var chiaSo = findSo.split('');
       if (chiaSo[0] != chiaSo[1] && chiaSo[0] != chiaSo[2] && chiaSo[1] != chiaSo[2]) {
         var soDao1 = chiaSo[0]+''+chiaSo[1]+''+chiaSo[2],soDao2 = chiaSo[2]+''+chiaSo[1]+''+chiaSo[0],
