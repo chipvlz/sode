@@ -77,7 +77,7 @@ input[type="search"], select {
   display:none;
 }
 
-td.tong-von {
+td.tong-von,td.tong-an {
   font-weight: bold;
   font-size: 16px;
   color: #a94442;
@@ -104,4 +104,9 @@ td.td-player, td.td-phone, td.td-bonus {
 
 td.phan-tich-soda1,td.phan-tich-soda2 {
   width:90px;
+}
+td.tinh-tien-thang {
+  color:#408441;
+  font-size:16px;
+  font-weight:bold;
 }
