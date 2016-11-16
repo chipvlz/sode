@@ -333,7 +333,7 @@ $(function() {
           var timBaolohaisoDC = [];
           for (f=0;f<=kqxsHaisoDC.length;f++) { if (findSo==kqxsHaisoDC[f]) timBaolohaisoDC.push(kqxsHaisoDC[f]) }
           if (timBaolohaisoDC.length != 0) findKetqua.text(timBaolohaisoDC.length*75*parseInt(findTien)+'đ');
-          else findKetqua.text('0');
+          else findKetqua.text('ko trúng');
         }
         else if (findTheloai == 'đầu đuôi') {
           var timDauduoihaisoDC = [];
