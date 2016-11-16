@@ -71,7 +71,7 @@ module.exports = {
     let params = req.allParams();
     Bet.update({id:params.id},{msgedit:params.msgedit}).exec(function(err,editBet) {
       if (err) return res.negotiate(err);
-      sails.sockets.broadcast(params.owner,'edit/bet',{msg:editBet})
+      sails.sockets.broadcast(params.owner,'edit/bet',{msg:editBet});
     })
   }
 };

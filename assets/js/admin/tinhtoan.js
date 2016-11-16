@@ -76,6 +76,8 @@ $(function() {
       var duoiBasoMB = kqxsBasoMB[kqxsBasoMB.length-1];
     }
   }
+  var giaibasoMB = $('#sxmb-table td.td-6').text(),
+      xiuChubasoMB = [kqxsBasoMB[0],giaibasoMB];
 
   var kqxsBasoDC = [];
   var laysodb = $('#sxdc-table td.td-db').text().split('');
@@ -104,6 +106,8 @@ $(function() {
       var duoiBasoDP = kqxsBasoDP[kqxsBasoDP.length-1];
     }
   }
+  var giaibasoDP = $('#sxdp-table td.td-7').text(),
+      xiuChubasoDP = [kqxsBasoDP[0],giaibasoDP];
 
   var kqxsBasoDD = kqxsBasoDC.concat(kqxsBasoDP);
 
@@ -119,6 +123,8 @@ $(function() {
       var duoiBasoDP1 = kqxsBasoDP1[kqxsBasoDP1.length-1];
     }
   }
+  var giaibasoDP1 = $('#sxdp1-table td.td-7').text(),
+      xiuChubasoDP1 = [kqxsBasoDP1[0],giaibasoDP1];
 
   var kqxsBonsoMB = [];
   var laysodb = $('#sxmb-table td.td-db').text().split('');
@@ -189,6 +195,7 @@ $(function() {
       else if (betDetail[0] == 'dp') var daiBet = 'đài phụ';
       else if (betDetail[0] == 'dp1') var daiBet = 'đài phụ 1';
       else if (betDetail[0] == 'mb' || betDetail[0] == 'hn') var daiBet = 'đài miền bắc';
+      else if (betDetail[0] == '2d' || betDetail[0] == 'dd' || betDetail[0] == '2đ' || betDetail[0] == 'đđ' || betDetail == 'đd') var daiBet = '2 đài';
       // trường hợp đặc biệt
       if (betDetail[2] == 'da' || betDetail[2] == 'đa' || betDetail[2] == 'đá' || betDetail[2] == 'dx' || betDetail[2] == 'dv' || betDetail[2] == 'đx' || betDetail[2] == 'đv') {
         var numberBet = betDetail[1]; // vì là đá số nên nó luôn nằm ở vị trí này
@@ -629,7 +636,7 @@ $(function() {
         }
       }
       else if (findTheloai == 'đá xiên') {
-        if(findDai == 'đài chính') {
+        if(findDai == '2 đài' || findDai == 'đài chính') {
           var timsoDa0 = [];
           for (f = 0; f <= kqxsHaisoDD.length; f++) {
             if (findSo == kqxsHaisoDD[f]) timsoDa0.push(kqxsHaisoDD[f])
@@ -649,7 +656,7 @@ $(function() {
     }
     else if (findLoaide == 'đá 3') {
       if (findTheloai == 'đá') {
-        if(findDai == 'đài chính') {
+        if(findDai == '2 đài' || findDai == 'đài chính') {
           var timsoDa0 = [];
           for (f = 0; f <= kqxsHaisoDC.length; f++) {
             if (findSo == kqxsHaisoDC[f]) timsoDa0.push(kqxsHaisoDC[f])

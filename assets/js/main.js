@@ -147,7 +147,8 @@ $(function() {
     a.preventDefault();
     var data = $('#edit-bet-form').serialize();
     socket.get('/bet/edit?' + data);
-    location.reload();
+    $('#editBetModal').modal('hide');
+    setTimeout("location.reload(true);",1000);
   });
   //Del Bet
   $('#del-bet-form').submit(function(a) {

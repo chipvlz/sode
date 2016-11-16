@@ -68,7 +68,6 @@ module.exports = {
         .populate('player')
         .exec(function (err, foundBets) {
           if (err) return res.negotiate(err);
-          console.log(gotLot);
           res.view('admin/cal', {foundBets, todayDate, gotLot})
         })
     })
