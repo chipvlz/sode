@@ -19,7 +19,7 @@
     <% _.each(foundPlayers,function(player) { %>
     <tr>
       <td class="player_id"><%= player.id %></td>
-      <td class="player_name"><%= player.name %></td>
+      <td class="player_name"><a href="/player/history/<%= player.id %>"><%= player.name %></a></td>
       <td class="player_phone"><%= player.phone %></td>
       <!--<td class="player_count"><%= player.count %></td>-->
       <!--<td class="player_income"><%= player.income %></td>-->

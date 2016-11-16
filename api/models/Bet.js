@@ -14,6 +14,9 @@ module.exports = {
     msgedit: {
       type: 'string'
     },
+    result: {
+      type: 'string'
+    },
     owner: {
       model: 'user'
     },
