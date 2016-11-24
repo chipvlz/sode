@@ -1,4 +1,17 @@
 $(function() {
+  var weekdays = new Array(7);
+  weekdays[0] = "Chủ Nhật";
+  weekdays[1] = "Thứ 2";
+  weekdays[2] = "Thứ 3";
+  weekdays[3] = "Thứ 4";
+  weekdays[4] = "Thứ 5";
+  weekdays[5] = "Thứ 6";
+  weekdays[6] = "Thứ 7";
+
+  var current_date = new Date();
+  weekday_value = current_date.getDay();
+  var homNay = weekdays[weekday_value];
+
   // dịch ngày tháng
   var vietDate = $('.ngay-nhan-tin').text().split(' ');
   if (vietDate.length != 1) {
@@ -44,20 +57,30 @@ $(function() {
   // Tính toán cho mỗi bet
   for(i=0 ; i <= countMsg ; i++) {
     y = i + 1;
+    var firstBet = betValues[0].split(' ');
+    var daiDauTien = firstBet[0];
 
     // Chia mỗi bet ra từng chỉ số riêng biệt để dễ tính , cách nhau bằng khoảng trắng
     var betDetail = betValues[i].split(' ');
 
+    if(isNaN(parseInt(betDetail[1]))) {
+      betDetail.unshift(daiDauTien);
+
+    } else {  }
+
     // Nhận biết tên đài - dùng cho cả 2 trường hợp
-    if (betDetail[0] == 'dc') {
+    if (betDetail[0] == 'dc' || betDetail[0] == 'tp' || betDetail[0] == 'dn' || betDetail[0] == 'đn' || betDetail[0] == 'tn' || betDetail[0] == 'vl' || betDetail[0] == 'tg') {
       var daiBet = 'đài chính'
-    } else if (betDetail[0] == 'dp') {
+    } else if (betDetail[0] == 'dp' || betDetail[0] == 'đt' || betDetail[0] == 'dt' || betDetail[0] == 'vt' || betDetail[0] == 'ct' || betDetail[0] == 'ag' || betDetail[0] == 'bd' || betDetail[0] == 'la' || betDetail[0] == 'kg') {
       var daiBet = 'đài phụ'
-    } else if (betDetail[0] == 'dp1') {
+    } else if (betDetail[0] == 'dp1' || betDetail[0] == 'cm' || betDetail[0] == 'bl' || betDetail[0] == 'st' || betDetail[0] == 'tv' || betDetail[0] == 'bp' || betDetail[0] == 'hg' || betDetail[0] == 'dl' || betDetail[0] == 'đl' ) {
       var daiBet = 'đài phụ 1'
     } else if (betDetail[0] == 'mb' || betDetail[0] == 'hn') {
       var daiBet = 'đài miền bắc'
+    } else if (betDetail[0] == 'bt') {
+      var daiBet = 'đài chính'
     }
+
     // trường hợp đặc biệt
     if (betDetail[2] == 'da' || betDetail[2] == 'đa' || betDetail[2] == 'đá' || betDetail[2] == 'dx' || betDetail[2] == 'dv' || betDetail[2] == 'đx' || betDetail[2] == 'đv') {
       var numberBet = betDetail[1]; // vì là đá số nên nó luôn nằm ở vị trí này
@@ -108,7 +131,7 @@ $(function() {
         var totalPay = parseInt(betDetail[detailTien]) * 2 * bonus * 1000;
       } else if (betDetail[detailTheLoai] == 'bl' || betDetail[detailTheLoai] == 'b') {
         var theloaiBet = 'bao lô';
-      } else if (betDetail[detailTheLoai] == 'xc' || betDetail[detailTheLoai] == 'xiu') {
+      } else if (betDetail[detailTheLoai] == 'xc' || betDetail[detailTheLoai] == 'xiu' || betDetail[detailTheLoai] == 'x') {
         var theloaiBet = 'xỉu chủ';
       } else if (betDetail[detailTheLoai] == 'xd' || betDetail[detailTheLoai] == 'dxc') {
         var theloaiBet = 'xỉu đảo';

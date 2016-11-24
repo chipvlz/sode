@@ -4,6 +4,7 @@
  * @description :: Server-side logic for managing bets
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
+
 // telerivet.com/p/5e34e37b
 var WEBHOOK_SECRET = "3PX7T47T6RZ2QR6CL6KL6UU9KLGZPFQQ";
 
