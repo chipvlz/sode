@@ -265,7 +265,7 @@ $(function() {
             '<td class="phan-tich-soda1">'+betDetail[3]+'</td>' +
             '<td class="phan-tich-soda2">'+betDetail[4]+'</td>' +
             '<td class="phan-tich-tien">'+parseFloat(betDetail[5])*1000+'</td>' +
-            '<td class="phan-tich-von">'+parseInt(totalPay)+'đ</td>' +
+            '<td class="phan-tich-von">'+parseInt(totalPay)+'đ <span class="badge pull-right">'+loaiVon+'</span></td>' +
             '<td class="phan-tich-thang"></td>' +
             '</tr>');
         }
@@ -312,11 +312,13 @@ $(function() {
 
           if (betDetail[x].length == 2) {
             var loaiSo = '2 số';
+            var loaiVon = 'Nạc';
             if (theloaiBet == 'bao lô') {
               var totalPay = parseFloat(betDetail[detailTien]) * 18 * bonus * 1000;
             }
           } else if (betDetail[x].length == 3) {
             var loaiSo = '3 số';
+            var loaiVon = 'Xương';
             if ((theloaiBet == 'xỉu chủ')) {
               var totalPay = parseFloat(betDetail[detailTien]) * 2 * bonus * 1000;
             } else if (theloaiBet == 'bao lô') {
@@ -346,7 +348,7 @@ $(function() {
             '<td class="phan-tich-so">'+betDetail[x]+'</td>' +
             '<td colspan="3" class="phan-tich-loaide">'+loaiSo+'</td>' +
             '<td class="phan-tich-tien">'+parseFloat(betDetail[detailTien])*1000+'</td>' +
-            '<td class="phan-tich-von">'+parseInt(totalPay)+'đ</td>' +
+            '<td class="phan-tich-von">'+parseInt(totalPay)+'đ <span class="badge pull-right">'+loaiVon+'</span></td>' +
             '<td class="phan-tich-thang"></td>' +
             '</tr>');
         }
