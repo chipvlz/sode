@@ -250,7 +250,7 @@ $(function() {
             '<td class="phan-tich-loaide">đá 2</td>' +
             '<td colspan="2" class="phan-tich-soda">'+betDetail[3]+'</td>' +
             '<td class="phan-tich-tien">'+parseFloat(betDetail[4])*1000+'</td>' +
-            '<td class="phan-tich-von">'+parseInt(totalPay)+'đ</td>' +
+            '<td class="phan-tich-von">'+parseInt(totalPay)+'đ <span class="badge pull-right">'+loaiVon+'</span></td>' +
             '<td class="phan-tich-thang"></td>' +
             '</tr>');
         } else if (betDetail.length == 6 ) {
