@@ -214,11 +214,11 @@ $(function() {
       var betDetail = betValues[i].split(' ');
 
       // Nhận biết tên đài - dùng cho cả 2 trường hợp
-      if (betDetail[0] == 'dc' || betDetail[0] == 'tp' || betDetail[0] == 'dn' || betDetail[0] == 'đn' || betDetail[0] == 'tn' || betDetail[0] == 'vl' || betDetail[0] == 'tg')
+      if (betDetail[0] == 'dc' || betDetail[0] == 'daichinh' || betDetail[0] == 'tp' || betDetail[0] == 'dn' || betDetail[0] == 'đn' || betDetail[0] == 'tn' || betDetail[0] == 'vl' || betDetail[0] == 'tg')
         var daiBet = 'đài chính';
-      else if (betDetail[0] == 'dp' || betDetail[0] == 'đt' || betDetail[0] == 'dt' || betDetail[0] == 'vt' || betDetail[0] == 'ct' || betDetail[0] == 'ag' || betDetail[0] == 'bd' || betDetail[0] == 'la' || betDetail[0] == 'kg')
+      else if (betDetail[0] == 'dp' || betDetail[0] == 'daiphu' || betDetail[0] == 'đt' || betDetail[0] == 'dt' || betDetail[0] == 'vt' || betDetail[0] == 'ct' || betDetail[0] == 'ag' || betDetail[0] == 'bd' || betDetail[0] == 'la' || betDetail[0] == 'kg')
         var daiBet = 'đài phụ';
-      else if (betDetail[0] == 'dp1' || betDetail[0] == 'cm' || betDetail[0] == 'bl' || betDetail[0] == 'st' || betDetail[0] == 'tv' || betDetail[0] == 'bp' || betDetail[0] == 'hg' || betDetail[0] == 'dl' || betDetail[0] == 'đl')
+      else if (betDetail[0] == 'dp1' || betDetail[0] == 'daiphu1' || betDetail[0] == 'cm' || betDetail[0] == 'bl' || betDetail[0] == 'st' || betDetail[0] == 'tv' || betDetail[0] == 'bp' || betDetail[0] == 'hg' || betDetail[0] == 'dl' || betDetail[0] == 'đl')
         var daiBet = 'đài phụ 1';
       else if (betDetail[0] == 'mb' || betDetail[0] == 'hn')
         var daiBet = 'đài miền bắc';
@@ -285,13 +285,13 @@ $(function() {
           var totalPay = parseInt(betDetail[detailTien]) * 2 * bonus * 1000;
         } else if (betDetail[detailTheLoai] == 'bl' || betDetail[detailTheLoai] == 'b') {
           var theloaiBet = 'bao lô';
-        } else if (betDetail[detailTheLoai] == 'xc' || betDetail[detailTheLoai] == 'xiu') {
+        } else if (betDetail[detailTheLoai] == 'xc' || betDetail[detailTheLoai] == 'xiu' || betDetail[detailTheLoai] == 'xiuchu' || betDetail[detailTheLoai] == 'xỉu' || betDetail[detailTheLoai] == 'xỉuchủ') {
           var theloaiBet = 'xỉu chủ';
-        } else if (betDetail[detailTheLoai] == 'xd' || betDetail[detailTheLoai] == 'dxc') {
+        } else if (betDetail[detailTheLoai] == 'xd' || betDetail[detailTheLoai] == 'dxc' || betDetail[detailTheLoai] == 'xiudao' || betDetail[detailTheLoai] == 'xỉuđảo') {
           var theloaiBet = 'xỉu đảo';
-        } else if (betDetail[detailTheLoai] == 'bd' || betDetail[detailTheLoai] == 'bđ' || betDetail[detailTheLoai] == 'baodao') {
+        } else if (betDetail[detailTheLoai] == 'bd' || betDetail[detailTheLoai] == 'bđ' || betDetail[detailTheLoai] == 'baodao' || betDetail[detailTheLoai] == 'baođao' || betDetail[detailTheLoai] == 'baođảo') {
           var theloaiBet = 'bao đảo';
-        } else if (betDetail[detailTheLoai] == 'đl' || betDetail[detailTheLoai] == 'dl' || betDetail[detailTheLoai] == 'daolo') {
+        } else if (betDetail[detailTheLoai] == 'đl' || betDetail[detailTheLoai] == 'dl' || betDetail[detailTheLoai] == 'daolo' || betDetail[detailTheLoai] == 'đaolo' || betDetail[detailTheLoai] == 'đảolo' || betDetail[detailTheLoai] == 'đaolô' || betDetail[detailTheLoai] == 'đảolô') {
           var theloaiBet = 'đảo lô';
         }
 
@@ -314,7 +314,9 @@ $(function() {
             }
           } else if (betDetail[x].length == 3) {
             var loaiSo = '3 số';
-            if (theloaiBet == 'bao lô') {
+            if ((theloaiBet == 'xỉu chủ')) {
+              var totalPay = parseInt(betDetail[detailTien]) * 2 * bonus * 1000;
+            } else if (theloaiBet == 'bao lô') {
               var totalPay = parseInt(betDetail[detailTien]) * 17 * bonus * 1000;
             } else if (theloaiBet == 'xỉu đảo') {
               if (n1 != n2 && n1 != n3 && n2 != n3) {
