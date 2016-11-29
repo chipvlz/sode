@@ -240,7 +240,8 @@ $(function() {
           var hesoDai = 72;}
 
         if (betDetail.length == 5 ) {
-          var totalPay = 1 * hesoDai * bonus * parseInt(betDetail[4]) * 1000;
+          betDetail[4] = betDetail[4].replace(',','.');
+          var totalPay = 1 * hesoDai * bonus * parseFloat(betDetail[4]) * 1000;
 
           $(this).find('.show-phantich').append('<tr id="tr-danh-de" class="'+timID+' collapse">' +
             '<td class="phan-tich-the-loai">' + theloaiBet + '</td>' +
@@ -249,11 +250,12 @@ $(function() {
             '<td class="phan-tich-loaide">đá 2</td>' +
             '<td colspan="2" class="phan-tich-soda">'+betDetail[3]+'</td>' +
             '<td class="phan-tich-tien">'+parseFloat(betDetail[4])*1000+'</td>' +
-            '<td class="phan-tich-von">'+parseFloat(totalPay)+'đ</td>' +
+            '<td class="phan-tich-von">'+parseInt(totalPay)+'đ</td>' +
             '<td class="phan-tich-thang"></td>' +
             '</tr>');
         } else if (betDetail.length == 6 ) {
-          var totalPay = 3 * hesoDai * bonus * parseInt(betDetail[5]) * 1000;
+          betDetail[5] = betDetail[5].replace(',','.');
+          var totalPay = 3 * hesoDai * bonus * parseFloat(betDetail[5]) * 1000;
 
           $(this).find('.show-phantich').append('<tr id="tr-danh-de" class="'+timID+' collapse">' +
             '<td class="phan-tich-the-loai">' + theloaiBet + '</td>' +
@@ -263,7 +265,7 @@ $(function() {
             '<td class="phan-tich-soda1">'+betDetail[3]+'</td>' +
             '<td class="phan-tich-soda2">'+betDetail[4]+'</td>' +
             '<td class="phan-tich-tien">'+parseFloat(betDetail[5])*1000+'</td>' +
-            '<td class="phan-tich-von">'+parseFloat(totalPay)+'đ</td>' +
+            '<td class="phan-tich-von">'+parseInt(totalPay)+'đ</td>' +
             '<td class="phan-tich-thang"></td>' +
             '</tr>');
         }
@@ -344,7 +346,7 @@ $(function() {
             '<td class="phan-tich-so">'+betDetail[x]+'</td>' +
             '<td colspan="3" class="phan-tich-loaide">'+loaiSo+'</td>' +
             '<td class="phan-tich-tien">'+parseFloat(betDetail[detailTien])*1000+'</td>' +
-            '<td class="phan-tich-von">'+parseFloat(totalPay)+'đ</td>' +
+            '<td class="phan-tich-von">'+parseInt(totalPay)+'đ</td>' +
             '<td class="phan-tich-thang"></td>' +
             '</tr>');
         }
