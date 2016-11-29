@@ -273,16 +273,17 @@ $(function() {
         var detailTien = betDetail.length - 1,
           detailTheLoai = betDetail.length - 2,
           xTo = betDetail.length - 3;
+        betDetail[detailTien] = betDetail[detailTien].replace(',','.');
 
         if (betDetail[detailTheLoai] == 'dau' || betDetail[detailTheLoai] == 'đầu') {
           var theloaiBet = 'đầu';
-          var totalPay = parseInt(betDetail[detailTien]) * bonus * 1000;
+          var totalPay = parseFloat(betDetail[detailTien]) * bonus * 1000;
         } else if (betDetail[detailTheLoai] == 'duoi' || betDetail[detailTheLoai] == 'đuôi') {
           var theloaiBet = 'đuôi';
-          var totalPay = parseInt(betDetail[detailTien]) * bonus * 1000;
+          var totalPay = parseFloat(betDetail[detailTien]) * bonus * 1000;
         } else if (betDetail[detailTheLoai] == 'dd' || betDetail[detailTheLoai] == 'đđ') {
           var theloaiBet = 'đầu đuôi';
-          var totalPay = parseInt(betDetail[detailTien]) * 2 * bonus * 1000;
+          var totalPay = parseFloat(betDetail[detailTien]) * 2 * bonus * 1000;
         } else if (betDetail[detailTheLoai] == 'bl' || betDetail[detailTheLoai] == 'b') {
           var theloaiBet = 'bao lô';
         } else if (betDetail[detailTheLoai] == 'xc' || betDetail[detailTheLoai] == 'xiu' || betDetail[detailTheLoai] == 'xiuchu' || betDetail[detailTheLoai] == 'xỉu' || betDetail[detailTheLoai] == 'xỉuchủ') {
@@ -310,31 +311,31 @@ $(function() {
           if (betDetail[x].length == 2) {
             var loaiSo = '2 số';
             if (theloaiBet == 'bao lô') {
-              var totalPay = parseInt(betDetail[detailTien]) * 18 * bonus * 1000;
+              var totalPay = parseFloat(betDetail[detailTien]) * 18 * bonus * 1000;
             }
           } else if (betDetail[x].length == 3) {
             var loaiSo = '3 số';
             if ((theloaiBet == 'xỉu chủ')) {
-              var totalPay = parseInt(betDetail[detailTien]) * 2 * bonus * 1000;
+              var totalPay = parseFloat(betDetail[detailTien]) * 2 * bonus * 1000;
             } else if (theloaiBet == 'bao lô') {
-              var totalPay = parseInt(betDetail[detailTien]) * 17 * bonus * 1000;
+              var totalPay = parseFloat(betDetail[detailTien]) * 17 * bonus * 1000;
             } else if (theloaiBet == 'xỉu đảo') {
               if (n1 != n2 && n1 != n3 && n2 != n3) {
-                var totalPay = parseInt(betDetail[detailTien]) * 6 * 2 * bonus * 1000;
+                var totalPay = parseFloat(betDetail[detailTien]) * 6 * 2 * bonus * 1000;
               } else if (n1 == n2 || n2 == n3 || n1 == n3) {
-                var totalPay = parseInt(betDetail[detailTien]) * 4 * 2 * bonus * 1000;
+                var totalPay = parseFloat(betDetail[detailTien]) * 4 * 2 * bonus * 1000;
               }
             } else if (theloaiBet == 'bao đảo' || theloaiBet == 'đảo lô') {
               if (n1 != n2 && n1 != n3 && n2 != n3) {
-                var totalPay = parseInt(betDetail[detailTien]) * 6 * 17 * bonus * 1000;
+                var totalPay = parseFloat(betDetail[detailTien]) * 6 * 17 * bonus * 1000;
               } else if (n1 == n2 || n2 == n3 || n1 == n3) {
-                var totalPay = parseInt(betDetail[detailTien]) * 4 * 17 * bonus * 1000;
+                var totalPay = parseFloat(betDetail[detailTien]) * 4 * 17 * bonus * 1000;
               }
             }
           } else {
             var loaiSo = '4 số';
             if (theloaiBet == 'bao lô') {
-              var totalPay = parseInt(betDetail[detailTien]) * 16 * bonus * 1000;
+              var totalPay = parseFloat(betDetail[detailTien]) * 16 * bonus * 1000;
             }
           }
           $(this).find('.show-phantich').append('<tr id="tr-danh-de" class="'+timID+' collapse">' +
