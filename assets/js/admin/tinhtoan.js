@@ -248,8 +248,8 @@ $(function() {
             '<td class="phan-tich-so">'+betDetail[1]+'</td>' +
             '<td class="phan-tich-loaide">đá 2</td>' +
             '<td colspan="2" class="phan-tich-soda">'+betDetail[3]+'</td>' +
-            '<td class="phan-tich-tien">'+parseInt(betDetail[4])*1000+'</td>' +
-            '<td class="phan-tich-von">'+parseInt(totalPay)+'đ</td>' +
+            '<td class="phan-tich-tien">'+parseFloat(betDetail[4])*1000+'</td>' +
+            '<td class="phan-tich-von">'+parseFloat(totalPay)+'đ</td>' +
             '<td class="phan-tich-thang"></td>' +
             '</tr>');
         } else if (betDetail.length == 6 ) {
@@ -262,8 +262,8 @@ $(function() {
             '<td class="phan-tich-loaide">đá 3</td>' +
             '<td class="phan-tich-soda1">'+betDetail[3]+'</td>' +
             '<td class="phan-tich-soda2">'+betDetail[4]+'</td>' +
-            '<td class="phan-tich-tien">'+parseInt(betDetail[5])*1000+'</td>' +
-            '<td class="phan-tich-von">'+parseInt(totalPay)+'đ</td>' +
+            '<td class="phan-tich-tien">'+parseFloat(betDetail[5])*1000+'</td>' +
+            '<td class="phan-tich-von">'+parseFloat(totalPay)+'đ</td>' +
             '<td class="phan-tich-thang"></td>' +
             '</tr>');
         }
@@ -343,8 +343,8 @@ $(function() {
             '<td class="phan-tich-dai">'+daiBet+'</td>' +
             '<td class="phan-tich-so">'+betDetail[x]+'</td>' +
             '<td colspan="3" class="phan-tich-loaide">'+loaiSo+'</td>' +
-            '<td class="phan-tich-tien">'+parseInt(betDetail[detailTien])*1000+'</td>' +
-            '<td class="phan-tich-von">'+parseInt(totalPay)+'đ</td>' +
+            '<td class="phan-tich-tien">'+parseFloat(betDetail[detailTien])*1000+'</td>' +
+            '<td class="phan-tich-von">'+parseFloat(totalPay)+'đ</td>' +
             '<td class="phan-tich-thang"></td>' +
             '</tr>');
         }
