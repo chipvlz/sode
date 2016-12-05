@@ -4,11 +4,19 @@
  * @description :: Server-side logic for managing roots
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
-
+var moment = require('moment');
 module.exports = {
   index: (req,res) => {
-    User.find({group:'Admin'}).exec(function(err,foundUsers){
-      return res.view('root/index',{foundUsers})
+    let getToday = (new Date()).toString();
+    var getdata = {
+      date:moment(getToday).format('DD-MM-YYYY'),
+      time:moment(getToday).format('LT')
+    };
+    Lot.find().sort('id DESC').exec(function(err,foundLot){
+      var latestBet = moment(foundLot[0].createdAt).format('DD-MM-YYYY');
+      User.find({group:'Admin'}).exec(function(err,foundUsers){
+        return res.view('root/index',{foundUsers,latestBet,getdata})
+      })
     })
   },
 
@@ -41,6 +49,8 @@ module.exports = {
   },
 
   kqxs: (req,res) => {
+    let params = req.allParams();
+
     let mienBac = new Promise((resolve,reject) => {
       Lot.find({more:'mb'})
         .sort('id DESC')

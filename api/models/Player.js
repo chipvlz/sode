@@ -29,6 +29,10 @@ module.exports = {
       type: 'integer',
       defaultsTo: 0
     },
+    total: {
+      type: 'float',
+      defaultsTo: 0
+    },
     owner: {
       model: 'user'
     },

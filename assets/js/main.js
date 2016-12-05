@@ -18,9 +18,29 @@ $(function() {
       $(this).find("td.user_created").text(newbDate);
     });
 
+    $.fn.datepicker.dates['en'] = {
+      days: ["Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy", "Chủ Nhật"],
+      daysShort: ["Chủ Nhật", "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ Nhật"],
+      daysMin: ["Chủ Nhật", "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ Nhật"],
+      months: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+      monthsShort: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"]
+    };
+
+    $('.datepicker').datepicker();
     // var cDate = $('.ngay-hom-nay').text(),
     // ngayHomNay = moment(cDate).format('D-MM-YYYY');
     //   $('.ngay-hom-nay').text(ngayHomNay);
+
+    $('a.history-save').click(function(){
+      var dataHistory = $('span.noidung-history').text();
+      var totalHistory = $('span.tongket strong').text();
+      socket.get('/history/save?'+dataHistory+''+totalHistory);
+    });
+
+    socket.on('save/history',function(){
+      $('span.result-history').html('<i class="fa fa-check"></i> Đã lưu')
+    });
+
 
   });
   //USER MANAGEMENT
@@ -156,6 +176,11 @@ $(function() {
     var data = $('#del-bet-form').serialize();
     console.log(data);
     socket.get('/bet/del?' + data);
+  });
+
+  $('#search-bet-form').submit(function(s){
+    var layNgay = $(this).find('input[name=ngay]').val();
+    window.localtion = window.location.href+'?ngay='+layNgay;
   });
 
   //Edit MSGEDIT

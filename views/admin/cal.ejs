@@ -1,6 +1,20 @@
 <%- partial ('../common/admin_nav.ejs') %>
 <div class="container-fluid" id="page-bet-cal">
+  <div class="alert alert-success">
+    <strong>Tổng kết ngày <%= getdayShow %></strong><span class="tongket"></span>
+    <% if (foundHistory) { %>
+    <span class="result-history pull-right"><i class="fa fa-check"></i> Đã lưu</span>
+    <% } else { %>
+
+    <span class="result-history pull-right"><a class="history-save" href="#"><i class="fa fa-save"></i> Lưu lại</a></span>
+    <span class="sr-only noidung-history">date=<%= getdayShow %>&name=<%= req.session.user.name %>&phone=<%= req.session.user.phone %>&total=</span>
+
+      <% } %>
+  </div>
   <div class="col-sm-3">
+    <% if (gotLot.length == 0) { %>
+    <p>Chưa có dữ liệu xổ số cho ngày <%= getdayShow %>, vui lòng chờ Admin cập nhật</p>
+    <% } %>
     <% _.each(gotLot,function(kqxs) { %>
     <table class="table table-bordered" id="sx<%= kqxs.more %>-table">
       <tbody><tr class="tr-first"><td>Giải</td><td>Xổ Số <%= kqxs.name %></td></tr>
@@ -18,20 +32,23 @@
     <% }) %>
   </div>
   <div class="col-sm-9" id="phan-tich-tung-table">
+    <% if (foundBets.length == 0) { %>
+    <p>Chưa có tin nhắn nào trong ngày <%= getdayShow %></p>
+    <% } %>
   <% _.each(foundBets,function(bet) { %>
   <table class="table table-bordered">
     <tbody class="show-phantich">
     <tr class="tr-info">
-      <td class="td-player">Người chơi</td>
+      <td class="td-player">Người chơi <span class="id-nguoi-choi badge"><%= bet.player.id %></span></td>
       <td class="td-phone">Điện thoại</td>
       <td class="td-bonus">Cò</td>
       <td colspan="6" class="td-message">Tin nhắn
-        <span class="id-nguoi-choi label label-success pull-right"><%= bet.id %></span>
+        <span class="id-tin-nhan label label-success pull-right"><%= bet.id %></span>
       </td>
     </tr>
     <tr>
-      <td><%= bet.player.name %></td>
-      <td><%= bet.player.phone %></td>
+      <td class="name-nguoi-choi"><%= bet.player.name %></td>
+      <td class="phone-nguoi-choi"><%= bet.player.phone %></td>
       <td class="tien-co"><%= bet.player.bonus %></td>
       <td colspan="6" class="noi-dung-tin-nhan"><%= bet.msgedit %></td>
     </tr>

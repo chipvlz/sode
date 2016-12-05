@@ -50,26 +50,46 @@ module.exports = {
   },
 
   bet: (req,res) => {
-    let getToday = (new Date()).toString();
-    var todayDate = moment(getToday).format('D-MM-YYYY');
-    Bet.find({owner:req.session.user.phone})
-      .populate('player')
-      .exec(function(err,foundBets){
-      if(err) return res.negotiate(err);
-      res.view('admin/bet',{foundBets,todayDate})
-    })
+    let params = req.allParams();
+    if (params.ngay) {
+      var getday = moment(params.ngay).format('YYYY-MM-DD');
+      var getdayShow = moment(params.ngay).format('DD-MM-YYYY');
+      console.log(getday);
+      Bet.find({owner:req.session.user.phone,createdAt:{'contains':getday}})
+        .populate('player')
+        .exec(function(err,foundBets){
+          if(err) return res.negotiate(err);
+          res.view('admin/bet',{foundBets,getdayShow,getday})
+        })
+    } else {
+      let getToday = (new Date()).toString();
+      var getday = moment(getToday).format('YYYY-MM-DD');
+      var getdayShow = moment(getToday).format('DD-MM-YYYY');
+      Bet.find({owner:req.session.user.phone,createdAt:{'contains':getday}})
+        .populate('player')
+        .exec(function(err,foundBets){
+        if(err) return res.negotiate(err);
+        res.view('admin/bet',{foundBets,getdayShow,getday})
+      })
+    }
   },
 
   cal: (req,res) => {
-    let getToday = (new Date()).toString();
-    var todayDate = moment(getToday).format('D-MM-YYYY');
-    Lot.find({ngay:'9-11-2016'}).exec(function(err,gotLot) {
-      Bet.find({owner: req.session.user.phone})
-        .populate('player')
-        .exec(function (err, foundBets) {
-          if (err) return res.negotiate(err);
-          res.view('admin/cal', {foundBets, todayDate, gotLot})
+    let params = req.allParams();
+    let getday = moment(params.ngay).format('YYYY-MM-DD');
+    let getdayShow = moment(params.ngay).format('DD-MM-YYYY');
+
+      Lot.find({createdAt:{'contains':getday}}).exec(function(err,gotLot) {
+        History.findOne({date:getdayShow}).exec(function(err,foundHistory){
+          console.log(foundHistory);
+          Bet.find({owner: req.session.user.phone,createdAt:{'contains':getday}})
+          .populate('player')
+          .exec(function (err, foundBets) {
+            if (err) return res.negotiate(err);
+            res.view('admin/cal', {foundBets, getdayShow, gotLot, foundHistory })
+          })
         })
-    })
+      })
+
   }
 };

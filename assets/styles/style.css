@@ -106,7 +106,22 @@ td.phan-tich-soda1,td.phan-tich-soda2 {
   width:90px;
 }
 td.tinh-tien-thang {
-  color:#408441;
-  font-size:16px;
-  font-weight:bold;
+  color: #408441;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.datepicker.datepicker-dropdown.dropdown-menu {
+  min-width:320px;
+}
+
+.datepicker-months table, .datepicker-years table, .datepicker-days table{
+  width:100%;
+}
+.datepicker thead tr th:hover, .datepicker tfoot tr th:hover {
+  background:#843230 !important;
+}
+.form-horizontal .form-group {
+  margin-left:0;
+  margin-right:0;
 }

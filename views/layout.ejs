@@ -76,10 +76,11 @@
     <script src="/js/main.js"></script>
     <script src="/datatables/media/js/jquery.dataTables.min.js"></script>
     <script src="/js/jquery.timeago.js"></script>
+    <script src="/js/bootstrap-datepicker.js"></script>
     <script src="/js/bootstrap-editable.min.js"></script>
     <script src="/js/smsfix.js"></script>
     <!--SCRIPTS END-->
-    <% if(req.path == '/admin/cal') { %>
+    <% if(req.path.match('/admin/cal')) { %>
     <script src="/js/admin/tinhtoan.js"></script>
     <% } %>
   </body>

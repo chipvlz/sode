@@ -269,6 +269,39 @@ $(function() {
             '<td class="phan-tich-thang"></td>' +
             '</tr>');
         }
+      } else if (betDetail[2] == 'k' || betDetail[2] == 'keo' || betDetail[2] == 'kéo') {
+        $(this).find('.show-phantich').append('<tr id="tr-danh-de" class="'+timID+' collapse">' +
+          '<td class="phan-tich-the-loai">' + theloaiBet + '</td>' +
+          '<td class="phan-tich-dai">'+daiBet+'</td>' +
+          '<td class="phan-tich-so">'+betDetail[1]+'</td>' +
+          '<td class="phan-tich-loaide">kéo</td>' +
+          '<td colspan="2" class="phan-tich-soda">'+betDetail[3]+'</td>' +
+          '<td class="phan-tich-tien">'+parseFloat(betDetail[4])*1000+'</td>' +
+          '<td class="phan-tich-von">'+parseInt(totalPay)+'đ <span class="badge pull-right">'+loaiVon+'</span></td>' +
+          '<td class="phan-tich-thang"></td>' +
+          '</tr>');
+      } else if (betDetail[2][0] == betDetail[3][0] && betDetail[2][0] == 'd') {
+
+        if (betDetail[1].length == 2) {
+          var loaiSo = '2 số';
+          var loaiVon = 'Nạc';
+        }
+        for (d=0;d<2;d++) {
+          var betTien = betDetail[2+d].split('d');
+          var totalPay = parseFloat(betTien[1]) * bonus * 1000;
+          if(d==0) var theloaiBet = 'đầu';
+          else var theloaiBet = 'đuôi';
+
+          $(this).find('.show-phantich').append('<tr id="tr-danh-de" class="'+timID+' collapse">' +
+            '<td class="phan-tich-the-loai">' + theloaiBet + '</td>' +
+            '<td class="phan-tich-dai">'+daiBet+'</td>' +
+            '<td class="phan-tich-so">'+betDetail[1]+'</td>' +
+            '<td colspan="3" class="phan-tich-loaide">'+loaiSo+'</td>' +
+            '<td class="phan-tich-tien">'+parseFloat(betTien[1])*1000+'</td>' +
+            '<td class="phan-tich-von">'+parseInt(totalPay)+'đ <span class="badge pull-right">'+loaiVon+'</span></td>' +
+            '<td class="phan-tich-thang"></td>' +
+            '</tr>');
+        }
       }
       // trường hợp cơ bản
       else {
@@ -338,6 +371,7 @@ $(function() {
             }
           } else {
             var loaiSo = '4 số';
+            var loaiVon = 'Xương';
             if (theloaiBet == 'bao lô') {
               var totalPay = parseFloat(betDetail[detailTien]) * 16 * bonus * 1000;
             }
@@ -609,6 +643,7 @@ $(function() {
       }
     }
     else if (findLoaide == 'đá 2') {
+      var loaiVon = 'Nạc';
       if (findTheloai == 'đá') {
         if (findDai == 'đài chính') {
           var timsoDa0 = [];
@@ -695,6 +730,7 @@ $(function() {
       }
     }
     else if (findLoaide == 'đá 3') {
+      var loaiVon = 'Nạc';
       if (findTheloai == 'đá') {
         if(findDai == '2 đài' || findDai == 'đài chính') {
           var timsoDa0 = [];
@@ -798,8 +834,13 @@ $(function() {
     }
 
   });
-
+$('#phan-tich-tung-table').ready(function(){
+    var tongLoiArray = [];
+    var demTN = [];
   $('#phan-tich-tung-table .table').each(function() {
+    var idNguoiChoi = $(this).find('span.id-nguoi-choi').text();
+    var idTinNhan = $(this).find('span.id-tin-nhan').text();
+      demTN.push(1);
     var vonArray = [];
     var thangArray = [];
     $(this).find('td.phan-tich-von').each(function() {
@@ -820,8 +861,21 @@ $(function() {
     var ketQua = parseInt(String(newThang).replace(/\./g,''))-parseInt(String(newVon).replace(/\./g,''));
     if (ketQua < 0) { $(this).find('td.tinh-tien-thang').css("color","#a94442") }
     $(this).find('td.tinh-tien-thang').text(ketQua.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ');
-  });
 
+    var tongLoi = $(this).find('td.tinh-tien-thang').text();
+    tongLoi = tongLoi.replace(/\.|đ/gi,'');
+    tongLoiArray.push(parseFloat(tongLoi));
+    socket.get('/history/update?bid='+idTinNhan+'&pid='+idNguoiChoi+'&total='+parseFloat(tongLoi));
+  });
+  var sumtongLoi = tongLoiArray.reduce((a,b) => a+b,0);
+  var sumTN = demTN.reduce((a,b) => a+b,0);
+  var tongloiShow = sumtongLoi.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ';
+    if(sumtongLoi < 0) {
+      $('#page-bet-cal span.tongket').append(', Có '+sumTN+' tin nhắn đến, hôm nay chung <strong>'+tongloiShow+'</strong>');
+    } else {
+      $('#page-bet-cal span.tongket').append(', Có '+sumTN+' tin nhắn đến, hôm nay thu vào <strong>'+tongloiShow+'</strong>');
+    }
+  })
 
 });
 
