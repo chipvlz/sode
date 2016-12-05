@@ -37,7 +37,9 @@ module.exports.routes = {
   '/register': 'LoginController.register',
   '/logout': 'UserController.logout',
   '/root/user/:i':'RootController.user',
-  '/player/history/:id':'PlayerController.history'
+  '/root/kqxs/:date':'RootController.user',
+  '/player/history/:id':'PlayerController.history',
+  '/admin/cal/:ngay':'AdminController.cal'
 
   /***************************************************************************
    *                                                                          *
