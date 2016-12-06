@@ -9,6 +9,7 @@ module.exports = {
 	add: (req,res) => {
     if (!req.isSocket) return res.badRequest('bậy zồi, ahihi');
     let params = req.allParams();
+    sails.sockets.join(req,params.owner);
 	  Player.create(params).exec(function(err,addPlayer) {
       if(err) return res.negotiate(err);
       console.log('add player',addPlayer);
@@ -18,6 +19,7 @@ module.exports = {
   edit: (req,res) => {
     if (!req.isSocket) return res.badRequest('bậy zồi, ahihi');
     let params = req.allParams();
+    sails.sockets.join(req,params.owner);
     Player.update({id:params.id},params).exec(function(err,editPlayer) {
       if(err) return res.negotiate(err);
       sails.sockets.broadcast(params.owner,'edit/player',{msg:editPlayer})

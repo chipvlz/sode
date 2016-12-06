@@ -11,7 +11,8 @@
       <th>Tên</th>
       <th>Số Điện Thoại</th>
       <th>Lời/Lỗ</th>
-      <th>Cò</th>
+      <th>Cò 2 số</th>
+      <th>Cò 3 & 4 số</th>
       <th>Xử lý</th>
 
     </tr>
@@ -24,6 +25,7 @@
       <td class="player_phone"><%= player.phone %></td>
       <td class="player_total"><%= player.total %></td>
       <td class="player_bonus"><%= player.bonus %></td>
+      <td class="player_bonus1"><%= player.bonus1 %></td>
       <td class="player_submit">
         <a class="btn btn-primary edit_player"><i class="fa fa-pencil-square-o"></i> Sửa</a>
         <a class="btn btn-danger del_player"><i class="fa fa-remove fa-sm"></i> Xóa</a>
@@ -55,9 +57,18 @@
             <div class="col-sm-9">
               <input type="text" class="form-control" name="phone" id="phone" placeholder="bắt đầu bằng +84 thay cho số 0">
               <input type="text" class="sr-only" name="owner" id="owner" value="<%= req.session.user.phone %>">
-              <!--<input type="text" class="sr-only" name="count" value="0">-->
-              <!--<input type="text" class="sr-only" name="income" value="0">-->
-              <!--<input type="text" class="sr-only" name="outcome" value="0">-->
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-3" for="phone">Cò 2 số</label>
+            <div class="col-sm-9">
+              <input type="text" class="" name="bonus" id="bonus">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-3" for="phone">Cò 3 & 4 số</label>
+            <div class="col-sm-9">
+              <input type="text" class="" name="bonus1" id="bonus1">
             </div>
           </div>
           <div class="form-group">
@@ -118,12 +129,17 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="control-label col-sm-2" for="bonus">Cò</label>
+            <label class="control-label col-sm-2" for="bonus">Cò 2 số</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="bonus" id="bonus" placeholder="Nhập cò">
+              <input type="text" class="form-control" name="bonus" id="bonus" placeholder="Nhập cò 2 số">
             </div>
           </div>
-
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="bonus">Cò 3 số</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="bonus1" id="bonus1" placeholder="Nhập cò 3 số">
+            </div>
+          </div>
 
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">

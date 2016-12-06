@@ -17,6 +17,9 @@ module.exports = {
     bonus: {
       type: 'float'
     },
+    bonus1: {
+      type: 'float'
+    },
     count: {
       type: 'integer',
       defaultsTo: 0

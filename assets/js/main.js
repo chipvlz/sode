@@ -72,15 +72,15 @@ $(function() {
       var player_name = $(this).find('td.player_name').text();
       var player_id = $(this).find('td.player_id').text();
       var player_phone = $(this).find('td.player_phone').text();
-      var player_count = $(this).find('td.player_count').text();
-      var player_income = $(this).find('td.player_income').text();
-      var player_outcome = $(this).find('td.player_outcome').text();
+      var player_bonus = $(this).find('td.player_bonus').text();
+      var player_bonus1 = $(this).find('td.player_bonus1').text();
+
       $('#edit-player-form input[name=name]').val(player_name);
       $('#edit-player-form input[name=id]').val(player_id);
       $('#edit-player-form input[name=phone]').val(player_phone);
-      $('#edit-player-form input[name=count]').val(player_count);
-      $('#edit-player-form input[name=income]').val(player_income);
-      $('#edit-player-form input[name=outcome]').val(player_outcome);
+      $('#edit-player-form input[name=bonus]').val(player_bonus);
+      $('#edit-player-form input[name=bonus1]').val(player_bonus1);
+
       $('#del-player-form input[name=id]').val(player_id);
       $('#delPlayerModal span.player_name').html('<strong>'+player_name+'</strong>');
     });
@@ -98,15 +98,18 @@ $(function() {
     e.preventDefault();
     var data = $('#add-user-form').serialize();
     socket.get('/root/adduser?' + data);
+    $('#addPlayerModal').modal('hide');
+
+  });
+  socket.on('add/player',function(){
     location.reload();
   });
-
   // Nhập dữ liệu gia hạn cho đại lý
   $('#expired-user-form').submit(function(e) {
     e.preventDefault();
     var data = $('#expired-user-form').serialize();
     socket.get('/root/giahan?' + data);
-    location.reload();
+
   });
 
   // Sửa đại lý
@@ -114,6 +117,9 @@ $(function() {
     a.preventDefault();
     var data = $('#edit-player-form').serialize();
     socket.get('/player/edit?' + data);
+    $('#editPlayerModal').modal('hide');
+  });
+  socket.on('edit/player',function(){
     location.reload();
   });
   // Xóa đại lý
