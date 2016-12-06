@@ -4,6 +4,8 @@
  * @description :: Server-side logic for managing Lots
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
+// Kết quả xổ số tự động cập nhật mỗi ngày bằng Cronjob , dùng comman wget http://vnmagic.net:8000/lot/...
+// Sửa lại đường dẫn trong crontab -e nếu thay đổi tên miền .
 var Feed = require('rss-to-json');
 module.exports = {
   xsmb: (req,res) => {
