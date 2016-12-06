@@ -5,16 +5,36 @@
   <div class="col-sm-4">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info text-center">THÔNG TIN ĐẠI LÝ</li>
-      <li class="list-group-item"><i class="fa fa-user"></i> <span class="pull-right" style="font-weight:bold;"><%= name %></span></li>
-      <li class="list-group-item"><i class="fa fa-phone"></i> <span class="pull-right"><%= phone %></span></li>
-      <li class="list-group-item"><i class="fa fa-hourglass-3"></i> <span class="pull-right"><%= expired %></span></li>
+      <li class="list-group-item"><i class="fa fa-user"></i> <span class="pull-right" style="font-weight:bold;"><%= foundUser.name %></span></li>
+      <li class="list-group-item"><i class="fa fa-phone"></i> <span class="pull-right"><%= foundUser.phone %></span></li>
+      <li class="list-group-item"><i class="fa fa-hourglass-3"></i> <span class="pull-right"><%= foundUser.expired %></span></li>
       <li class="list-group-item"><a class="btn btn-danger" data-toggle="modal" data-target="#expiredUserModal">
           <i class="fa fa-calendar"></i> Gia hạn</a></li>
     </ul>
   </div>
 
-  <div class="col-sm-4">
+  <div class="col-sm-8">
+    <table class="table table-hover" id="user-history">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Ngày</th>
+        <th>Thắng / Thua</th>
 
+
+      </tr>
+      </thead>
+      <tbody>
+      <% _.each(foundHistory,function(his) { %>
+      <tr>
+        <td class="his_id"><%= his.id %></td>
+        <td class="his_date"><%= his.date %></td>
+        <td class="his_total"><%= his.total %></td>
+
+      </tr>
+      <% }) %>
+      </tbody>
+    </table>
   </div>
 
 </div>
@@ -33,8 +53,8 @@
           <div class="form-group">
             <label class="control-label col-sm-3" for="expired">Nhập ngày</label>
             <div class="col-sm-9">
-              <input class="sr-only" name="phone" value="<%= phone %>">
-              <input type="text" class="form-control" name="expired" id="expired" value="<%= expired %>">
+              <input class="sr-only" name="phone" value="<%= foundUser.phone %>">
+              <input type="text" class="form-control" name="expired" id="expired" value="<%= foundUser.expired %>">
             </div>
           </div>
           <div class="form-group">

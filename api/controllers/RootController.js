@@ -23,13 +23,15 @@ module.exports = {
   user: (req,res) => {
 
     let params = req.allParams();
-    User.findOne({phone:params.i})
-    .populate('players')
-    .populate('bets')
+    History.find({phone:params.i}).exec(function(err,foundHistory){
+      User.findOne({phone:params.i})
+      .populate('players')
+      .populate('bets')
       .exec(function(err,foundUser) {
         if (err) return res.negotiate(err);
-        return res.view('root/user',foundUser)
+        return res.view('root/user',{foundUser,foundHistory})
       })
+    })
   },
   giahan: (req,res) => {
     if (!req.isSocket) {return res.badRequest();}
