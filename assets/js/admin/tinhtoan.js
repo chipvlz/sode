@@ -529,7 +529,7 @@ $(function() {
       }
 
       if (findDai == 'đài chính') {
-        var timBaolobasoDC = [];
+        var timXiudaobasoDC = [];
         if (findTheloai == 'bao lô') {
           var timBaolobasoDC = [];
           for (f=0;f<=kqxsBasoDC.length;f++) { if (findSo==kqxsBasoDC[f]) timBaolobasoDC.push(kqxsBasoDC[f]) }
