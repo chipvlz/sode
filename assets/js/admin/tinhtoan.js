@@ -322,7 +322,7 @@ $(function() {
           var totalPay = parseFloat(betDetail[detailTien]) * 2 * bonus * 1000;
         } else if (betDetail[detailTheLoai] == 'bl' || betDetail[detailTheLoai] == 'b') {
           var theloaiBet = 'bao lô';
-        } else if (betDetail[detailTheLoai] == 'xc' || betDetail[detailTheLoai] == 'xiu' || betDetail[detailTheLoai] == 'xiuchu' || betDetail[detailTheLoai] == 'xỉu' || betDetail[detailTheLoai] == 'xỉuchủ') {
+        } else if (betDetail[detailTheLoai] == 'x' || betDetail[detailTheLoai] == 'xc' || betDetail[detailTheLoai] == 'xiu' || betDetail[detailTheLoai] == 'xiuchu' || betDetail[detailTheLoai] == 'xỉu' || betDetail[detailTheLoai] == 'xỉuchủ') {
           var theloaiBet = 'xỉu chủ';
         } else if (betDetail[detailTheLoai] == 'xd' || betDetail[detailTheLoai] == 'dxc' || betDetail[detailTheLoai] == 'xiudao' || betDetail[detailTheLoai] == 'xỉuđảo') {
           var theloaiBet = 'xỉu đảo';
