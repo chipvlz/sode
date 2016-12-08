@@ -151,6 +151,8 @@ $(function() {
       var duoiBonsoMB = kqxsBonsoMB[kqxsBonsoMB.length-1];
     }
   }
+  var giaibonsoMB = $('#sxmb-table td.td-6').text().split(' - '),
+    xiuChubonsoMB = [kqxsBonsoMB[0],giaibonsoMB[0],giaibonsoMB[1],giaibonsoMB[2]];
 
   var kqxsBonsoDC = [];
   var laysodb = $('#sxdc-table td.td-db').text().split('');
@@ -164,6 +166,8 @@ $(function() {
       var duoiBonsoDC = kqxsBonsoDC[kqxsBonsoDC.length-1];
     }
   }
+  var giaibonsoDC = $('#sxdc-table td.td-6').text().split(' - '),
+  xiuChubonsoDC = [kqxsBonsoDC[0],giaibonsoDC[0],giaibonsoDC[1],giaibonsoDC[2]];
 
   var kqxsBonsoDP = [];
   var laysodb = $('#sxdp-table td.td-db').text().split('');
@@ -177,6 +181,8 @@ $(function() {
       var duoiBonsoDP = kqxsBonsoDP[kqxsBonsoDP.length-1];
     }
   }
+  var giaibonsoDP = $('#sxdp-table td.td-6').text().split(' - '),
+  xiuChubonsoDP = [kqxsBonsoDP[0],giaibonsoDP[0],giaibonsoDP[1],giaibonsoDP[2]];
 
   var kqxsBonsoDP1 = [];
   var laysodb = $('#sxdp1-table td.td-db').text().split('');
@@ -190,6 +196,8 @@ $(function() {
       var duoiBonsoDP1 = kqxsBonsoDP1[kqxsBonsoDP1.length-1];
     }
   }
+  var giaibonsoDP1 = $('#sxdp1-table td.td-6').text().split(' - '),
+  xiuChubonsoDP1 = [kqxsBonsoDP1[0],giaibonsoDP[0],giaibonsoDP1[1],giaibonsoDP1[2]];
   // Kết thúc lấy thông số kết quả xổ số để kiểm tra
 
   // Tính toán riêng cho mỗi Table trong trang
@@ -375,6 +383,8 @@ $(function() {
             var loaiVon = 'Xương';
             if (theloaiBet == 'bao lô') {
               var totalPay = parseFloat(betDetail[detailTien]) * 16 * bonus1 * 1000;
+            } else if ((theloaiBet == 'xỉu chủ')) {
+              var totalPay = parseFloat(betDetail[detailTien]) * 4 * bonus1 * 1000;
             }
           }
           $(this).find('.show-phantich').append('<tr id="tr-danh-de" class="'+timID+' collapse">' +
@@ -519,7 +529,7 @@ $(function() {
       }
 
       if (findDai == 'đài chính') {
-        var timXiudaobasoDC = [];
+        var timBaolobasoDC = [];
         if (findTheloai == 'bao lô') {
           var timBaolobasoDC = [];
           for (f=0;f<=kqxsBasoDC.length;f++) { if (findSo==kqxsBasoDC[f]) timBaolobasoDC.push(kqxsBasoDC[f]) }
@@ -832,6 +842,133 @@ $(function() {
         }
         } else { findKetqua.text('sai cú pháp'); }
       }
+    }
+    else if (findLoaide == '4 số') {
+      if (findDai == 'đài chính') {
+        var timBaolobonsoDC = [];
+        if (findTheloai == 'bao lô') {
+          var timBaolobonsoDC = [];
+          for (f=0;f<=kqxsBonsoDC.length;f++) { if (findSo==kqxsBonsoDC[f]) timBaolobonsoDC.push(kqxsBonsoDC[f]) }
+          if (timBaolobonsoDC.length != 0) findKetqua.html('<strong class="text-success">'+timBaolobonsoDC.length*650*parseInt(findTien)+'đ</strong>');
+          else findKetqua.text('ko trúng');
+        }
+        else if (findTheloai == 'xỉu chủ') {
+          var timXiuchubonsoDC = [];
+          for (f=0;f<=xiuChubonsoDC.length;f++) { if (findSo==xiuChubonsoDC[f]) timXiuchubonsoDC.push(xiuChubonsoDC[f]) }
+          if (timXiuchubonsoDC.length != 0) findKetqua.html('<strong class="text-success">'+timXiuchubonsoDC.length*650*parseInt(findTien)+'đ</strong>');
+          else findKetqua.text('ko trúng');
+        }
+        else if (findTheloai == 'xỉu đảo') {
+          for (a=0;a<findSodao.length;a++) {
+            var findSomoi = findSodao[a];
+            for (f=0;f<=xiuChubonsoDC.length;f++) { if (findSomoi == xiuChubonsoDC[f]) timXiudaobonsoDC.push(xiuChubonsoDC[f]); }
+          }
+          if (timXiudaobonsoDC.length!=0) findKetqua.html('<strong class="text-success">'+timXiudaobonsoDC.length*650*parseInt(findTien)+'đ</strong>');
+          else findKetqua.text('ko trúng');
+        }
+        else if (findTheloai == 'đảo lô' || findTheloai == 'bao đảo') {
+          for (a=0;a<findSodao.length;a++) {
+            var findSomoi = findSodao[a];
+            for (f=0;f<=kqxsBonsoDC.length;f++) { if (findSomoi == kqxsBonsoDC[f]) timXiudaobonsoDC.push(kqxsBonsoDC[f]); }
+          }
+          if (timXiudaobonsoDC.length!=0) findKetqua.html('<strong class="text-success">'+timXiudaobonsoDC.length*650*parseInt(findTien)+'đ</strong>');
+          else findKetqua.text('ko trúng');
+        }
+      }
+      else if (findDai == 'đài phụ') {
+        var timXiudaobonsoDP = [];
+        if (findTheloai == 'bao lô') {
+          var timBaolobonsoDP = [];
+          for (f=0;f<=kqxsBonsoDP.length;f++) { if (findSo==kqxsBonsoDP[f]) timBaolobonsoDP.push(kqxsBonsoDP[f]) }
+          if (timBaolobonsoDP.length != 0) findKetqua.html('<strong class="text-success">'+timBaolobonsoDP.length*650*parseInt(findTien)+'đ</strong>');
+          else findKetqua.text('ko trúng');
+        }
+        else if (findTheloai == 'xỉu chủ') {
+          var timXiuchubonsoDP = [];
+          for (f=0;f<=xiuChubonsoDP.length;f++) { if (findSo==xiuChubonsoDP[f]) timXiuchubonsoDP.push(xiuChubonsoDP[f]) }
+          if (timXiuchubonsoDP.length != 0) findKetqua.html('<strong class="text-success">'+timXiuchubonsoDP.length*650*parseInt(findTien)+'đ</strong>');
+          else findKetqua.text('ko trúng');
+        }
+        else if (findTheloai == 'xỉu đảo') {
+          for (a=0;a<findSodao.length;a++) {
+            var findSomoi = findSodao[a];
+            for (f=0;f<=xiuChubonsoDP.length;f++) { if (findSomoi == xiuChubonsoDP[f]) timXiudaobonsoDP.push(xiuChubonsoDP[f]); }
+          }
+          if (timXiudaobonsoDP.length!=0) findKetqua.html('<strong class="text-success">'+timXiudaobonsoDP.length*650*parseInt(findTien)+'đ</strong>');
+          else findKetqua.text('ko trúng');
+        }
+        else if (findTheloai == 'đảo lô' || findTheloai == 'bao đảo') {
+          for (a=0;a<findSodao.length;a++) {
+            var findSomoi = findSodao[a];
+            for (f=0;f<=kqxsBonsoDP.length;f++) { if (findSomoi == kqxsBonsoDP[f]) timXiudaobonsoDP.push(kqxsBonsoDP[f]); }
+          }
+          if (timXiudaobonsoDP.length!=0) findKetqua.html('<strong class="text-success">'+timXiudaobonsoDP.length*650*parseInt(findTien)+'đ</strong>');
+          else findKetqua.text('ko trúng');
+        }
+      }
+      else if (findDai == 'đài phụ 1') {
+        var timXiudaobonsoDP1 = [];
+        if (findTheloai == 'bao lô') {
+          var timBaolobonsoDP1 = [];
+          for (f=0;f<=kqxsBonsoDP1.length;f++) { if (findSo==kqxsBonsoDP1[f]) timBaolobonsoDP1.push(kqxsBonsoDP1[f]) }
+          if (timBaolobonsoDP1.length != 0) findKetqua.html('<strong class="text-success">'+timBaolobonsoDP1.length*650*parseInt(findTien)+'đ</strong>');
+          else findKetqua.text('ko trúng');
+        }
+        else if (findTheloai == 'xỉu chủ') {
+          var timXiuchubonsoDP1 = [];
+          for (f=0;f<=xiuChubonsoDP1.length;f++) { if (findSo==xiuChubonsoDP1[f]) timXiuchubonsoDP1.push(xiuChubonsoDP1[f]) }
+          if (timXiuchubonsoDP1.length != 0) findKetqua.html('<strong class="text-success">'+timXiuchubonsoDP1.length*650*parseInt(findTien)+'đ</strong>');
+          else findKetqua.text('ko trúng');
+        }
+        else if (findTheloai == 'xỉu đảo') {
+          for (a=0;a<findSodao.length;a++) {
+            var findSomoi = findSodao[a];
+            for (f=0;f<=xiuChubonsoDP1.length;f++) { if (findSomoi == xiuChubonsoDP1[f]) timXiudaobonsoDP1.push(xiuChubonsoDP1[f]); }
+          }
+          if (timXiudaobonsoDP1.length!=0) findKetqua.html('<strong class="text-success">'+timXiudaobonsoDP1.length*650*parseInt(findTien)+'đ</strong>');
+          else findKetqua.text('ko trúng');
+        }
+        else if (findTheloai == 'đảo lô' || findTheloai == 'bao đảo') {
+          for (a=0;a<findSodao.length;a++) {
+            var findSomoi = findSodao[a];
+            for (f=0;f<=kqxsBonsoDP1.length;f++) { if (findSomoi == kqxsBonsoDP1[f]) timXiudaobonsoDP1.push(kqxsBonsoDP1[f]); }
+          }
+          if (timXiudaobonsoDP1.length!=0) findKetqua.html('<strong class="text-success">'+timXiudaobonsoDP1.length*650*parseInt(findTien)+'đ</strong>');
+          else findKetqua.text('ko trúng');
+        }
+      }
+      else if (findDai == 'đài miền bắc') {
+        var timXiudaobonsoMB = [];
+        if (findTheloai == 'bao lô') {
+          var timBaolobonsoMB = [];
+          for (f=0;f<=kqxsBonsoMB.length;f++) { if (findSo==kqxsBonsoMB[f]) timBaolobonsoMB.push(kqxsBonsoMB[f]) }
+          if (timBaolobonsoMB.length != 0) findKetqua.html('<strong class="text-success">'+timBaolobonsoMB.length*650*parseInt(findTien)+'đ</strong>');
+          else findKetqua.text('ko trúng');
+        }
+        else if (findTheloai == 'xỉu chủ') {
+          var timXiuchubonsoMB = [];
+          for (f=0;f<=xiuChubonsoMB.length;f++) { if (findSo==xiuChubonsoMB[f]) timXiuchubonsoMB.push(xiuChubonsoMB[f]) }
+          if (timXiuchubonsoMB.length != 0) findKetqua.html('<strong class="text-success">'+timXiuchubonsoMB.length*650*parseInt(findTien)+'đ</strong>');
+          else findKetqua.text('ko trúng');
+        }
+        else if (findTheloai == 'xỉu đảo') {
+          for (a=0;a<findSodao.length;a++) {
+            var findSomoi = findSodao[a];
+            for (f=0;f<=xiuChubonsoMB.length;f++) { if (findSomoi == xiuChubonsoMB[f]) timXiudaobonsoMB.push(xiuChubonsoMB[f]); }
+          }
+          if (timXiudaobonsoMB.length!=0) findKetqua.html('<strong class="text-success">'+timXiudaobonsoMB.length*650*parseInt(findTien)+'đ</strong>');
+          else findKetqua.text('ko trúng');
+        }
+        else if (findTheloai == 'đảo lô' || findTheloai == 'bao đảo') {
+          for (a=0;a<findSodao.length;a++) {
+            var findSomoi = findSodao[a];
+            for (f=0;f<=kqxsBonsoMB.length;f++) { if (findSomoi == kqxsBonsoMB[f]) timXiudaobonsoMB.push(kqxsBonsoMB[f]); }
+          }
+          if (timXiudaobonsoMB.length!=0) findKetqua.html('<strong class="text-success">'+timXiudaobonsoMB.length*650*parseInt(findTien)+'đ</strong>');
+          else findKetqua.text('ko trúng');
+        }
+      }
+
     }
 
   });

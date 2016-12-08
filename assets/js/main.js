@@ -156,7 +156,7 @@ $(function() {
       var bet_msgedit = $(this).find('td.bet_msgedit').text();
       var bet_id = $(this).find('td.bet_id').text();
       var oldmsg = $(this).find('td.bet_message').text();
-      $('#edit-bet-form input[name=msgedit]').val(bet_msgedit);
+      $('#edit-bet-form textarea[name=msgedit]').val(bet_msgedit);
       $('#edit-bet-form input[name=id]').val(bet_id);
       $('#del-bet-form input[name=id]').val(bet_id);
       $('#edit-bet-form input#oldmsg').val(oldmsg);
