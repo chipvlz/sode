@@ -7,9 +7,19 @@
 
 // telerivet.com/p/5e34e37b
 var WEBHOOK_SECRET = "3PX7T47T6RZ2QR6CL6KL6UU9KLGZPFQQ";
-
+var moment = require('moment');
 module.exports = {
 	index: (req,res) => {
+    var homnay = (new Date()).toString();
+
+    var getgio = moment(homnay).format('H');
+    if (getgio > 19) {
+      var getngaytinh = moment(homnay).add(1,'days');
+    } else {
+      getngaytinh = homnay;
+    }
+    var ngaytinh = moment(getngaytinh).format('YYYY-MM-DD');
+
 	  // Khai báo key cho ứng dụng
     var secret = req.body.secret;
     // Phản hồi lỗi nếu key không đúng
@@ -38,7 +48,8 @@ module.exports = {
             message:data.content,
             msgedit:data.content,
             player:foundPlayer.id,
-            owner:data.toNumber
+            owner:data.toNumber,
+            ngaytinh:ngaytinh
           }).exec(function(err,result) {
             if (err) {
               return res.negotiate(err)

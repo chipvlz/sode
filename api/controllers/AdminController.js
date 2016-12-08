@@ -8,6 +8,7 @@
 var moment = require('moment');
 module.exports = {
 	index: (req,res) => {
+
     // Đếm số người chơi của đại lý
     let findCountPlayers = new Promise((resolve, reject) => {
       Player.count({owner:req.session.user.phone}).exec(function(err,countPlayers) {
@@ -36,6 +37,7 @@ module.exports = {
         findCountBets,
         findOneUser
       ]);
+
       return res.view("admin/index", {countPlayers,countBets,foundUser})
     }
     concurrent();
@@ -55,7 +57,7 @@ module.exports = {
       var getday = moment(params.ngay).format('YYYY-MM-DD');
       var getdayShow = moment(params.ngay).format('DD-MM-YYYY');
       console.log(getday);
-      Bet.find({owner:req.session.user.phone,createdAt:{'contains':getday}})
+      Bet.find({owner:req.session.user.phone,ngaytinh:{'contains':getday}})
         .populate('player')
         .exec(function(err,foundBets){
           if(err) return res.negotiate(err);
@@ -65,7 +67,7 @@ module.exports = {
       let getToday = (new Date()).toString();
       var getday = moment(getToday).format('YYYY-MM-DD');
       var getdayShow = moment(getToday).format('DD-MM-YYYY');
-      Bet.find({owner:req.session.user.phone,createdAt:{'contains':getday}})
+      Bet.find({owner:req.session.user.phone,ngaytinh:{'contains':getday}})
         .populate('player')
         .exec(function(err,foundBets){
         if(err) return res.negotiate(err);
@@ -82,7 +84,7 @@ module.exports = {
       Lot.find({createdAt:{'contains':getday}}).exec(function(err,gotLot) {
         History.findOne({date:getdayShow}).exec(function(err,foundHistory){
           console.log(foundHistory);
-          Bet.find({owner: req.session.user.phone,createdAt:{'contains':getday}})
+          Bet.find({owner: req.session.user.phone,ngaytinh:{'contains':getday}})
           .populate('player')
           .exec(function (err, foundBets) {
             if (err) return res.negotiate(err);

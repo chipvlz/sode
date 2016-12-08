@@ -17,6 +17,9 @@ module.exports = {
     result: {
       type: 'string'
     },
+    ngaytinh: {
+      type: 'string'
+    },
     owner: {
       model: 'user'
     },
