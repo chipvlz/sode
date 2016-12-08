@@ -44,7 +44,7 @@
     <tr class="tr-info">
       <td class="td-player">Người chơi <span class="id-nguoi-choi badge"><%= bet.player.id %></span></td>
       <td class="td-phone">Điện thoại</td>
-      <td class="td-bonus">Cò</td>
+      <td colspan="2" class="td-bonus">Cò</td>
       <td colspan="6" class="td-message">Tin nhắn
         <span class="id-tin-nhan label label-success pull-right"><%= bet.id %></span>
       </td>
@@ -53,11 +53,12 @@
       <td class="name-nguoi-choi"><%= bet.player.name %></td>
       <td class="phone-nguoi-choi"><%= bet.player.phone %></td>
       <td class="tien-co"><%= bet.player.bonus %></td>
+      <td class="tien-co1"><%= bet.player.bonus1 %></td>
       <td colspan="6" class="noi-dung-tin-nhan"><%= bet.msgedit %></td>
     </tr>
     <tr>
       <td>Tính tiền</td>
-      <td colspan="2" class="tinh-tien-thang"></td>
+      <td colspan="3" class="tinh-tien-thang"></td>
       <td colspan="6">
         <input class="sr-only" name="tim-id" value="xem-chi-tiet-<%= bet.id %>">
         <a data-toggle="collapse" data-target=".xem-chi-tiet-<%= bet.id %>" class="xem-chi-tiet btn btn-primary"><i class="fa fa-search"></i> Chi tiết</a>

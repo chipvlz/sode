@@ -195,6 +195,7 @@ $(function() {
   // Tính toán riêng cho mỗi Table trong trang
   $('#phan-tich-tung-table table').each(function(){
     var bonus = $(this).find('.tien-co').text(),
+      bonus1 = $(this).find('.tien-co1').text(),
       timID = $(this).find('input[name=tim-id]').val();
       var tinNhan = $(this).find('.noi-dung-tin-nhan').text();
     var betValues = tinNhan.toLowerCase().split('.'); // Chia tin nhắn ra thành nhiều bet , phân biệt giữa các bet bằng dấu chấm
@@ -353,27 +354,27 @@ $(function() {
             var loaiSo = '3 số';
             var loaiVon = 'Xương';
             if ((theloaiBet == 'xỉu chủ')) {
-              var totalPay = parseFloat(betDetail[detailTien]) * 2 * bonus * 1000;
+              var totalPay = parseFloat(betDetail[detailTien]) * 2 * bonus1 * 1000;
             } else if (theloaiBet == 'bao lô') {
-              var totalPay = parseFloat(betDetail[detailTien]) * 17 * bonus * 1000;
+              var totalPay = parseFloat(betDetail[detailTien]) * 17 * bonus1 * 1000;
             } else if (theloaiBet == 'xỉu đảo') {
               if (n1 != n2 && n1 != n3 && n2 != n3) {
-                var totalPay = parseFloat(betDetail[detailTien]) * 6 * 2 * bonus * 1000;
+                var totalPay = parseFloat(betDetail[detailTien]) * 6 * 2 * bonus1 * 1000;
               } else if (n1 == n2 || n2 == n3 || n1 == n3) {
-                var totalPay = parseFloat(betDetail[detailTien]) * 4 * 2 * bonus * 1000;
+                var totalPay = parseFloat(betDetail[detailTien]) * 4 * 2 * bonus1 * 1000;
               }
             } else if (theloaiBet == 'bao đảo' || theloaiBet == 'đảo lô') {
               if (n1 != n2 && n1 != n3 && n2 != n3) {
-                var totalPay = parseFloat(betDetail[detailTien]) * 6 * 17 * bonus * 1000;
+                var totalPay = parseFloat(betDetail[detailTien]) * 6 * 17 * bonus1 * 1000;
               } else if (n1 == n2 || n2 == n3 || n1 == n3) {
-                var totalPay = parseFloat(betDetail[detailTien]) * 4 * 17 * bonus * 1000;
+                var totalPay = parseFloat(betDetail[detailTien]) * 4 * 17 * bonus1 * 1000;
               }
             }
           } else {
             var loaiSo = '4 số';
             var loaiVon = 'Xương';
             if (theloaiBet == 'bao lô') {
-              var totalPay = parseFloat(betDetail[detailTien]) * 16 * bonus * 1000;
+              var totalPay = parseFloat(betDetail[detailTien]) * 16 * bonus1 * 1000;
             }
           }
           $(this).find('.show-phantich').append('<tr id="tr-danh-de" class="'+timID+' collapse">' +
