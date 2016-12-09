@@ -996,7 +996,7 @@ $('#phan-tich-tung-table').ready(function(){
 
     var newVon = $(this).find('td.tong-von').text();
     var newThang = $(this).find('td.tong-an').text();
-    var ketQua = parseInt(String(newThang).replace(/\./g,''))-parseInt(String(newVon).replace(/\./g,''));
+    var ketQua = parseInt(String(newVon).replace(/\./g,''))-parseInt(String(newThang).replace(/\./g,''));
     if (ketQua < 0) { $(this).find('td.tinh-tien-thang').css("color","#a94442") }
     $(this).find('td.tinh-tien-thang').text(ketQua.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ');
 
