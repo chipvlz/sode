@@ -65,6 +65,16 @@ $(function() {
     location.reload();
   });
 
+  $('#search-player-form').submit(function(s) {
+    s.preventDefault();
+    var data = $('#search-player-form').serialize();
+    socket.get('/player/search?' + data);
+    $('#searchPlayerModal').modal('hide');
+  });
+  socket.on('search/player',function(data){
+    window.location = '/player/view/'+data.pid;
+  });
+
   // PLAYER Manager Modal
   $('#manage-player tbody tr').each(function() {
 

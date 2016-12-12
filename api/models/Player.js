@@ -20,6 +20,9 @@ module.exports = {
     bonus1: {
       type: 'float'
     },
+    password: {
+      type: 'string'
+    },
     count: {
       type: 'integer',
       defaultsTo: 0

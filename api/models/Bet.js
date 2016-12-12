@@ -15,7 +15,8 @@ module.exports = {
       type: 'string'
     },
     result: {
-      type: 'string'
+      type: 'float',
+      defaultsTo: 0
     },
     ngaytinh: {
       type: 'string'

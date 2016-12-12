@@ -38,7 +38,7 @@ module.exports = {
             var newTotal = parseFloat(foundPlayer.total) + parseFloat(params.total);
             Player.update({id:foundPlayer.id},{total:newTotal}).exec(function(err){
               console.log('update player thành công');
-              Bet.update({id:params.bid},{result:1}).exec(function(err){
+              Bet.update({id:params.bid},{result:parseFloat(params.total)}).exec(function(err){
                 console.log('update bet thành công')
               })
             })

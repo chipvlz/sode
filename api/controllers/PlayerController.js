@@ -39,10 +39,32 @@ module.exports = {
       .populate('owner')
       .populate('bets')
       .exec(function(err,foundPlayer){
-        console.log(foundPlayer);
+
       if (err) return res.negotiate(err);
       if (foundPlayer.owner.phone != req.session.user.phone ) return res.negotiate('bạn ko có quyền xem người chơi này');
       else return res.view('admin/history',foundPlayer);
     })
+  },
+  search: (req,res) => {
+    let params = req.allParams();
+    sails.sockets.join(req,params.phone);
+    Player.findOne({phone:params.phone}).exec(function(err,foundPlayer){
+      if (!foundPlayer) console.log('ko tìm thấy số '+params.phone+' trong dữ liệu');
+      else {
+        if (foundPlayer.password == params.password) {
+          sails.sockets.broadcast(params.phone,'search/player',{pid:foundPlayer.phone})
+        }
+        else { console.log('sai mật khẩu rồi') }
+      }
+    })
+  },
+  view: (req,res) => {
+    let params = req.allParams();
+    Player.findOne({phone:params.id})
+      .populate('bets')
+      .exec(function(err,foundPlayer){
+        res.view('player',{foundPlayer});
+        console.log(foundPlayer);
+      })
   }
 };

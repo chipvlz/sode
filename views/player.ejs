@@ -1,0 +1,39 @@
+<%- partial ('common/navbar.ejs') %>
+
+
+<div class="container" id="page-bet-manager">
+
+  <h2>DANH SÁCH TIN NHẮN</h2>
+  <table class="table table-hover" id="manage-bet">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Ngày Tính</th>
+      <th>Tin Gốc</th>
+      <th>Tin Chỉnh Sửa</th>
+      <th>Kết Quả</th>
+      <!--<th>Xử lý</th>-->
+
+    </tr>
+    </thead>
+    <tbody>
+    <% _.each(foundPlayer.bets,function(bet) { %>
+    <tr>
+      <td class="bet_id"><%= bet.id %></td>
+      <td class="bet_message"><%= bet.ngaytinh %></td>
+      <td class="bet_message"><%= bet.message %></td>
+      <td class="bet_msgedit"><%= bet.msgedit %></td>
+      <td class="bet_result"><%= bet.result %></td>
+      <!--<td class="bet_submit">-->
+        <!--<a class="btn btn-primary edit_bet"><i class="fa fa-pencil-square-o"></i> Sửa</a>-->
+        <!--&lt;!&ndash;<a href="/bet/view?id=<%= bet.id %>" class="btn btn-success view_bet"><i class="fa fa-eye"></i> Xem</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;<a class="btn btn-danger del_bet"><i class="fa fa-remove fa-sm"></i> Xóa</a>&ndash;&gt;-->
+      <!--</td>-->
+    </tr>
+    <% }) %>
+    </tbody>
+  </table>
+  <!--<a href="/admin/bet" class="btn btn-warning"><i class="fa fa-search"></i> Tìm hôm nay</a>-->
+  <!--<a class="btn btn-warning" data-toggle="modal" data-target="#searchBetModal"><i class="fa fa-calendar"></i> Tìm theo lịch</a>-->
+  <!--<a href="/admin/cal/" class="btn btn-success"><i class="fa fa-calculator"></i> Tính tiền</a>-->
+</div>
