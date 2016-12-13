@@ -69,6 +69,7 @@ $(function() {
     s.preventDefault();
     var data = $('#search-player-form').serialize();
     data = data.replace('0','+84');
+    console.log(data);
     socket.get('/player/search?' + data);
     $('#searchPlayerModal').modal('hide');
   });
