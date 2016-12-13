@@ -68,7 +68,7 @@ $(function() {
   $('#search-player-form').submit(function(s) {
     s.preventDefault();
     var data = $('#search-player-form').serialize();
-    data = data.replace('0','+84');
+    data = data.replace('0','%2B84');
     console.log(data);
     socket.get('/player/search?' + data);
     $('#searchPlayerModal').modal('hide');
