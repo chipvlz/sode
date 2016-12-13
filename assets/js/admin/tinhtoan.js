@@ -350,7 +350,8 @@ $(function() {
           }
           var n1 = output[0],
             n2 = output[1],
-            n3 = output[2];
+            n3 = output[2],
+            n4 = output[3];
 
           if (betDetail[x].length == 2) {
             var loaiSo = '2 số';
@@ -385,6 +386,12 @@ $(function() {
               var totalPay = parseFloat(betDetail[detailTien]) * 16 * bonus1 * 1000;
             } else if ((theloaiBet == 'xỉu chủ')) {
               var totalPay = parseFloat(betDetail[detailTien]) * 4 * bonus1 * 1000;
+            } else if (theloaiBet == 'bao đảo') {
+              if (n1 != n2 && n2 != n3 && n3 == n4) {
+                var totalPay = parseFloat(betDetail[detailTien]) * 12 * 16 * bonus1 * 1000;
+              } else if (n1 != n2 || n2 == n3 || n3 == n4) {
+                var totalPay = parseFloat(betDetail[detailTien]) * 4 * 16 * bonus1 * 1000;
+              }
             }
           }
           $(this).find('.show-phantich').append('<tr id="tr-danh-de" class="'+timID+' collapse">' +
@@ -844,6 +851,21 @@ $(function() {
       }
     }
     else if (findLoaide == '4 số') {
+      // trường hợp đảo số , đảo xiên
+      var chiaSo = findSo.split('');
+      if (chiaSo[0] != chiaSo[1] && chiaSo[0] != chiaSo[2] && chiaSo[1] != chiaSo[2]) {
+        var soDao1 = chiaSo[0]+''+chiaSo[1]+''+chiaSo[2],soDao2 = chiaSo[2]+''+chiaSo[1]+''+chiaSo[0],
+          soDao3 = chiaSo[0]+''+chiaSo[2]+''+chiaSo[1],soDao4 = chiaSo[1]+''+chiaSo[0]+''+chiaSo[2],
+          soDao5 = chiaSo[2]+''+chiaSo[0]+''+chiaSo[1],soDao6 = chiaSo[1]+''+chiaSo[2]+''+chiaSo[0];
+        var findSodao = [soDao1,soDao2,soDao3,soDao4,soDao5,soDao6];
+      }
+      else if (chiaSo[0] != chiaSo[1] && chiaSo[1] != chiaSo[2] && chiaSo[2] == chiaSo[3]) {
+        var soDao1 = chiaSo[0]+''+chiaSo[0]+''+chiaSo[2],soDao2 = chiaSo[2]+''+chiaSo[0]+''+chiaSo[0],
+          soDao3 = chiaSo[2]+''+chiaSo[0]+''+chiaSo[2],soDao4 = chiaSo[0]+''+chiaSo[2]+''+chiaSo[0];
+        var findSodao = [soDao1,soDao2,soDao3,soDao4];
+      }
+
+
       if (findDai == 'đài chính') {
         var timBaolobonsoDC = [];
         if (findTheloai == 'bao lô') {
