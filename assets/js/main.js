@@ -61,6 +61,7 @@ $(function() {
   $('#add-player-form').submit(function(a) {
     a.preventDefault();
     var data = $('#add-player-form').serialize();
+    data = data.replace('0','+84');
     socket.get('/player/add?' + data);
     location.reload();
   });
