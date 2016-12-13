@@ -39,6 +39,7 @@ module.exports.routes = {
   '/root/user/:i':'RootController.user',
   '/root/kqxs/:date':'RootController.user',
   '/player/history/:id':'PlayerController.history',
+  '/player/view/:id':'PlayerController.view',
   '/admin/cal/:ngay':'AdminController.cal'
 
   /***************************************************************************
