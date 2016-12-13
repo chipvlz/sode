@@ -61,8 +61,6 @@ $(function() {
   $('#add-player-form').submit(function(a) {
     a.preventDefault();
     var data = $('#add-player-form').serialize();
-    data = data.replace('0','+84');
-    console.log(data);
     socket.get('/player/add?' + data);
     location.reload();
   });
@@ -70,6 +68,7 @@ $(function() {
   $('#search-player-form').submit(function(s) {
     s.preventDefault();
     var data = $('#search-player-form').serialize();
+    data = data.replace('0','+84');
     socket.get('/player/search?' + data);
     $('#searchPlayerModal').modal('hide');
   });
