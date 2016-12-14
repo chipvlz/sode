@@ -392,7 +392,7 @@ $(function() {
           } else if (betDetail[x].length == 3) {
             var loaiSo = '3 số';
             var loaiVon = 'Thịt';
-            if ((theloaiBet == 'xỉu chủ')) {
+            if (theloaiBet == 'xỉu chủ') {
               var paygoc = parseFloat(betDetail[detailTien]) * numDai * 2 * 1000;
               var totalPay = paygoc * bonus1;
             } else if (theloaiBet == 'bao lô') {
@@ -492,6 +492,10 @@ $(function() {
                 var totalPay = paygoc * bonus1;
               }
               else if (n1 != n2 && n2 != n3 && n3 != n4 && n1 == n4) {
+                var paygoc = parseFloat(betDetail[detailTien]) * numDai * 12 * 2 * 1000;
+                var totalPay = paygoc * bonus1;
+              }
+              else if (n1 != n2 && n2 != n3 && n3 != n4 && n1 == n3) {
                 var paygoc = parseFloat(betDetail[detailTien]) * numDai * 12 * 2 * 1000;
                 var totalPay = paygoc * bonus1;
               }
