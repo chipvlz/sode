@@ -8,24 +8,12 @@
 module.exports = {
 	save: (req,res) => {
 	  let params = req.allParams();
-    sails.sockets.join(req,params.phone);
-    History.findOne({date:params.date}).exec(function(err,foundHistory){
-      if (foundHistory) {
-        console.log('đã có dữ liệu hôm nay , ko lưu nữa')
-      } else {
-        History.create({
-          date:params.date,
-          name:params.name,
-          phone:params.phone,
-          total:params.total,
-          status:1
-        }).exec(function(err){
-          sails.sockets.broadcast(params.phone,'save/history',{msg:'saved'});
+    console.log(params);
+    sails.sockets.join(req,params.aPhone);
+      History.create(params).exec(function(err){
+          sails.sockets.broadcast(params.aPhone,'save/history',{msg:'saved'});
           return res.ok();
         })
-      }
-    });
-
   },
 
   update: (req,res) => {

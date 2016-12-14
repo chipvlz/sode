@@ -32,9 +32,34 @@ $(function() {
     //   $('.ngay-hom-nay').text(ngayHomNay);
 
     $('a.history-save').click(function(){
-      var dataHistory = $('span.noidung-history').text();
-      var totalHistory = $('span.tongket strong').text();
-      socket.get('/history/save?'+dataHistory+''+totalHistory);
+      var hDate = $('strong.hDate').text();
+      var hAname = $('strong.hName').text();
+      var hAphone = $('strong.hPhone').text();
+      var hAllmsg = $('strong.hAllmsg').text();
+      var hTotal = $('strong.hTotal').text();
+      $('#phan-tich-tung-table table').each(function(){
+        var hName = $(this).find('td.name-nguoi-choi').text();
+        var hPhone = $(this).find('td.phone-nguoi-choi').text();
+        var hContent = $(this).find('td.noi-dung-tin-nhan').text();
+        var hOutcome = $(this).find('td.tong-von').text();
+        var hIncome = $(this).find('td.tong-an').text();
+        var hCalculator =  $(this).find('td.tinh-tien-thang').text();
+        var hData = {
+          date: hDate,
+          aname: hAname,
+          aphone: hAphone,
+          allmsg: hAllmsg,
+          total: hTotal,
+          name: hName,
+          phone: hPhone,
+          content: hContent,
+          outcome: hOutcome,
+          income: hIncome,
+          calculator: hCalculator
+        };
+        socket.get('/history/save',hData);
+      });
+
     });
 
     socket.on('save/history',function(){

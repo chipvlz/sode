@@ -91,7 +91,7 @@ $(function() {
     }
   }
   var giaibasoMB = $('#sxmb-table td.td-6').text(),
-      xiuChubasoMB = [kqxsBasoMB[0],giaibasoMB];
+    xiuChubasoMB = [kqxsBasoMB[0],giaibasoMB];
 
   var kqxsBasoDC = [];
   var laysodb = $('#sxdc-table td.td-db').text().split('');
@@ -106,7 +106,7 @@ $(function() {
     }
   }
   var giaibasoDC = $('#sxdc-table td.td-7').text(),
-      xiuChubasoDC = [kqxsBasoDC[0],giaibasoDC];
+    xiuChubasoDC = [kqxsBasoDC[0],giaibasoDC];
 
   var kqxsBasoDP = [];
   var laysodb = $('#sxdp-table td.td-db').text().split('');
@@ -121,7 +121,7 @@ $(function() {
     }
   }
   var giaibasoDP = $('#sxdp-table td.td-7').text(),
-      xiuChubasoDP = [kqxsBasoDP[0],giaibasoDP];
+    xiuChubasoDP = [kqxsBasoDP[0],giaibasoDP];
 
   var xiuChubasoDD = xiuChubasoDC.concat(xiuChubasoDP);
   var kqxsBasoDD = kqxsBasoDC.concat(kqxsBasoDP);
@@ -139,7 +139,7 @@ $(function() {
     }
   }
   var giaibasoDP1 = $('#sxdp1-table td.td-7').text(),
-      xiuChubasoDP1 = [kqxsBasoDP1[0],giaibasoDP1];
+    xiuChubasoDP1 = [kqxsBasoDP1[0],giaibasoDP1];
 
   var kqxsBonsoMB = [];
   var laysodb = $('#sxmb-table td.td-db').text().split('');
@@ -169,7 +169,7 @@ $(function() {
     }
   }
   var giaibonsoDC = $('#sxdc-table td.td-6').text().split(' - '),
-  xiuChubonsoDC = [kqxsBonsoDC[0],giaibonsoDC[0],giaibonsoDC[1],giaibonsoDC[2]];
+    xiuChubonsoDC = [kqxsBonsoDC[0],giaibonsoDC[0],giaibonsoDC[1],giaibonsoDC[2]];
 
   var kqxsBonsoDP = [];
   var laysodb = $('#sxdp-table td.td-db').text().split('');
@@ -184,7 +184,7 @@ $(function() {
     }
   }
   var giaibonsoDP = $('#sxdp-table td.td-6').text().split(' - '),
-  xiuChubonsoDP = [kqxsBonsoDP[0],giaibonsoDP[0],giaibonsoDP[1],giaibonsoDP[2]];
+    xiuChubonsoDP = [kqxsBonsoDP[0],giaibonsoDP[0],giaibonsoDP[1],giaibonsoDP[2]];
 
   var xiuChubonsoDD = xiuChubonsoDC.concat(xiuChubonsoDP);
   var kqxsBonsoDD = kqxsBonsoDC.concat(kqxsBonsoDP);
@@ -202,7 +202,7 @@ $(function() {
     }
   }
   var giaibonsoDP1 = $('#sxdp1-table td.td-6').text().split(' - '),
-  xiuChubonsoDP1 = [kqxsBonsoDP1[0],giaibonsoDP[0],giaibonsoDP1[1],giaibonsoDP1[2]];
+    xiuChubonsoDP1 = [kqxsBonsoDP1[0],giaibonsoDP[0],giaibonsoDP1[1],giaibonsoDP1[2]];
   // Kết thúc lấy thông số kết quả xổ số để kiểm tra
 
   // Tính toán riêng cho mỗi Table trong trang
@@ -210,7 +210,7 @@ $(function() {
     var bonus = $(this).find('.tien-co').text(),
       bonus1 = $(this).find('.tien-co1').text(),
       timID = $(this).find('input[name=tim-id]').val();
-      var tinNhan = $(this).find('.noi-dung-tin-nhan').text();
+    var tinNhan = $(this).find('.noi-dung-tin-nhan').text();
     var betValues = tinNhan.toLowerCase().split('.'); // Chia tin nhắn ra thành nhiều bet , phân biệt giữa các bet bằng dấu chấm
     for (i=0;i<betValues.length;i++) {
       y = i + 1;
@@ -270,7 +270,8 @@ $(function() {
 
         if (betDetail.length == 5 ) {
           betDetail[4] = betDetail[4].replace(',','.');
-          var totalPay = 1 * hesoDai * bonus * parseFloat(betDetail[4]) * 1000;
+          var paygoc = 1 * hesoDai * parseFloat(betDetail[4]) * 1000;
+          var totalPay = paygoc * bonus;
 
           $(this).find('.show-phantich').append('<tr id="tr-danh-de" class="'+timID+' collapse">' +
             '<td class="phan-tich-the-loai">' + theloaiBet + '</td>' +
@@ -279,7 +280,8 @@ $(function() {
             '<td class="phan-tich-loaide">đá 2</td>' +
             '<td colspan="2" class="phan-tich-soda">'+betDetail[3]+'</td>' +
             '<td class="phan-tich-tien">'+parseFloat(betDetail[4])*1000+'</td>' +
-            '<td class="phan-tich-von">'+parseInt(totalPay)+'đ <span class="badge pull-right">'+loaiVon+'</span></td>' +
+            '<td class="phan-tich-von">'+parseInt(totalPay)+'đ</td>' +
+            '<td class="phan-tich-loaivon">'+loaiVon+'<span class="badge pull-right">'+paygoc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ</span></td>' +
             '<td class="phan-tich-thang"></td>' +
             '</tr>');
         } else if (betDetail.length == 6 ) {
@@ -294,7 +296,8 @@ $(function() {
             '<td class="phan-tich-soda1">'+betDetail[3]+'</td>' +
             '<td class="phan-tich-soda2">'+betDetail[4]+'</td>' +
             '<td class="phan-tich-tien">'+parseFloat(betDetail[5])*1000+'</td>' +
-            '<td class="phan-tich-von">'+parseInt(totalPay)+'đ <span class="badge pull-right">'+loaiVon+'</span></td>' +
+            '<td class="phan-tich-von">'+parseInt(totalPay)+'đ</td>' +
+            '<td class="phan-tich-loaivon">'+loaiVon+'<span class="badge pull-right">'+paygoc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ</span></td>' +
             '<td class="phan-tich-thang"></td>' +
             '</tr>');
         }
@@ -306,18 +309,20 @@ $(function() {
           '<td class="phan-tich-loaide">kéo</td>' +
           '<td colspan="2" class="phan-tich-soda">'+betDetail[3]+'</td>' +
           '<td class="phan-tich-tien">'+parseFloat(betDetail[4])*1000+'</td>' +
-          '<td class="phan-tich-von">'+parseInt(totalPay)+'đ <span class="badge pull-right">'+loaiVon+'</span></td>' +
+          '<td class="phan-tich-von">'+parseInt(totalPay)+'đ</td>' +
+          '<td class="phan-tich-loaivon">'+loaiVon+'<span class="badge pull-right">'+paygoc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ</span></td>' +
           '<td class="phan-tich-thang"></td>' +
           '</tr>');
       } else if (betDetail[2][0] == betDetail[3][0] && betDetail[2][0] == 'd') {
 
         if (betDetail[1].length == 2) {
           var loaiSo = '2 số';
-          var loaiVon = 'Nạc';
+          var loaiVon = 'Xương';
         }
         for (d=0;d<2;d++) {
           var betTien = betDetail[2+d].split('d');
-          var totalPay = parseFloat(betTien[1]) * bonus * 1000;
+          var paygoc = parseFloat(betTien[1]) * 1000;
+          var totalPay = paygoc * bonus;
           if(d==0) var theloaiBet = 'đầu';
           else var theloaiBet = 'đuôi';
 
@@ -327,7 +332,8 @@ $(function() {
             '<td class="phan-tich-so">'+betDetail[1]+'</td>' +
             '<td colspan="3" class="phan-tich-loaide">'+loaiSo+'</td>' +
             '<td class="phan-tich-tien">'+parseFloat(betTien[1])*1000+'</td>' +
-            '<td class="phan-tich-von">'+parseInt(totalPay)+'đ <span class="badge pull-right">'+loaiVon+'</span></td>' +
+            '<td class="phan-tich-von">'+parseInt(totalPay)+'đ</td>' +
+            '<td class="phan-tich-loaivon">'+loaiVon+'<span class="badge pull-right">'+paygoc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ</span></td>' +
             '<td class="phan-tich-thang"></td>' +
             '</tr>');
         }
@@ -341,13 +347,16 @@ $(function() {
 
         if (betDetail[detailTheLoai] == 'dau' || betDetail[detailTheLoai] == 'đầu') {
           var theloaiBet = 'đầu';
-          var totalPay = parseFloat(betDetail[detailTien]) * bonus * 1000;
+          var paygoc = parseFloat(betDetail[detailTien]) * 1000;
+          var totalPay = paygoc * bonus;
         } else if (betDetail[detailTheLoai] == 'duoi' || betDetail[detailTheLoai] == 'đuôi') {
           var theloaiBet = 'đuôi';
-          var totalPay = parseFloat(betDetail[detailTien]) * bonus * 1000;
+          var paygoc = parseFloat(betDetail[detailTien]) * 1000;
+          var totalPay = paygoc * bonus;
         } else if (betDetail[detailTheLoai] == 'dd' || betDetail[detailTheLoai] == 'đđ') {
           var theloaiBet = 'đầu đuôi';
-          var totalPay = parseFloat(betDetail[detailTien]) * 2 * bonus * 1000;
+          var paygoc = parseFloat(betDetail[detailTien]) * 2 * 1000;
+          var totalPay = paygoc * bonus
         } else if (betDetail[detailTheLoai] == 'bl' || betDetail[detailTheLoai] == 'b') {
           var theloaiBet = 'bao lô';
         } else if (betDetail[detailTheLoai] == 'x' || betDetail[detailTheLoai] == 'xc' || betDetail[detailTheLoai] == 'xiu' || betDetail[detailTheLoai] == 'xiuchu' || betDetail[detailTheLoai] == 'xỉu' || betDetail[detailTheLoai] == 'xỉuchủ') {
@@ -375,42 +384,93 @@ $(function() {
 
           if (betDetail[x].length == 2) {
             var loaiSo = '2 số';
-            var loaiVon = 'Nạc';
+            var loaiVon = 'Xương';
             if (theloaiBet == 'bao lô') {
-              var totalPay = parseFloat(betDetail[detailTien]) * numDai * 18 * bonus * 1000;
+              var paygoc = parseFloat(betDetail[detailTien]) * numDai * 18 * 1000;
+              var totalPay = paygoc * bonus;
             }
           } else if (betDetail[x].length == 3) {
             var loaiSo = '3 số';
-            var loaiVon = 'Xương';
+            var loaiVon = 'Thịt';
             if ((theloaiBet == 'xỉu chủ')) {
-              var totalPay = parseFloat(betDetail[detailTien]) * numDai * 2 * bonus1 * 1000;
+              var paygoc = parseFloat(betDetail[detailTien]) * numDai * 2 * 1000;
+              var totalPay = paygoc * bonus1;
             } else if (theloaiBet == 'bao lô') {
-              var totalPay = parseFloat(betDetail[detailTien]) * numDai * 17 * bonus1 * 1000;
+              var paygoc = parseFloat(betDetail[detailTien]) * numDai * 17 * 1000;
+              var totalPay = paygoc * bonus1;
             } else if (theloaiBet == 'xỉu đảo') {
               if (n1 != n2 && n1 != n3 && n2 != n3) {
-                var totalPay = parseFloat(betDetail[detailTien]) * numDai * 6 * 2 * bonus1 * 1000;
+                var paygoc = parseFloat(betDetail[detailTien]) * numDai * 6 * 2 * 1000;
+                var totalPay = paygoc * bonus1;
               } else if (n1 == n2 || n2 == n3 || n1 == n3) {
-                var totalPay = parseFloat(betDetail[detailTien]) * numDai * 4 * 2 * bonus1 * 1000;
+                var paygoc = parseFloat(betDetail[detailTien]) * numDai * 4 * 2 * 1000;
+                var totalPay = paygoc * bonus1;
               }
             } else if (theloaiBet == 'bao đảo' || theloaiBet == 'đảo lô') {
               if (n1 != n2 && n1 != n3 && n2 != n3) {
-                var totalPay = parseFloat(betDetail[detailTien]) * numDai * 6 * 17 * bonus1 * 1000;
+                var paygoc = parseFloat(betDetail[detailTien]) * numDai * 6 * 17 * bonus1 * 1000;
+                var totalPay = paygoc + bonus1;
               } else if (n1 == n2 || n2 == n3 || n1 == n3) {
-                var totalPay = parseFloat(betDetail[detailTien]) * numDai * 4 * 17 * bonus1 * 1000;
+                var paygoc = parseFloat(betDetail[detailTien]) * numDai * 4 * 17 * 1000;
+                var totalPay = paygoc * bonus1
               }
             }
           } else {
             var loaiSo = '4 số';
-            var loaiVon = 'Xương';
+            var loaiVon = 'Thịt';
             if (theloaiBet == 'bao lô') {
-              var totalPay = parseFloat(betDetail[detailTien]) * numDai * 16 * bonus1 * 1000;
+              var paygoc = parseFloat(betDetail[detailTien]) * numDai * 16 * 1000;
+              var totalPay = paygoc * bonus1;
             } else if ((theloaiBet == 'xỉu chủ')) {
-              var totalPay = parseFloat(betDetail[detailTien]) * numDai * 4 * bonus1 * 1000;
+              var paygoc = parseFloat(betDetail[detailTien]) * numDai * 4 * 1000;
+              var totalPay = paygoc * bonus1;
             } else if (theloaiBet == 'bao đảo') {
-              if (n1 != n2 && n2 != n3 && n3 == n4) {
-                var totalPay = parseFloat(betDetail[detailTien]) * numDai * 12 * 16 * bonus1 * 1000;
-              } else if (n1 != n2 || n2 == n3 || n3 == n4) {
-                var totalPay = parseFloat(betDetail[detailTien]) * numDai * 4 * 16 * bonus1 * 1000;
+              if (n1 != n2 && n2 != n3 && n3 == n4 && n1 != n3) {
+                var paygoc = parseFloat(betDetail[detailTien]) * numDai * 12 * 16 * 1000;
+                var totalPay = paygoc * bonus1;
+              }
+              else if (n1 == n2 && n2 != n3 && n3 != n4 && n1 != n4) {
+                var paygoc = parseFloat(betDetail[detailTien]) * numDai * 12 * 16 * 1000;
+                var totalPay = paygoc * bonus1;
+              }
+              else if (n1 != n2 && n2 == n3 && n3 != n4 && n1 != n4) {
+                var paygoc = parseFloat(betDetail[detailTien]) * numDai * 12 * 16 * 1000;
+                var totalPay = paygoc * bonus1;
+              }
+              else if (n1 != n2 && n2 != n3 && n3 != n4 && n1 == n4) {
+                var paygoc = parseFloat(betDetail[detailTien]) * numDai * 12 * 16 * 1000;
+                var totalPay = paygoc * bonus1;
+              }
+
+              else if (n1 != n2 && n2 == n3 && n3 == n4) {
+                var paygoc = parseFloat(betDetail[detailTien]) * numDai * 4 * 16 * 1000;
+                var totalPay = paygoc * bonus1;
+              }
+              else if (n1 != n2 && n1 == n3 && n1 == n4) {
+                var paygoc = parseFloat(betDetail[detailTien]) * numDai * 4 * 16 * 1000;
+                var totalPay = paygoc * bonus1;
+              }
+              else if (n1 == n2 && n1 != n3 && n1 == n4) {
+                var paygoc = parseFloat(betDetail[detailTien]) * numDai * 4 * 16 * 1000;
+                var totalPay = paygoc * bonus1;
+              }
+              else if (n1 == n2 && n1 == n3 && n1 != n4) {
+                var paygoc = parseFloat(betDetail[detailTien]) * numDai * 4 * 16 * 1000;
+                var totalPay = paygoc * bonus1;
+              }
+
+              else if (n1 != n2 && n2 != n3 && n3 != n4 && n1 != n3 && n2 != n4 && n1 != n4) {
+                var paygoc = parseFloat(betDetail[detailTien]) * numDai * 24 * 16 * 1000;
+                var totalPay = paygoc * bonus1;
+              }
+
+              else if (n1 == n2 && n3 == n4 && n1 != n3) {
+                var paygoc = parseFloat(betDetail[detailTien]) * numDai * 6 * 16 * 1000;
+                var totalPay = paygoc * bonus1;
+              }
+              else if (n1 == n4 && n2 == n3 && n1 != n2) {
+                var paygoc = parseFloat(betDetail[detailTien]) * numDai * 6 * 16 * 1000;
+                var totalPay = paygoc * bonus1;
               }
             }
           }
@@ -420,7 +480,8 @@ $(function() {
             '<td class="phan-tich-so">'+betDetail[x]+'</td>' +
             '<td colspan="3" class="phan-tich-loaide">'+loaiSo+'</td>' +
             '<td class="phan-tich-tien">'+parseFloat(betDetail[detailTien])*1000+'</td>' +
-            '<td class="phan-tich-von">'+parseInt(totalPay)+'đ <span class="badge pull-right">'+loaiVon+'</span></td>' +
+            '<td class="phan-tich-von">'+parseInt(totalPay)+'đ</td>' +
+            '<td class="phan-tich-loaivon">'+loaiVon+'<span class="badge pull-right">'+paygoc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ</span></td>' +
             '<td class="phan-tich-thang"></td>' +
             '</tr>');
         }
@@ -431,12 +492,12 @@ $(function() {
   // Mỗi <tr> là 1 bet riêng biệt
   $('tr#tr-danh-de').each(function() {
     var findTheloai = $(this).find('td.phan-tich-the-loai').text(),
-        findDai = $(this).find('td.phan-tich-dai').text(),
-        findSo = $(this).find('td.phan-tich-so').text(),
-        findLoaide = $(this).find('td.phan-tich-loaide').text(),
-        findTien = $(this).find('td.phan-tich-tien').text(),
-        findVon = $(this).find('td.phan-tich-von').text(),
-        findKetqua = $(this).find('td.phan-tich-thang');
+      findDai = $(this).find('td.phan-tich-dai').text(),
+      findSo = $(this).find('td.phan-tich-so').text(),
+      findLoaide = $(this).find('td.phan-tich-loaide').text(),
+      findTien = $(this).find('td.phan-tich-tien').text(),
+      findVon = $(this).find('td.phan-tich-von').text(),
+      findKetqua = $(this).find('td.phan-tich-thang');
     // Khai báo xong những cái dùng chung
 
     if (findLoaide == '2 số') {
@@ -734,7 +795,7 @@ $(function() {
       }
     }
     else if (findLoaide == 'đá 2') {
-      var loaiVon = 'Nạc';
+      var loaiVon = 'Thịt';
       if (findTheloai == 'đá') {
         if (findDai == 'đài chính') {
           var timsoDa0 = [];
@@ -821,7 +882,7 @@ $(function() {
       }
     }
     else if (findLoaide == 'đá 3') {
-      var loaiVon = 'Nạc';
+      var loaiVon = 'Thịt';
       if (findTheloai == 'đá') {
         if(findDai == '2 đài' || findDai == 'đài chính') {
           var timsoDa0 = [];
@@ -906,20 +967,20 @@ $(function() {
       }
       else if (findTheloai == 'đá xiên') {
         if (findDai == 'đài chính'){
-        var timsoDa0 = [];
-        for (f=0;f<=kqxsHaisoDD.length;f++) { if (findSo==kqxsHaisoDD[f]) timsoDa0.push(kqxsHaisoDD[f]) }
-        if (timsoDa0.length!=0) {
-          // console.log(kqxsHaisoDD);
-          var timsoDa1 = [];
-          var timsoDa2 = [],
-            soDa1 = $(this).find('td.phan-tich-soda1').text(),
-            soDa2 = $(this).find('td.phan-tich-soda2').text();
-          for (f=0;f<=kqxsHaisoDD.length;f++) { if (soDa1==kqxsHaisoDD[f]) timsoDa1.push(kqxsHaisoDD[f]) }
-          for (f=0;f<=kqxsHaisoDD.length;f++) { if (soDa2==kqxsHaisoDD[f]) timsoDa2.push(kqxsHaisoDD[f]) }
-          var findMin = Math.min(timsoDa0.length,timsoDa1.length,timsoDa2.length);
-          if (findMin == 0) findKetqua.text('ko trúng');
-          else findKetqua.text(findMin*580*3*parseInt(findTien)+'đ');
-        }
+          var timsoDa0 = [];
+          for (f=0;f<=kqxsHaisoDD.length;f++) { if (findSo==kqxsHaisoDD[f]) timsoDa0.push(kqxsHaisoDD[f]) }
+          if (timsoDa0.length!=0) {
+            // console.log(kqxsHaisoDD);
+            var timsoDa1 = [];
+            var timsoDa2 = [],
+              soDa1 = $(this).find('td.phan-tich-soda1').text(),
+              soDa2 = $(this).find('td.phan-tich-soda2').text();
+            for (f=0;f<=kqxsHaisoDD.length;f++) { if (soDa1==kqxsHaisoDD[f]) timsoDa1.push(kqxsHaisoDD[f]) }
+            for (f=0;f<=kqxsHaisoDD.length;f++) { if (soDa2==kqxsHaisoDD[f]) timsoDa2.push(kqxsHaisoDD[f]) }
+            var findMin = Math.min(timsoDa0.length,timsoDa1.length,timsoDa2.length);
+            if (findMin == 0) findKetqua.text('ko trúng');
+            else findKetqua.text(findMin*580*3*parseInt(findTien)+'đ');
+          }
         } else { findKetqua.text('sai cú pháp'); }
       }
     }
@@ -927,17 +988,17 @@ $(function() {
       // trường hợp đảo số , đảo xiên
       var chiaSo = findSo.split('');
       // có 1 cặp giống nhau - 12 trường hợp
-        //1233
+      //1233
       if (chiaSo[0] != chiaSo[1] && chiaSo[1] != chiaSo[2] && chiaSo[0] != chiaSo[2] && chiaSo[2]==chiaSo[3])var truonghop = 'case1';
-        //3312
+      //3312
       else if (chiaSo[0] == chiaSo[1] && chiaSo[1] != chiaSo[2] && chiaSo[2] != chiaSo[3] && chiaSo[1] != chiaSo[3])var truonghop = 'case2';
-        //1332
+      //1332
       else if (chiaSo[0] != chiaSo[1] && chiaSo[1] == chiaSo[2] && chiaSo[2] != chiaSo[3] && chiaSo[0] != chiaSo[3])var truonghop = 'case3';
-        //3123
+      //3123
       else if (chiaSo[0] != chiaSo[1] && chiaSo[1] != chiaSo[2] && chiaSo[2] != chiaSo[3] && chiaSo[0]==chiaSo[3])var truonghop = 'case4';
-        //3132
+      //3132
       else if (chiaSo[0] != chiaSo[1] && chiaSo[1] != chiaSo[2] && chiaSo[2] != chiaSo[3] && chiaSo[0]==chiaSo[2])var truonghop = 'case5';
-        //1323
+      //1323
       else if (chiaSo[0] != chiaSo[1] && chiaSo[1] != chiaSo[2] && chiaSo[2] != chiaSo[3] && chiaSo[1]==chiaSo[3])var truonghop = 'case6';
 
       // 3 số giống nhau - 4 trường hợp
@@ -964,8 +1025,8 @@ $(function() {
       }
       else if (truonghop == 'case7' || truonghop == 'case8' || truonghop == 'case9') {
         var soDao1 = chiaSo[0]+''+chiaSo[1]+''+chiaSo[2]+''+chiaSo[3],soDao2 = chiaSo[1]+''+chiaSo[0]+''+chiaSo[2]+''+chiaSo[3],
-            soDao3 = chiaSo[1]+''+chiaSo[2]+''+chiaSo[0]+''+chiaSo[3],soDao4 = chiaSo[1]+''+chiaSo[2]+''+chiaSo[3]+''+chiaSo[0];
-            var findSodao = [soDao1,soDao2,soDao3,soDao4];
+          soDao3 = chiaSo[1]+''+chiaSo[2]+''+chiaSo[0]+''+chiaSo[3],soDao4 = chiaSo[1]+''+chiaSo[2]+''+chiaSo[3]+''+chiaSo[0];
+        var findSodao = [soDao1,soDao2,soDao3,soDao4];
       }
       else if (truonghop == 'case10' || truonghop == 'case11' || truonghop == 'case12') {
         var soDao1 = chiaSo[0]+''+chiaSo[1]+''+chiaSo[2]+''+chiaSo[3],soDao2 = chiaSo[2]+''+chiaSo[3]+''+chiaSo[0]+''+chiaSo[1],
@@ -1150,42 +1211,42 @@ $(function() {
     }
 
   });
-$('#phan-tich-tung-table').ready(function(){
+  $('#phan-tich-tung-table').ready(function(){
     var tongLoiArray = [];
     var demTN = [];
-  $('#phan-tich-tung-table .table').each(function() {
-    var idNguoiChoi = $(this).find('span.id-nguoi-choi').text();
-    var idTinNhan = $(this).find('span.id-tin-nhan').text();
+    $('#phan-tich-tung-table .table').each(function() {
+      var idNguoiChoi = $(this).find('span.id-nguoi-choi').text();
+      var idTinNhan = $(this).find('span.id-tin-nhan').text();
       demTN.push(1);
-    var vonArray = [];
-    var thangArray = [];
-    $(this).find('td.phan-tich-von').each(function() {
-      var tongvon = parseInt($(this).text());
-      vonArray.push(tongvon);
-    });
-    $(this).find('td.phan-tich-thang').each(function() {
-      var tongthang = parseInt($(this).text()) || 0;
-      thangArray.push(tongthang);
-    });
-    var sumVon = vonArray.reduce((a,b) => a+b,0);
-    var sumThang = thangArray.reduce((a,b) => a+b,0);
-    $(this).find('td.tong-von').text(sumVon.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ');
-    $(this).find('td.tong-an').text(sumThang.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ');
+      var vonArray = [];
+      var thangArray = [];
+      $(this).find('td.phan-tich-von').each(function() {
+        var tongvon = parseInt($(this).text());
+        vonArray.push(tongvon);
+      });
+      $(this).find('td.phan-tich-thang').each(function() {
+        var tongthang = parseInt($(this).text()) || 0;
+        thangArray.push(tongthang);
+      });
+      var sumVon = vonArray.reduce((a,b) => a+b,0);
+      var sumThang = thangArray.reduce((a,b) => a+b,0);
+      $(this).find('td.tong-von').text(sumVon.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ');
+      $(this).find('td.tong-an').text(sumThang.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ');
 
-    var newVon = $(this).find('td.tong-von').text();
-    var newThang = $(this).find('td.tong-an').text();
-    var ketQua = parseInt(String(newVon).replace(/\./g,''))-parseInt(String(newThang).replace(/\./g,''));
-    if (ketQua < 0) { $(this).find('td.tinh-tien-thang').css("color","#a94442") }
-    $(this).find('td.tinh-tien-thang').text(ketQua.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ');
+      var newVon = $(this).find('td.tong-von').text();
+      var newThang = $(this).find('td.tong-an').text();
+      var ketQua = parseInt(String(newVon).replace(/\./g,''))-parseInt(String(newThang).replace(/\./g,''));
+      if (ketQua < 0) { $(this).find('td.tinh-tien-thang').css("color","#a94442") }
+      $(this).find('td.tinh-tien-thang').text(ketQua.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ');
 
-    var tongLoi = $(this).find('td.tinh-tien-thang').text();
-    tongLoi = tongLoi.replace(/\.|đ/gi,'');
-    tongLoiArray.push(parseFloat(tongLoi));
-    socket.get('/history/update?bid='+idTinNhan+'&pid='+idNguoiChoi+'&total='+parseFloat(tongLoi));
-  });
-  var sumtongLoi = tongLoiArray.reduce((a,b) => a+b,0);
-  var sumTN = demTN.reduce((a,b) => a+b,0);
-  var tongloiShow = sumtongLoi.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ';
+      var tongLoi = $(this).find('td.tinh-tien-thang').text();
+      tongLoi = tongLoi.replace(/\.|đ/gi,'');
+      tongLoiArray.push(parseFloat(tongLoi));
+      socket.get('/history/update?bid='+idTinNhan+'&pid='+idNguoiChoi+'&total='+parseFloat(tongLoi));
+    });
+    var sumtongLoi = tongLoiArray.reduce((a,b) => a+b,0);
+    var sumTN = demTN.reduce((a,b) => a+b,0);
+    var tongloiShow = sumtongLoi.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ';
     if(sumtongLoi < 0) {
       $('#page-bet-cal span.tongket').append(', Có '+sumTN+' tin nhắn đến, hôm nay chung <strong>'+tongloiShow+'</strong>');
     } else {
@@ -1194,6 +1255,3 @@ $('#phan-tich-tung-table').ready(function(){
   })
 
 });
-
-
-// String(newVon).replace(/\./g,'');

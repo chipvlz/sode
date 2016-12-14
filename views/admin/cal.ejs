@@ -1,7 +1,7 @@
 <%- partial ('../common/admin_nav.ejs') %>
 <div class="container-fluid" id="page-bet-cal">
   <div class="alert alert-success">
-    <strong>Tổng kết ngày <%= getdayShow %></strong><span class="tongket"></span>
+    Ngày <strong class="hDate"><%= getdayShow %></strong>, đại lý <strong class="hName"><%= req.session.user.name %></strong> (<strong class="hPhone"><%= req.session.user.phone %></strong>)<span class="tongket"></span>
     <% if (foundHistory) { %>
     <span class="result-history pull-right"><i class="fa fa-check"></i> Đã lưu</span>
     <% } else { %>
@@ -72,13 +72,14 @@
       <td colspan="3">Loại Đề</td>
       <td>Tiền</td>
       <td>Vốn</td>
+      <td>Loại Vốn</td>
       <td>Thắng</td>
     </tr>
     </tbody>
     <tfoot >
       <tr class="xem-chi-tiet-<%= bet.id %> collapse">
         <td colspan="7">Tổng</td>
-        <td class="tong-von"></td>
+        <td colspan="2" class="tong-von"></td>
         <td class="tong-an"></td>
       </tr>
     </tfoot>
