@@ -1023,14 +1023,14 @@ $(function() {
       //     if (timXiudaobonsoDD.length!=0) findKetqua.html('<strong class="text-success">'+timXiudaobonsoDD.length*6000*parseInt(findTien)+'đ</strong>');
       //     else findKetqua.text('ko trúng');
       //   }
-      //   else if (findTheloai == 'đảo lô' || findTheloai == 'bao đảo') {
-      //     for (a=0;a<findSodao.length;a++) {
-      //       var findSomoi = findSodao[a];
-      //       for (f=0;f<=kqxsBonsoDD.length;f++) { if (findSomoi == kqxsBonsoDD[f]) timXiudaobonsoDD.push(kqxsBonsoDD[f]); }
-      //     }
-      //     if (timXiudaobonsoDD.length!=0) findKetqua.html('<strong class="text-success">'+timXiudaobonsoDD.length*6000*parseInt(findTien)+'đ</strong>');
-      //     else findKetqua.text('ko trúng');
-      //   }
+        else if (findTheloai == 'đảo lô' || findTheloai == 'bao đảo') {
+          for (a=0;a<findSodao.length;a++) {
+            var findSomoi = findSodao[a];
+            for (f=0;f<=kqxsBonsoDD.length;f++) { if (findSomoi == kqxsBonsoDD[f]) timXiudaobonsoDD.push(kqxsBonsoDD[f]); }
+          }
+          if (timXiudaobonsoDD.length!=0) findKetqua.html('<strong class="text-success">'+timXiudaobonsoDD.length*6000*parseInt(findTien)+'đ</strong>');
+          else findKetqua.text('ko trúng');
+        }
       }
       else if (findDai == 'đài phụ 1') {
         var timXiudaobonsoDP1 = [];
