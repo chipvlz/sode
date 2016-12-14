@@ -926,24 +926,68 @@ $(function() {
     else if (findLoaide == '4 số') {
       // trường hợp đảo số , đảo xiên
       var chiaSo = findSo.split('');
+      // có 1 cặp giống nhau - 12 trường hợp
+        //1233
       if (chiaSo[0] != chiaSo[1] && chiaSo[1] != chiaSo[2] && chiaSo[0] != chiaSo[2] && chiaSo[2]==chiaSo[3])var truonghop = 'case1';
-      else if (chiaSo[0] == chiaSo[1] && chiaSo[1] != chiaSo[2] && chiaSo[2] != chiaSo[3])var truonghop = 'case2';
-      else if (chiaSo[0] != chiaSo[1] && chiaSo[1] == chiaSo[2] && chiaSo[2] != chiaSo[3])var truonghop = 'case3';
+        //3312
+      else if (chiaSo[0] == chiaSo[1] && chiaSo[1] != chiaSo[2] && chiaSo[2] != chiaSo[3] && chiaSo[1] != chiaSo[3])var truonghop = 'case2';
+        //1332
+      else if (chiaSo[0] != chiaSo[1] && chiaSo[1] == chiaSo[2] && chiaSo[2] != chiaSo[3] && chiaSo[0] != chiaSo[3])var truonghop = 'case3';
+        //3123
       else if (chiaSo[0] != chiaSo[1] && chiaSo[1] != chiaSo[2] && chiaSo[2] != chiaSo[3] && chiaSo[0]==chiaSo[3])var truonghop = 'case4';
+        //3132
       else if (chiaSo[0] != chiaSo[1] && chiaSo[1] != chiaSo[2] && chiaSo[2] != chiaSo[3] && chiaSo[0]==chiaSo[2])var truonghop = 'case5';
+        //1323
+      else if (chiaSo[0] != chiaSo[1] && chiaSo[1] != chiaSo[2] && chiaSo[2] != chiaSo[3] && chiaSo[1]==chiaSo[3])var truonghop = 'case6';
+
+      // 3 số giống nhau - 4 trường hợp
+      else if (chiaSo[0] != chiaSo[1] && chiaSo[1] == chiaSo[2] && chiaSo[2] == chiaSo[3])var truonghop = 'case7';
+      else if (chiaSo[0] == chiaSo[1] && chiaSo[1] != chiaSo[2] && chiaSo[1] == chiaSo[3])var truonghop = 'case8';
+      else if (chiaSo[0] == chiaSo[1] && chiaSo[1] == chiaSo[2] && chiaSo[2] != chiaSo[3])var truonghop = 'case9';
+      // 2 cặp số giống nhau - 6 số giống nhau
+      else if (chiaSo[0] == chiaSo[1] && chiaSo[2] == chiaSo[3] && chiaSo[1] != chiaSo[2])var truonghop = 'case10';
+      else if (chiaSo[0] == chiaSo[3] && chiaSo[1] == chiaSo[2] && chiaSo[0] != chiaSo[1])var truonghop = 'case11';
+      else if (chiaSo[0] == chiaSo[2] && chiaSo[1] == chiaSo[3] && chiaSo[0] != chiaSo[1])var truonghop = 'case12';
+      // không số nào giống nhau
+      else if (chiaSo[0] != chiaSo[1] && chiaSo[1] != chiaSo[2] && chiaSo[2] != chiaSo[3] && chiaSo[0] != chiaSo[2] && chiaSo[1] != chiaSo[3])
+        var truonghop = 'case13';
 
 
-      if (truonghop == 'case1' || truonghop == 'case2' || truonghop == 'case3' || truonghop == 'case4' || truonghop == 'case5') {
-        var soDao1 = chiaSo[0]+''+chiaSo[1]+''+chiaSo[2]+''+chiaSo[3],soDao2 = chiaSo[0]+''+chiaSo[2]+''+chiaSo[1]+''+chiaSo[2],
-          soDao3 = chiaSo[2]+''+chiaSo[0]+''+chiaSo[2]+''+chiaSo[1],soDao4 = chiaSo[2]+''+chiaSo[2]+''+chiaSo[0]+''+chiaSo[0],
-          soDao5 = chiaSo[1]+''+chiaSo[2]+''+chiaSo[0]+''+chiaSo[2],soDao6 = chiaSo[2]+''+chiaSo[1]+''+chiaSo[2]+''+chiaSo[0],
-          soDao7 = chiaSo[2]+''+chiaSo[2]+''+chiaSo[1]+''+chiaSo[0],soDao8 = chiaSo[1]+''+chiaSo[0]+''+chiaSo[2]+''+chiaSo[2],
-          soDao9 = chiaSo[2]+''+chiaSo[0]+''+chiaSo[1]+''+chiaSo[2],soDao10 = chiaSo[2]+''+chiaSo[1]+''+chiaSo[0]+''+chiaSo[2],
-          soDao11 = chiaSo[0]+''+chiaSo[2]+''+chiaSo[2]+''+chiaSo[1],soDao12 = chiaSo[1]+''+chiaSo[2]+''+chiaSo[2]+''+chiaSo[0];
+      if (truonghop == 'case1' || truonghop == 'case2' || truonghop == 'case3' || truonghop == 'case4' || truonghop == 'case5' || truonghop == 'case6') {
+        var soDao1 = chiaSo[0]+''+chiaSo[1]+''+chiaSo[2]+''+chiaSo[3],soDao2 = chiaSo[0]+''+chiaSo[2]+''+chiaSo[1]+''+chiaSo[3],
+          soDao3 = chiaSo[2]+''+chiaSo[0]+''+chiaSo[3]+''+chiaSo[1],soDao4 = chiaSo[2]+''+chiaSo[3]+''+chiaSo[0]+''+chiaSo[1],
+          soDao5 = chiaSo[1]+''+chiaSo[2]+''+chiaSo[0]+''+chiaSo[3],soDao6 = chiaSo[2]+''+chiaSo[1]+''+chiaSo[3]+''+chiaSo[0],
+          soDao7 = chiaSo[2]+''+chiaSo[3]+''+chiaSo[1]+''+chiaSo[0],soDao8 = chiaSo[1]+''+chiaSo[0]+''+chiaSo[2]+''+chiaSo[3],
+          soDao9 = chiaSo[2]+''+chiaSo[0]+''+chiaSo[1]+''+chiaSo[3],soDao10 = chiaSo[2]+''+chiaSo[1]+''+chiaSo[0]+''+chiaSo[3],
+          soDao11 = chiaSo[0]+''+chiaSo[2]+''+chiaSo[3]+''+chiaSo[1],soDao12 = chiaSo[1]+''+chiaSo[2]+''+chiaSo[3]+''+chiaSo[0];
         var findSodao = [soDao1,soDao2,soDao3,soDao4,soDao5,soDao6,soDao7,soDao8,soDao9,soDao10,soDao11,soDao12];
       }
-      else {
-        findSodao = 1111;
+      else if (truonghop == 'case7' || truonghop == 'case8' || truonghop == 'case9') {
+        var soDao1 = chiaSo[0]+''+chiaSo[1]+''+chiaSo[2]+''+chiaSo[3],soDao2 = chiaSo[1]+''+chiaSo[0]+''+chiaSo[2]+''+chiaSo[3],
+            soDao3 = chiaSo[1]+''+chiaSo[2]+''+chiaSo[0]+''+chiaSo[3],soDao4 = chiaSo[1]+''+chiaSo[2]+''+chiaSo[3]+''+chiaSo[0];
+            var findSodao = [soDao1,soDao2,soDao3,soDao4];
+      }
+      else if (truonghop == 'case10' || truonghop == 'case11' || truonghop == 'case12') {
+        var soDao1 = chiaSo[0]+''+chiaSo[1]+''+chiaSo[2]+''+chiaSo[3],soDao2 = chiaSo[2]+''+chiaSo[3]+''+chiaSo[0]+''+chiaSo[1],
+          soDao3 = chiaSo[0]+''+chiaSo[3]+''+chiaSo[2]+''+chiaSo[1],soDao4 = chiaSo[3]+''+chiaSo[0]+''+chiaSo[1]+''+chiaSo[2],
+          soDao5 = chiaSo[0]+''+chiaSo[2]+''+chiaSo[1]+''+chiaSo[3],soDao6 = chiaSo[3]+''+chiaSo[1]+''+chiaSo[2]+''+chiaSo[0];
+        var findSodao = [soDao1,soDao2,soDao3,soDao4,soDao5,soDao6];
+      }
+      else if (truonghop == 'case13') {
+        var soDao1 = chiaSo[0]+''+chiaSo[1]+''+chiaSo[2]+''+chiaSo[3],soDao2 = chiaSo[0]+''+chiaSo[1]+''+chiaSo[3]+''+chiaSo[2],
+          soDao3 = chiaSo[0]+''+chiaSo[2]+''+chiaSo[1]+''+chiaSo[3],soDao4 = chiaSo[0]+''+chiaSo[2]+''+chiaSo[3]+''+chiaSo[1],
+          soDao5 = chiaSo[0]+''+chiaSo[3]+''+chiaSo[1]+''+chiaSo[2],soDao6 = chiaSo[0]+''+chiaSo[3]+''+chiaSo[2]+''+chiaSo[1],
+          soDao7 = chiaSo[1]+''+chiaSo[0]+''+chiaSo[2]+''+chiaSo[3],soDao8 = chiaSo[1]+''+chiaSo[0]+''+chiaSo[3]+''+chiaSo[2],
+          soDao9 = chiaSo[1]+''+chiaSo[2]+''+chiaSo[3]+''+chiaSo[0],soDao10 = chiaSo[1]+''+chiaSo[2]+''+chiaSo[0]+''+chiaSo[3],
+          soDao11 = chiaSo[1]+''+chiaSo[3]+''+chiaSo[0]+''+chiaSo[2],soDao12 = chiaSo[1]+''+chiaSo[3]+''+chiaSo[2]+''+chiaSo[0],
+
+          soDao13 = chiaSo[2]+''+chiaSo[0]+''+chiaSo[1]+''+chiaSo[3],soDao14 = chiaSo[2]+''+chiaSo[0]+''+chiaSo[3]+''+chiaSo[1],
+          soDao15 = chiaSo[2]+''+chiaSo[1]+''+chiaSo[0]+''+chiaSo[3],soDao16 = chiaSo[2]+''+chiaSo[1]+''+chiaSo[3]+''+chiaSo[0],
+          soDao17 = chiaSo[2]+''+chiaSo[3]+''+chiaSo[0]+''+chiaSo[1],soDao18 = chiaSo[2]+''+chiaSo[3]+''+chiaSo[1]+''+chiaSo[0],
+          soDao19 = chiaSo[3]+''+chiaSo[0]+''+chiaSo[1]+''+chiaSo[2],soDao20 = chiaSo[3]+''+chiaSo[0]+''+chiaSo[2]+''+chiaSo[1],
+          soDao21 = chiaSo[3]+''+chiaSo[1]+''+chiaSo[2]+''+chiaSo[0],soDao22 = chiaSo[3]+''+chiaSo[1]+''+chiaSo[0]+''+chiaSo[2],
+          soDao23 = chiaSo[3]+''+chiaSo[2]+''+chiaSo[0]+''+chiaSo[1],soDao24 = chiaSo[3]+''+chiaSo[2]+''+chiaSo[1]+''+chiaSo[0];
+        var findSodao = [soDao1,soDao2,soDao3,soDao4,soDao5,soDao6,soDao7,soDao8,soDao9,soDao10,soDao11,soDao12,soDao13,soDao14,soDao15,soDao16,soDao17,soDao18,soDao19,soDao20,soDao21,soDao22,soDao23,soDao24];
       }
 
 
