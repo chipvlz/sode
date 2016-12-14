@@ -926,11 +926,19 @@ $(function() {
     else if (findLoaide == '4 số') {
       // trường hợp đảo số , đảo xiên
       var chiaSo = findSo.split('');
-      if (chiaSo[0] != chiaSo[1] && chiaSo[0] != chiaSo[2] && chiaSo[1] != chiaSo[2]) {
-        var soDao1 = chiaSo[0]+''+chiaSo[1]+''+chiaSo[2],soDao2 = chiaSo[2]+''+chiaSo[1]+''+chiaSo[0],
-          soDao3 = chiaSo[0]+''+chiaSo[2]+''+chiaSo[1],soDao4 = chiaSo[1]+''+chiaSo[0]+''+chiaSo[2],
-          soDao5 = chiaSo[2]+''+chiaSo[0]+''+chiaSo[1],soDao6 = chiaSo[1]+''+chiaSo[2]+''+chiaSo[0];
-        var findSodao = [soDao1,soDao2,soDao3,soDao4,soDao5,soDao6];
+      if (chiaSo[0] != chiaSo[1] && chiaSo[1] != chiaSo[2] && chiaSo[0] != chiaSo[2] && chiaSo[2]==chiaSo[3])var truonghop = 'case1';
+      else if (chiaSo[0] == chiaSo[1] && chiaSo[1] != chiaSo[2] && chiaSo[2] != chiaSo[3])var truonghop = 'case2';
+      else if (chiaSo[0] != chiaSo[1] && chiaSo[1] == chiaSo[2] && chiaSo[2] != chiaSo[3])var truonghop = 'case3';
+
+
+      if (truonghop == 'case1' || truonghop == 'case2' || truonghop == 'case3') {
+        var soDao1 = chiaSo[0]+''+chiaSo[1]+''+chiaSo[2]+''+chiaSo[3],soDao2 = chiaSo[0]+''+chiaSo[2]+''+chiaSo[1]+''+chiaSo[2],
+          soDao3 = chiaSo[2]+''+chiaSo[0]+''+chiaSo[2]+''+chiaSo[1],soDao4 = chiaSo[2]+''+chiaSo[2]+''+chiaSo[0]+''+chiaSo[0],
+          soDao5 = chiaSo[1]+''+chiaSo[2]+''+chiaSo[0]+''+chiaSo[2],soDao6 = chiaSo[2]+''+chiaSo[1]+''+chiaSo[2]+''+chiaSo[0],
+          soDao7 = chiaSo[2]+''+chiaSo[2]+''+chiaSo[1]+''+chiaSo[0],soDao8 = chiaSo[1]+''+chiaSo[0]+''+chiaSo[2]+''+chiaSo[2],
+          soDao9 = chiaSo[2]+''+chiaSo[0]+''+chiaSo[1]+''+chiaSo[2],soDao10 = chiaSo[2]+''+chiaSo[1]+''+chiaSo[0]+''+chiaSo[2],
+          soDao11 = chiaSo[0]+''+chiaSo[2]+''+chiaSo[2]+''+chiaSo[1],soDao12 = chiaSo[1]+''+chiaSo[2]+''+chiaSo[2]+''+chiaSo[0];
+        var findSodao = [soDao1,soDao2,soDao3,soDao4,soDao5,soDao6,soDao7,soDao8,soDao9,soDao10,soDao11,soDao12];
       }
       else {
         findSodao = 1111;
