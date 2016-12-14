@@ -1018,7 +1018,7 @@ $(function() {
         else if (findTheloai == 'xỉu đảo') {
           for (a=0;a<findSodao.length;a++) {
             var findSomoi = findSodao[a];
-            for (f=0;f<=xiuChubonsoDP.length;f++) { if (findSomoi == xiuChubonsoDP[f]) timXiudaobonsoDD.push(xiuChubonsoDD[f]); }
+            for (f=0;f<=xiuChubonsoDD.length;f++) { if (findSomoi == xiuChubonsoDD[f]) timXiudaobonsoDD.push(xiuChubonsoDD[f]); }
           }
           if (timXiudaobonsoDD.length!=0) findKetqua.html('<strong class="text-success">'+timXiudaobonsoDD.length*6000*parseInt(findTien)+'đ</strong>');
           else findKetqua.text('ko trúng');
