@@ -1001,37 +1001,37 @@ $(function() {
           else findKetqua.text('ko trúng');
         }
       }
-      else if (findDai == '2 đài') {
-        var timXiudaobonsoDD = [];
-        if (findTheloai == 'bao lô') {
-          var timBaolobonsoDD = [];
-          for (f=0;f<=kqxsBonsoDD.length;f++) { if (findSo==kqxsBonsoDD[f]) timBaolobonsoDD.push(kqxsBonsoDD[f]) }
-          if (timBaolobonsoDD.length != 0) findKetqua.html('<strong class="text-success">'+timBaolobonsoDD.length*6000*parseInt(findTien)+'đ</strong>');
-          else findKetqua.text('ko trúng');
-        }
-        else if (findTheloai == 'xỉu chủ') {
-          var timXiuchubonsoDD = [];
-          for (f=0;f<=xiuChubonsoDD.length;f++) { if (findSo==xiuChubonsoDP[f]) timXiuchubonsoDD.push(xiuChubonsoDD[f]) }
-          if (timXiuchubonsoDD.length != 0) findKetqua.html('<strong class="text-success">'+timXiuchubonsoDD.length*6000*parseInt(findTien)+'đ</strong>');
-          else findKetqua.text('ko trúng');
-        }
-        else if (findTheloai == 'xỉu đảo') {
-          for (a=0;a<findSodao.length;a++) {
-            var findSomoi = findSodao[a];
-            for (f=0;f<=xiuChubonsoDD.length;f++) { if (findSomoi == xiuChubonsoDD[f]) timXiudaobonsoDD.push(xiuChubonsoDD[f]); }
-          }
-          if (timXiudaobonsoDD.length!=0) findKetqua.html('<strong class="text-success">'+timXiudaobonsoDD.length*6000*parseInt(findTien)+'đ</strong>');
-          else findKetqua.text('ko trúng');
-        }
-        else if (findTheloai == 'đảo lô' || findTheloai == 'bao đảo') {
-          for (a=0;a<findSodao.length;a++) {
-            var findSomoi = findSodao[a];
-            for (f=0;f<=kqxsBonsoDD.length;f++) { if (findSomoi == kqxsBonsoDD[f]) timXiudaobonsoDD.push(kqxsBonsoDD[f]); }
-          }
-          if (timXiudaobonsoDD.length!=0) findKetqua.html('<strong class="text-success">'+timXiudaobonsoDD.length*6000*parseInt(findTien)+'đ</strong>');
-          else findKetqua.text('ko trúng');
-        }
-      }
+      // else if (findDai == '2 đài') {
+      //   var timXiudaobonsoDD = [];
+      //   if (findTheloai == 'bao lô') {
+      //     var timBaolobonsoDD = [];
+      //     for (f=0;f<=kqxsBonsoDD.length;f++) { if (findSo==kqxsBonsoDD[f]) timBaolobonsoDD.push(kqxsBonsoDD[f]) }
+      //     if (timBaolobonsoDD.length != 0) findKetqua.html('<strong class="text-success">'+timBaolobonsoDD.length*6000*parseInt(findTien)+'đ</strong>');
+      //     else findKetqua.text('ko trúng');
+      //   }
+      //   else if (findTheloai == 'xỉu chủ') {
+      //     var timXiuchubonsoDD = [];
+      //     for (f=0;f<=xiuChubonsoDD.length;f++) { if (findSo==xiuChubonsoDP[f]) timXiuchubonsoDD.push(xiuChubonsoDD[f]) }
+      //     if (timXiuchubonsoDD.length != 0) findKetqua.html('<strong class="text-success">'+timXiuchubonsoDD.length*6000*parseInt(findTien)+'đ</strong>');
+      //     else findKetqua.text('ko trúng');
+      //   }
+      //   else if (findTheloai == 'xỉu đảo') {
+      //     for (a=0;a<findSodao.length;a++) {
+      //       var findSomoi = findSodao[a];
+      //       for (f=0;f<=xiuChubonsoDD.length;f++) { if (findSomoi == xiuChubonsoDD[f]) timXiudaobonsoDD.push(xiuChubonsoDD[f]); }
+      //     }
+      //     if (timXiudaobonsoDD.length!=0) findKetqua.html('<strong class="text-success">'+timXiudaobonsoDD.length*6000*parseInt(findTien)+'đ</strong>');
+      //     else findKetqua.text('ko trúng');
+      //   }
+      //   else if (findTheloai == 'đảo lô' || findTheloai == 'bao đảo') {
+      //     for (a=0;a<findSodao.length;a++) {
+      //       var findSomoi = findSodao[a];
+      //       for (f=0;f<=kqxsBonsoDD.length;f++) { if (findSomoi == kqxsBonsoDD[f]) timXiudaobonsoDD.push(kqxsBonsoDD[f]); }
+      //     }
+      //     if (timXiudaobonsoDD.length!=0) findKetqua.html('<strong class="text-success">'+timXiudaobonsoDD.length*6000*parseInt(findTien)+'đ</strong>');
+      //     else findKetqua.text('ko trúng');
+      //   }
+      // }
       else if (findDai == 'đài phụ 1') {
         var timXiudaobonsoDP1 = [];
         if (findTheloai == 'bao lô') {
