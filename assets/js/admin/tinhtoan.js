@@ -483,6 +483,49 @@ $(function() {
                 var paygoc = parseFloat(betDetail[detailTien]) * numDai * 12 * 2 * 1000;
                 var totalPay = paygoc * bonus1;
               }
+              else if (n1 == n2 && n2 != n3 && n3 != n4 && n1 != n4) {
+                var paygoc = parseFloat(betDetail[detailTien]) * numDai * 12 * 2 * 1000;
+                var totalPay = paygoc * bonus1;
+              }
+              else if (n1 != n2 && n2 == n3 && n3 != n4 && n1 != n4) {
+                var paygoc = parseFloat(betDetail[detailTien]) * numDai * 12 * 2 * 1000;
+                var totalPay = paygoc * bonus1;
+              }
+              else if (n1 != n2 && n2 != n3 && n3 != n4 && n1 == n4) {
+                var paygoc = parseFloat(betDetail[detailTien]) * numDai * 12 * 2 * 1000;
+                var totalPay = paygoc * bonus1;
+              }
+
+              else if (n1 != n2 && n2 == n3 && n3 == n4) {
+                var paygoc = parseFloat(betDetail[detailTien]) * numDai * 4 * 2 * 1000;
+                var totalPay = paygoc * bonus1;
+              }
+              else if (n1 != n2 && n1 == n3 && n1 == n4) {
+                var paygoc = parseFloat(betDetail[detailTien]) * numDai * 4 * 2 * 1000;
+                var totalPay = paygoc * bonus1;
+              }
+              else if (n1 == n2 && n1 != n3 && n1 == n4) {
+                var paygoc = parseFloat(betDetail[detailTien]) * numDai * 4 * 2 * 1000;
+                var totalPay = paygoc * bonus1;
+              }
+              else if (n1 == n2 && n1 == n3 && n1 != n4) {
+                var paygoc = parseFloat(betDetail[detailTien]) * numDai * 4 * 2 * 1000;
+                var totalPay = paygoc * bonus1;
+              }
+
+              else if (n1 != n2 && n2 != n3 && n3 != n4 && n1 != n3 && n2 != n4 && n1 != n4) {
+                var paygoc = parseFloat(betDetail[detailTien]) * numDai * 24 * 2 * 1000;
+                var totalPay = paygoc * bonus1;
+              }
+
+              else if (n1 == n2 && n3 == n4 && n1 != n3) {
+                var paygoc = parseFloat(betDetail[detailTien]) * numDai * 6 * 2 * 1000;
+                var totalPay = paygoc * bonus1;
+              }
+              else if (n1 == n4 && n2 == n3 && n1 != n2) {
+                var paygoc = parseFloat(betDetail[detailTien]) * numDai * 6 * 2 * 1000;
+                var totalPay = paygoc * bonus1;
+              }
 
             }
           }
