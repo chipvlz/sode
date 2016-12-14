@@ -281,7 +281,7 @@ $(function() {
             '<td colspan="2" class="phan-tich-soda">'+betDetail[3]+'</td>' +
             '<td class="phan-tich-tien">'+parseFloat(betDetail[4])*1000+'</td>' +
             '<td class="phan-tich-von">'+parseInt(totalPay)+'đ</td>' +
-            '<td class="phan-tich-loaivon">'+loaiVon+'<span class="badge pull-right">'+paygoc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ</span></td>' +
+            '<td colspan="2" class="phan-tich-loaivon">'+loaiVon+'<span class="badge pull-right">'+paygoc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ</span></td>' +
             '<td class="phan-tich-thang"></td>' +
             '</tr>');
         } else if (betDetail.length == 6 ) {
@@ -297,7 +297,7 @@ $(function() {
             '<td class="phan-tich-soda2">'+betDetail[4]+'</td>' +
             '<td class="phan-tich-tien">'+parseFloat(betDetail[5])*1000+'</td>' +
             '<td class="phan-tich-von">'+parseInt(totalPay)+'đ</td>' +
-            '<td class="phan-tich-loaivon">'+loaiVon+'<span class="badge pull-right">'+paygoc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ</span></td>' +
+            '<td colspan="2" class="phan-tich-loaivon">'+loaiVon+'<span class="badge pull-right">'+paygoc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ</span></td>' +
             '<td class="phan-tich-thang"></td>' +
             '</tr>');
         }
@@ -310,7 +310,7 @@ $(function() {
           '<td colspan="2" class="phan-tich-soda">'+betDetail[3]+'</td>' +
           '<td class="phan-tich-tien">'+parseFloat(betDetail[4])*1000+'</td>' +
           '<td class="phan-tich-von">'+parseInt(totalPay)+'đ</td>' +
-          '<td class="phan-tich-loaivon">'+loaiVon+'<span class="badge pull-right">'+paygoc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ</span></td>' +
+          '<td colspan="2" class="phan-tich-loaivon">'+loaiVon+'<span class="badge pull-right">'+paygoc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ</span></td>' +
           '<td class="phan-tich-thang"></td>' +
           '</tr>');
       } else if (betDetail[2][0] == betDetail[3][0] && betDetail[2][0] == 'd') {
@@ -333,7 +333,7 @@ $(function() {
             '<td colspan="3" class="phan-tich-loaide">'+loaiSo+'</td>' +
             '<td class="phan-tich-tien">'+parseFloat(betTien[1])*1000+'</td>' +
             '<td class="phan-tich-von">'+parseInt(totalPay)+'đ</td>' +
-            '<td class="phan-tich-loaivon">'+loaiVon+'<span class="badge pull-right">'+paygoc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ</span></td>' +
+            '<td colspan="2" class="phan-tich-loaivon">'+loaiVon+'<span class="badge pull-right">'+paygoc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ</span></td>' +
             '<td class="phan-tich-thang"></td>' +
             '</tr>');
         }
@@ -481,7 +481,7 @@ $(function() {
             '<td colspan="3" class="phan-tich-loaide">'+loaiSo+'</td>' +
             '<td class="phan-tich-tien">'+parseFloat(betDetail[detailTien])*1000+'</td>' +
             '<td class="phan-tich-von">'+parseInt(totalPay)+'đ</td>' +
-            '<td class="phan-tich-loaivon">'+loaiVon+'<span class="badge pull-right">'+paygoc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ</span></td>' +
+            '<td colspan="2" class="phan-tich-loaivon">'+loaiVon+'<span class="badge pull-right">'+paygoc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ</span></td>' +
             '<td class="phan-tich-thang"></td>' +
             '</tr>');
         }
@@ -1217,20 +1217,35 @@ $(function() {
     $('#phan-tich-tung-table .table').each(function() {
       var idNguoiChoi = $(this).find('span.id-nguoi-choi').text();
       var idTinNhan = $(this).find('span.id-tin-nhan').text();
+      var tongThit = [];
+      var tongXuong = [];
       demTN.push(1);
       var vonArray = [];
       var thangArray = [];
+
       $(this).find('td.phan-tich-von').each(function() {
         var tongvon = parseInt($(this).text());
         vonArray.push(tongvon);
       });
+
+      $(this).find('tr#tr-danh-de').each(function() {
+        var tongloaivon = $(this).find('td.phan-tich-loaivon').text();
+        var findloaivon = tongloaivon.match(/Thịt|Xương/gi);
+        if (findloaivon[0] = 'Xương') tongXuong.push(parseInt(tongloaivon.replace(/X|ư|ơ|n|g|T|h|ị|t|\.|đ/gi,'')));
+         else if (findloaivon[0] = 'Thịt') tongThit.push(parseInt(tongloaivon.replace(/X|ư|ơ|n|g|T|h|ị|t|\.|đ/gi,'')));
+      });
+
       $(this).find('td.phan-tich-thang').each(function() {
         var tongthang = parseInt($(this).text()) || 0;
         thangArray.push(tongthang);
       });
       var sumVon = vonArray.reduce((a,b) => a+b,0);
+      var sumThit = tongThit.reduce((a,b) => a+b,0);
+      var sumXuong = tongXuong.reduce((a,b) => a+b,0);
       var sumThang = thangArray.reduce((a,b) => a+b,0);
       $(this).find('td.tong-von').text(sumVon.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ');
+      $(this).find('td.tong-thit').text(sumThit.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ');
+      $(this).find('td.tong-xuong').text(sumXuong.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ');
       $(this).find('td.tong-an').text(sumThang.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ');
 
       var newVon = $(this).find('td.tong-von').text();
