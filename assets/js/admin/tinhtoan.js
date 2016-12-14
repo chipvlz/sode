@@ -1009,12 +1009,12 @@ $(function() {
           if (timBaolobonsoDD.length != 0) findKetqua.html('<strong class="text-success">'+timBaolobonsoDD.length*6000*parseInt(findTien)+'đ</strong>');
           else findKetqua.text('ko trúng');
         }
-      //   else if (findTheloai == 'xỉu chủ') {
-      //     var timXiuchubonsoDD = [];
-      //     for (f=0;f<=xiuChubonsoDD.length;f++) { if (findSo==xiuChubonsoDP[f]) timXiuchubonsoDD.push(xiuChubonsoDD[f]) }
-      //     if (timXiuchubonsoDD.length != 0) findKetqua.html('<strong class="text-success">'+timXiuchubonsoDD.length*6000*parseInt(findTien)+'đ</strong>');
-      //     else findKetqua.text('ko trúng');
-      //   }
+        else if (findTheloai == 'xỉu chủ') {
+          var timXiuchubonsoDD = [];
+          for (f=0;f<=xiuChubonsoDD.length;f++) { if (findSo==xiuChubonsoDP[f]) timXiuchubonsoDD.push(xiuChubonsoDD[f]) }
+          if (timXiuchubonsoDD.length != 0) findKetqua.html('<strong class="text-success">'+timXiuchubonsoDD.length*6000*parseInt(findTien)+'đ</strong>');
+          else findKetqua.text('ko trúng');
+        }
       //   else if (findTheloai == 'xỉu đảo') {
       //     for (a=0;a<findSodao.length;a++) {
       //       var findSomoi = findSodao[a];
