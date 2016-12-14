@@ -1001,14 +1001,14 @@ $(function() {
           else findKetqua.text('ko trúng');
         }
       }
-      // else if (findDai == '2 đài') {
-      //   var timXiudaobonsoDD = [];
-      //   if (findTheloai == 'bao lô') {
-      //     var timBaolobonsoDD = [];
-      //     for (f=0;f<=kqxsBonsoDD.length;f++) { if (findSo==kqxsBonsoDD[f]) timBaolobonsoDD.push(kqxsBonsoDD[f]) }
-      //     if (timBaolobonsoDD.length != 0) findKetqua.html('<strong class="text-success">'+timBaolobonsoDD.length*6000*parseInt(findTien)+'đ</strong>');
-      //     else findKetqua.text('ko trúng');
-      //   }
+      else if (findDai == '2 đài') {
+        var timXiudaobonsoDD = [];
+        if (findTheloai == 'bao lô') {
+          var timBaolobonsoDD = [];
+          for (f=0;f<=kqxsBonsoDD.length;f++) { if (findSo==kqxsBonsoDD[f]) timBaolobonsoDD.push(kqxsBonsoDD[f]) }
+          if (timBaolobonsoDD.length != 0) findKetqua.html('<strong class="text-success">'+timBaolobonsoDD.length*6000*parseInt(findTien)+'đ</strong>');
+          else findKetqua.text('ko trúng');
+        }
       //   else if (findTheloai == 'xỉu chủ') {
       //     var timXiuchubonsoDD = [];
       //     for (f=0;f<=xiuChubonsoDD.length;f++) { if (findSo==xiuChubonsoDP[f]) timXiuchubonsoDD.push(xiuChubonsoDD[f]) }
@@ -1031,7 +1031,7 @@ $(function() {
       //     if (timXiudaobonsoDD.length!=0) findKetqua.html('<strong class="text-success">'+timXiudaobonsoDD.length*6000*parseInt(findTien)+'đ</strong>');
       //     else findKetqua.text('ko trúng');
       //   }
-      // }
+      }
       else if (findDai == 'đài phụ 1') {
         var timXiudaobonsoDP1 = [];
         if (findTheloai == 'bao lô') {
