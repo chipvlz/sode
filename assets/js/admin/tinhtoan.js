@@ -929,9 +929,11 @@ $(function() {
       if (chiaSo[0] != chiaSo[1] && chiaSo[1] != chiaSo[2] && chiaSo[0] != chiaSo[2] && chiaSo[2]==chiaSo[3])var truonghop = 'case1';
       else if (chiaSo[0] == chiaSo[1] && chiaSo[1] != chiaSo[2] && chiaSo[2] != chiaSo[3])var truonghop = 'case2';
       else if (chiaSo[0] != chiaSo[1] && chiaSo[1] == chiaSo[2] && chiaSo[2] != chiaSo[3])var truonghop = 'case3';
+      else if (chiaSo[0] != chiaSo[1] && chiaSo[1] != chiaSo[2] && chiaSo[2] != chiaSo[3] && chiaSo[0]==chiaSo[3])var truonghop = 'case4';
+      else if (chiaSo[0] != chiaSo[1] && chiaSo[1] != chiaSo[2] && chiaSo[2] != chiaSo[3] && chiaSo[0]==chiaSo[2])var truonghop = 'case5';
 
 
-      if (truonghop == 'case1' || truonghop == 'case2' || truonghop == 'case3') {
+      if (truonghop == 'case1' || truonghop == 'case2' || truonghop == 'case3' || truonghop == 'case4' || truonghop == 'case5') {
         var soDao1 = chiaSo[0]+''+chiaSo[1]+''+chiaSo[2]+''+chiaSo[3],soDao2 = chiaSo[0]+''+chiaSo[2]+''+chiaSo[1]+''+chiaSo[2],
           soDao3 = chiaSo[2]+''+chiaSo[0]+''+chiaSo[2]+''+chiaSo[1],soDao4 = chiaSo[2]+''+chiaSo[2]+''+chiaSo[0]+''+chiaSo[0],
           soDao5 = chiaSo[1]+''+chiaSo[2]+''+chiaSo[0]+''+chiaSo[2],soDao6 = chiaSo[2]+''+chiaSo[1]+''+chiaSo[2]+''+chiaSo[0],
