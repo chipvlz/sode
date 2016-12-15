@@ -110,7 +110,9 @@ td.tinh-tien-thang {
   font-size: 16px;
   font-weight: bold;
 }
-
+.datepicker {
+  position: absolute;
+}
 .datepicker.datepicker-dropdown.dropdown-menu {
   min-width:320px;
 }
