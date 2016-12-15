@@ -59,7 +59,7 @@ module.exports.connections = {
     host: '107.191.105.221',
     port: 3306,
     user: 'root', //optional
-    password: 'Diablo321', //optional
+    password: 'password', //optional
     database: 'sode' //optional
   },
 
