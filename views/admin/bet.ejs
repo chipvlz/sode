@@ -1,6 +1,17 @@
 <%- partial ('../common/admin_nav.ejs') %>
 
 <div class="container" id="page-bet-manager">
+  <form class="form-horizontal" id="search-bet-form">
+    <div class="col-lsm-12">
+      <div class="input-group date" id="datetimepicker2">
+        <input type='text' name="ngay" class="input-lg datepicker form-control">
+        <span class="input-group-btn">
+        <button class="btn btn-primary input-lg" type="submit"><i class="fa fa-search"></i> Tìm theo ngày</button>
+      </span>
+      </div>
+    </div>
+  </form>
+
   <h4><span class="phone-daily pull-right label label-warning"><%= req.session.user.phone %></span>
     <span class="bet-hom-nay pull-right label label-warning"><%= getdayShow %></span>
   </h4>
@@ -35,7 +46,7 @@
     </tbody>
   </table>
   <a href="/admin/bet" class="btn btn-warning"><i class="fa fa-search"></i> Tìm hôm nay</a>
-  <a class="btn btn-warning" data-toggle="modal" data-target="#searchBetModal"><i class="fa fa-calendar"></i> Tìm theo lịch</a>
+
   <a href="/admin/cal/<%= getday %>" class="btn btn-success"><i class="fa fa-calculator"></i> Tính tiền</a>
 </div>
 
@@ -97,32 +108,32 @@
   </div>
 </div>
 
-<!--// Modal Edit Bet-->
-<div class="modal fade" id="searchBetModal" role="dialog">
-  <div class="modal-dialog modal-md">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"><i class="fa fa-search"></i> TÌM THEO NGÀY</h4>
-      </div>
-      <div class="modal-body">
-        <form class="form-horizontal" id="search-bet-form">
-          <div class="form-group">
-            <label class="control-label col-sm-3" for="msgedit">Nhập ngày</label>
-            <div class="col-sm-9 input-group date" id='datetimepicker2'>
-              <input type='text' name="ngay" class="input-lg datepicker form-control">
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-              <button type="submit" class="pull-right btn btn-primary"><i class="fa fa-search"></i> Tìm</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+<!--&lt;!&ndash;// Modal Edit Bet&ndash;&gt;-->
+<!--<div class="modal fade" id="searchBetModal" role="dialog">-->
+  <!--<div class="modal-dialog modal-md">-->
+    <!--<div class="modal-content">-->
+      <!--<div class="modal-header">-->
+        <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+        <!--<h4 class="modal-title"><i class="fa fa-search"></i> TÌM THEO NGÀY</h4>-->
+      <!--</div>-->
+      <!--<div class="modal-body">-->
+        <!--<form class="form-horizontal" id="search-bet-form">-->
+          <!--<div class="form-group">-->
+            <!--<label class="control-label col-sm-3" for="msgedit">Nhập ngày</label>-->
+            <!--<div class="col-sm-9 input-group date" id='datetimepicker2'>-->
+              <!--<input type='text' name="ngay" class="input-lg datepicker form-control">-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="form-group">-->
+            <!--<div class="col-sm-offset-2 col-sm-10">-->
+              <!--<button type="submit" class="pull-right btn btn-primary"><i class="fa fa-search"></i> Tìm</button>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</form>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
 
 
 <!--<div class="form-group">-->

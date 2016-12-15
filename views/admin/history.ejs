@@ -1,2 +1,35 @@
 <%- partial ('../common/admin_nav.ejs') %>
-history
+
+<div class="container" id="page-bet-manager">
+
+
+  <h2>LỊCH SỬ ĐÁNH ĐỀ</h2>
+  <table class="table table-hover" id="manage-bet">
+    <thead>
+    <tr>
+      <th class="sr-only">ID</th>
+      <th>Tên</th>
+      <th>Số ĐT</th>
+      <th>Ngày</th>
+      <th>Vốn</th>
+      <th>Thắng</th>
+      <th>Thầu Lời/Lỗ</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <% _.each(foundResult,function(his) { %>
+    <tr>
+      <td class="sr-only bet_id"><%= his.id %></td>
+      <td class="his_name"><a href="/admin/history?name=<%= his.name %>"><%= his.name %></a></td>
+      <td class="his_phone"><a href="/admin/history?phone=<%= his.phone.replace('+','%2B') %>"><%= his.phone %></a></td>
+      <td class="his_date"><a href="/admin/history?date=<%= his.date %>"><%= his.date %></a></td>
+      <td class="his_outcome"><%= his.outcome %></td>
+      <td class="his_income"><%= his.income %></td>
+      <td class="his_calculator"><%= his.calculator %></td>
+    </tr>
+    <% }) %>
+    </tbody>
+  </table>
+</div>
+

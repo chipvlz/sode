@@ -1276,8 +1276,8 @@ $(function() {
     $('#phan-tich-tung-table .table').each(function() {
       var idNguoiChoi = $(this).find('span.id-nguoi-choi').text();
       var idTinNhan = $(this).find('span.id-tin-nhan').text();
-      var tongThit = [];
-      var tongXuong = [];
+      var thitArray = [];
+      var xuongArray = [];
       demTN.push(1);
       var vonArray = [];
       var thangArray = [];
@@ -1290,8 +1290,13 @@ $(function() {
       $(this).find('tr#tr-danh-de').each(function() {
         var tongloaivon = $(this).find('td.phan-tich-loaivon').text();
         var findloaivon = tongloaivon.match(/Thịt|Xương/gi);
-        if (findloaivon[0] = 'Xương') tongXuong.push(parseInt(tongloaivon.replace(/X|ư|ơ|n|g|T|h|ị|t|\.|đ/gi,'')));
-         else if (findloaivon[0] = 'Thịt') tongThit.push(parseInt(tongloaivon.replace(/X|ư|ơ|n|g|T|h|ị|t|\.|đ/gi,'')));
+        console.log(findloaivon[0]);
+        if (findloaivon[0] == 'Xương') {
+          xuongArray.push(parseInt(tongloaivon.replace(/X|ư|ơ|n|g|T|h|ị|t|\.|đ/gi,'')))
+        }
+        else if (findloaivon[0] == 'Thịt') {
+          thitArray.push(parseInt(tongloaivon.replace(/X|ư|ơ|n|g|T|h|ị|t|\.|đ/gi, '')))
+        }
       });
 
       $(this).find('td.phan-tich-thang').each(function() {
@@ -1299,12 +1304,12 @@ $(function() {
         thangArray.push(tongthang);
       });
       var sumVon = vonArray.reduce((a,b) => a+b,0);
-      var sumThit = tongThit.reduce((a,b) => a+b,0);
-      var sumXuong = tongXuong.reduce((a,b) => a+b,0);
+      var sumThit = thitArray.reduce((a,b) => a+b,0);
+      var sumXuong = xuongArray.reduce((a,b) => a+b,0);
       var sumThang = thangArray.reduce((a,b) => a+b,0);
       $(this).find('td.tong-von').text(sumVon.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ');
-      $(this).find('td.tong-thit').text(sumThit.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ');
-      $(this).find('td.tong-xuong').text(sumXuong.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ');
+      $(this).find('td.tong-thit').html('<span class="badge">T</span> '+sumThit.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ');
+      $(this).find('td.tong-xuong').html('<span class="badge">X</span> '+sumXuong.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ');
       $(this).find('td.tong-an').text(sumThang.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+'đ');
 
       var newVon = $(this).find('td.tong-von').text();

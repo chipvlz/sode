@@ -92,6 +92,12 @@ module.exports = {
           })
         })
       })
-
+    },
+  history: (req,res) => {
+    let params = req.allParams();
+    History.find(params).exec(function(err,foundResult){
+      if (err) return res.negotiate(err);
+      else res.view('admin/history',{foundResult})
+    })
   }
 };
