@@ -9,7 +9,7 @@
 var Feed = require('rss-to-json');
 module.exports = {
   xsmb: (req,res) => {
-    Feed.load('xskt.com.vn/rss-feed/mien-bac-xsmb.rss', function(err, rss){
+    Feed.load('http://xskt.com.vn/rss-feed/mien-bac-xsmb.rss', function(err, rss){
       var timngay = rss.items[0].link.split('http://xskt.com.vn/ket-qua-xo-so-theo-ngay/mien-bac-xsmb/'),
           ngaythang = timngay[1].split('.');
       var mienbac = rss.items[0].description.split('\n'),
@@ -41,36 +41,39 @@ module.exports = {
   },
 
   xsmn: (req,res) => {
-    Feed.load('xskt.com.vn/rss-feed/mien-nam-xsmn.rss', function (err, rss) {
-      var timngay = rss.items[0].link.split('http://xskt.com.vn/ket-qua-xo-so-theo-ngay/mien-nam-xsmn/'),
-        ngaythang = timngay[1].split('.');
-      var miennam = rss.items[0].description.split('\n');
-      var dacbiet_dc = miennam[1].split(': '),
-        giainhat_dc = miennam[2].split(': '),
-        giainhi_dc = miennam[3].split(': '),
-        giaiba_dc = miennam[4].split(': '),
-        giaitu_dc = miennam[5].split(': '),
-        giainam_dc = miennam[6].split(': '),
-        giaisau_dc = miennam[7].split(': '),
-        giaitam_dc = miennam[8].split('8: '),
+    Feed.load('http://xskt.com.vn/rss-feed/mien-nam-xsmn.rss', function (err, rss) {
+// console.log(rss);
+      var timngay = rss.items[0].link.replace('http://xskt.com.vn/ket-qua-xo-so-theo-ngay/mien-nam-xsmn/',''),
+        ngaythang = timngay.replace('.html','');
+
+      var miennam = rss.items[0].description.split(/\n/);
+      console.log(miennam);
+      var dacbiet_dc = miennam[0].split(': '),
+        giainhat_dc = miennam[1].split(': '),
+        giainhi_dc = miennam[2].split(': '),
+        giaiba_dc = miennam[3].split(': '),
+        giaitu_dc = miennam[4].split(': '),
+        giainam_dc = miennam[5].split(': '),
+        giaisau_dc = miennam[6].split(': '),
+        giaitam_dc = miennam[7].split('8: '),
         giaibay_dc = giaitam_dc[0].split(': '),
-        dacbiet_dp = miennam[10].split(': '),
-        giainhat_dp = miennam[11].split(': '),
-        giainhi_dp = miennam[12].split(': '),
-        giaiba_dp = miennam[13].split(': '),
-        giaitu_dp = miennam[14].split(': '),
-        giainam_dp = miennam[15].split(': '),
-        giaisau_dp = miennam[16].split(': '),
-        giaitam_dp = miennam[17].split('8: '),
+        dacbiet_dp = miennam[8].split(': '),
+        giainhat_dp = miennam[9].split(': '),
+        giainhi_dp = miennam[10].split(': '),
+        giaiba_dp = miennam[11].split(': '),
+        giaitu_dp = miennam[12].split(': '),
+        giainam_dp = miennam[13].split(': '),
+        giaisau_dp = miennam[14].split(': '),
+        giaitam_dp = miennam[15].split('8: '),
         giaibay_dp = giaitam_dp[0].split(': '),
-        dacbiet_dp1 = miennam[19].split(': '),
-        giainhat_dp1 = miennam[20].split(': '),
-        giainhi_dp1 = miennam[21].split(': '),
-        giaiba_dp1 = miennam[22].split(': '),
-        giaitu_dp1 = miennam[23].split(': '),
-        giainam_dp1 = miennam[24].split(': '),
-        giaisau_dp1 = miennam[25].split(': '),
-        giaitam_dp1 = miennam[26].split('8: '),
+        dacbiet_dp1 = miennam[16].split(': '),
+        giainhat_dp1 = miennam[17].split(': '),
+        giainhi_dp1 = miennam[18].split(': '),
+        giaiba_dp1 = miennam[19].split(': '),
+        giaitu_dp1 = miennam[20].split(': '),
+        giainam_dp1 = miennam[21].split(': '),
+        giaisau_dp1 = miennam[22].split(': '),
+        giaitam_dp1 = miennam[23].split('8: '),
         giaibay_dp1 = giaitam_dp1[0].split(': ');
       // Xong màn khai báo rồi , mệt mỏi :(
 
