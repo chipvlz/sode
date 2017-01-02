@@ -9,7 +9,8 @@
 var Feed = require('rss-to-json');
 module.exports = {
   xsmb: (req,res) => {
-    Feed.load('http://xskt.com.vn/rss-feed/mien-bac-xsmb.rss', function(err, rss){
+    Feed.load('http://xskt.com.vn/rss-feed/mien-bac-xsmb.rss', function(err,rss){
+      console.log(rss);
       var timngay = rss.items[0].link.split('http://xskt.com.vn/ket-qua-xo-so-theo-ngay/mien-bac-xsmb/'),
           ngaythang = timngay[1].split('.');
       var mienbac = rss.items[0].description.split('\n'),
