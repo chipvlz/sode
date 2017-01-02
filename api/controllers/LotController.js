@@ -90,7 +90,7 @@ module.exports = {
           six: giaisau_dc[1],
           seven: giaibay_dc[1],
           eight: giaitam_dc[1],
-          ngay: ngaythang[0]
+          ngay: ngaythang
         }).exec(function(err,daichinh) {
           if (err) {reject(err)}
           resolve(daichinh);
@@ -110,7 +110,7 @@ module.exports = {
           six: giaisau_dp[1],
           seven: giaibay_dp[1],
           eight: giaitam_dp[1],
-          ngay: ngaythang[0]
+          ngay: ngaythang
         }).exec(function(err,daiphu) {
           if (err) {reject(err)}
           resolve(daiphu);
@@ -130,7 +130,7 @@ module.exports = {
           six: giaisau_dp1[1],
           seven: giaibay_dp1[1],
           eight: giaitam_dp1[1],
-          ngay: ngaythang[0]
+          ngay: ngaythang
         }).exec(function(err,daiphu1) {
           if (err) {reject(err)}
           resolve(daiphu1);
