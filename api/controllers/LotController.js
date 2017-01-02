@@ -79,7 +79,7 @@ module.exports = {
 
       let addDaichinh = new Promise((resolve, reject) => {
         Lot.create({
-          name: miennam[0],
+          name: miennam[0].split(': ')[0].replace(' ĐB',''),
           more: 'dc',
           special: dacbiet_dc[1],
           one: giainhat_dc[1],
@@ -99,7 +99,7 @@ module.exports = {
 
       let addDaiphu = new Promise((resolve, reject) => {
         Lot.create({
-          name: miennam[9],
+          name: miennam[8].split(': ')[0].replace(' ĐB',''),
           more: 'dp',
           special: dacbiet_dp[1],
           one: giainhat_dp[1],
@@ -119,7 +119,7 @@ module.exports = {
 
       let addDaiphu1 = new Promise((resolve, reject) => {
         Lot.create({
-          name: miennam[18],
+          name: miennam[16].split(': ')[0].replace(' ĐB',''),
           more: 'dp1',
           special: dacbiet_dp1[1],
           one: giainhat_dp1[1],
