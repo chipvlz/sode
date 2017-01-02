@@ -9,9 +9,9 @@
 var Feed = require('rss-to-json');
 module.exports = {
   xsmb: (req,res) => {
-    Feed.load('http://kqxs.mobi/rss-feed/xsMB.rss', function(err, rss){
-      var timngay = rss.items[0].link.split('http://kqxs.mobi/ngay/-xsmb-'),
-          ngaythang = timngay[1].split('/');
+    Feed.load('http://xskt.com.vn/rss-feed/mien-bac-xsmb.rss', function(err, rss){
+      var timngay = rss.items[0].link.split('http://xskt.com.vn/ket-qua-xo-so-theo-ngay/mien-bac-xsmb/'),
+          ngaythang = timngay[1].split('.');
       var mienbac = rss.items[0].description.split('\n'),
           dacbiet = mienbac[0].split(': '),
           giainhat = mienbac[1].split(': '),
@@ -41,9 +41,9 @@ module.exports = {
   },
 
   xsmn: (req,res) => {
-    Feed.load('http://kqxs.mobi/rss-feed/xsMN.rss', function (err, rss) {
-      var timngay = rss.items[0].link.split('http://kqxs.mobi/ngay/-xsmn-'),
-        ngaythang = timngay[1].split('/');
+    Feed.load('http://xskt.com.vn/rss-feed/mien-nam-xsmn.rss', function (err, rss) {
+      var timngay = rss.items[0].link.split('http://xskt.com.vn/ket-qua-xo-so-theo-ngay/mien-nam-xsmn/'),
+        ngaythang = timngay[1].split('.');
       var miennam = rss.items[0].description.split('\n');
       var dacbiet_dc = miennam[1].split(': '),
         giainhat_dc = miennam[2].split(': '),

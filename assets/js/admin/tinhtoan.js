@@ -424,7 +424,7 @@ $(function() {
             }
 
             else if ((theloaiBet == 'xỉu chủ')) {
-              var paygoc = parseFloat(betDetail[detailTien]) * numDai * 4 * 1000;
+              var paygoc = parseFloat(betDetail[detailTien]) * numDai * 2 * 1000;
               var totalPay = paygoc * bonus1;
             }
 
